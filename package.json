@@ -1,0 +1,71 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.3",
+    "@mui/lab": "^5.0.0-alpha.85",
+    "@mui/material": "^5.8.3",
+    "@radix-ui/colors": "^0.1.8",
+    "@radix-ui/react-accessible-icon": "^0.1.4",
+    "@radix-ui/react-accordion": "^0.1.6",
+    "@radix-ui/react-alert-dialog": "^0.1.7",
+    "@radix-ui/react-avatar": "^0.1.4",
+    "@radix-ui/react-checkbox": "^0.1.5",
+    "@radix-ui/react-dropdown-menu": "^0.1.6",
+    "@radix-ui/react-icons": "^1.1.1",
+    "@radix-ui/react-popover": "0.1.6",
+    "@radix-ui/react-separator": "^0.1.4",
+    "@rainbow-me/rainbowkit": "^0.3.1",
+    "@stitches/react": "^1.2.7",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.0.1",
+    "@testing-library/user-event": "^13.5.0",
+    "bignumber": "^1.1.0",
+    "buffer": "^6.0.3",
+    "ethereum-blockies-base64": "^1.0.2",
+    "ethers": "^5.6.8",
+    "framer-motion": "^6.3.11",
+    "i": "^0.3.7",
+    "next-themes": "^0.1.1",
+    "rc-steps": "^4.1.4",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-responsive": "^9.0.0-beta.6",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "recoil": "^0.7.3-alpha.2",
+    "styled-components": "^5.3.5",
+    "swiper": "^8.1.5",
+    "url-loader": "^4.1.1",
+    "util": "^0.12.4",
+    "wagmi": "^0.2.28",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
