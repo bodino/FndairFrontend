@@ -1,5 +1,6 @@
 import { useConnect, useAccount, useTransaction, useSignMessage } from 'wagmi'
 import '../ui/dropdowns'
+import '@rainbow-me/rainbowkit/styles.css'
 import {
   CookieIcon,
   CrossCircledIcon,
@@ -36,6 +37,8 @@ import {
   signedMessageObject,
 } from '../hooks/recoil'
 import { useDisconnect } from 'wagmi'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { ENSListObject, WalletListArray, trackedWalletListObject} from '../hooks/recoil';
 
 
 
@@ -43,183 +46,257 @@ var x = 0
 var walletarray = [3]
 
 export function Example() {
-const { disconnect } = useDisconnect()
-axios.defaults.withCredentials = true;
+  const { disconnect } = useDisconnect()
+  axios.defaults.withCredentials = true
+  const [airDropList, setairDropList] = useRecoilState(airDropListObject)
+  const [trackedWalletList, settrackedWalletListt] = useRecoilState(trackedWalletListObject)
 
-const { data:signer, error:signererror, isLoading:signerisloading, refetch } = useSigner()
+  const [walletList, setwalletList] = useRecoilState(WalletListArray)
+  const [ENS, setENS] = useRecoilState(ENSListObject)
+  const {
+    data: signer,
+    error: signererror,
+    isLoading: signerisloading,
+    refetch,
+  } = useSigner()
   // const [clicked, setClicked] = useState(false);
-  const [clicked, setClicked] = useRecoilState(clickedObject)
+  const [clicked, setClicked] = useState(false)
+  const [LogOut, setLogOut] = useState(false)
   const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
   // const provider = useProvider()
- const { data, isLoading, error } = useAccount()
+  const { data, isLoading, error } = useAccount()
+  const provider = useProvider()
 
- const { isConnected, connector, connectors, connectAsync } = useConnect()
+  const { isConnected, connector, connectors, connectAsync } = useConnect()
+  const {
+    data: signingmessagedata,
+    error: signingmessageerror,
+    isLoading: signingmessageisloading,
+    signMessageAsync,
+  } = useSignMessage({
+    message:
+      'Welcome to Fndair!\n\nClick “Sign” to connect. No password needed!\n\nThis request will not trigger a blockchain transaction or cost any gas fees.',
+  })
+
+  function convertObjectToArray(res) {
+    var eligableAirdrops = [];
+
+    console.log(res.data)
+            var x =0;
+            for (var j =0; j < res.data.wallet.length; j++){
+              console.log(res.data);
+            for(var i =0; i < res.data.wallet[j].data.length; i++){
+             
+              res.data.wallet[j].data[i].address = res.data.wallet[j]._id;
+              eligableAirdrops[x] =  res.data.wallet[j].data[i];
+
+              x++;
+            }
+          }
+          setairDropList(eligableAirdrops)
+          settrackedWalletListt(res.data.followedAddresses)
+  }
+
+ 
 
   useEffect(() => {
-      console.log("hi")
-    if (clicked === true) {
-      console.log(clicked)
-      console.log('hi')
-      setClicked(false)
-      singstuff2()
+    async function checklogin() {
+      await axios
+        .get('http://localhost:3001/login', {})
+        .then(function (res) {
+          if ((res.data.loggedin = true && data)) {
+            if ((res.data._id == data.address)) {
+              ensgetter();
+              convertObjectToArray(res);
+              console.log(res)
+              setSignedMessage(true)
+              
+            } else {
+              disconnect()
+              serverDisconnect()
+              setairDropList("")
+              settrackedWalletListt("")
+            }
+          } else {
+            disconnect()
+            serverDisconnect()
+          }
+        })
+        .catch(function (error) {
+          disconnect()
+          serverDisconnect()
+        })
     }
-  }, [clicked])
-
-
-  useEffect(() => {
-      console.log("hi")
-      async function checklogin(){
-        await axios.get('http://localhost:3001/login', { 
-            })
-            .then(function (res) {
-                if (res.data.loggedin = true && data) {
-                    console.log(res)
-                    setSignedMessage(true);
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-      } 
-      checklogin();
-  }, [])
-  
-
-
-  const [gotdata, setgotdata] = useState(false)
-
-  
-
-  async function signstuff(connector) {
-    await connectAsync(connector)
-    setTimeout(doSomething, 1000)
-  }
-  function doSomething() {
-    setClicked(true)
-    // console.log("helloworld")
-  }
-  async function singstuff2() {
-    let signature
-    try {
-      signature = await signer.signMessage(
-        'Welcome to Fndair!\n\nClick “Sign” to connect. No password needed!\n\nThis request will not trigger a blockchain transaction or cost any gas fees.',
-      )
-      setSignedMessage(true)
-      const UserInfo = {
-        signature: signature,
-        message: 'Welcome to Fndair!\n\nClick “Sign” to connect. No password needed!\n\nThis request will not trigger a blockchain transaction or cost any gas fees.',
-        address: data.address,
-      }
-      await axios.post('http://localhost:3001/login', {
-        UserInfo
+    async function updateWallet() {
+      var Info = {Address: "0x23401927395871298375409127340978120"}
+      await axios
+      .post('http://localhost:3001/removewallet', {
+       Info,
       })
       .then(function (response) {
-    
-        console.log(response.data)
-       })
-       .catch(function (error) {
-         console.log(error);
-       })
+       console.log("LETS GO!")
+      })
+      .catch(function (error) {
+        console.log(error)
+        console.log("FUCKOFFMATE")
+      })
+    }
+    checklogin()
+    // updateWallet()
+  }, [connector])
 
+
+  async function ensgetter() {
+    var food = await provider.lookupAddress(data.address)
+    setENS(food);
+  }  
+
+  useEffect(() => {
+    if (isConnected && !signedMessage && clicked) {
+      console.log('hi')
+      singstuff()
+    }
+
+    if (!isConnected && LogOut) {
+      console.log('SEEYABITCH')
+      disconnect()
+      serverDisconnect()
+      setSignedMessage(false);
+    }
+
+    
+  }, [isConnected])
+
+  async function singstuff() {
+    let signature
+    try {
+      var data1 = await signMessageAsync()
+      const UserInfo = {
+        signature: data1,
+        message:
+          'Welcome to Fndair!\n\nClick “Sign” to connect. No password needed!\n\nThis request will not trigger a blockchain transaction or cost any gas fees.',
+        address: data.address,
+      }
+      await axios
+        .post('http://localhost:3001/login', {
+          UserInfo,
+        })
+        .then(function (response) {
+          setSignedMessage(true)
+          convertObjectToArray(response)
+          console.log(response)
+          ensgetter();
+        })
+        .catch(function (error) {
+          console.log(error)
+          disconnect()
+        })
     } catch (error) {
-      console.log('freedom')
+      disconnect()
     }
   }
 
-  async function serverDisconnect(){
-    await axios.get('http://localhost:3001/disconnect', { 
-    })
-    .then(function (response) {
-        if (response.data.loggedin = false) {
-            setSignedMessage(false);
+  async function serverDisconnect() {
+    await axios
+      .get('http://localhost:3001/disconnect', {})
+      .then(function (response) {
+        if ((response.data.loggedin = false)) {
+          setSignedMessage(false)
         }
-    })
-    .catch(function (error) {
-        console.log(error);
-    })
+      })
+      .catch(function (error) {
+        console.log(error)
+        
+      })
   }
 
-  var food =[];
+  var food = []
   connectors[0].logo = '/metamask-fox.svg'
   connectors[1].logo = '/walletconnect-logo.svg'
   connectors[2].logo = '/coinbasewallet-logo.png'
-  if (signedMessage && data)
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <WalletConnect>Connected</WalletConnect>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem
-            onClick={() => {
-              navigator.clipboard.writeText(data.address)
-            }}
+
+  return (
+    // <ConnectButton chainStatus="icon" accountStatus="avatar" showBalance={false}/>
+    <ConnectButton.Custom>
+      {({
+        account,
+        chain,
+        openAccountModal,
+        openChainModal,
+        openConnectModal,
+        mounted,
+      }) => {
+        return (
+          <div
+            {...(!mounted && {
+              'aria-hidden': true,
+              style: {
+                opacity: 0,
+                pointerEvents: 'none',
+                userSelect: 'none',
+              },
+            })}
           >
-            <img
-              style={{
-                width: '15px',
-                paddingRight: '11.75px',
-                paddingLeft: '1.75px',
-              }}
-              src={
-                data.ens
-                  ? data.ens?.avatar
-                  : makeBlockie(data.address)
+            {(() => {
+              if (!mounted || !account || !chain || !signedMessage) {
+                return (
+                  <WalletConnect
+                    onClick={() => {
+                      setClicked(true)
+                      openConnectModal()
+                    }}
+                  >
+                    Connect Wallet
+                  </WalletConnect>
+                )
               }
-            />
-            {data.ens?.name
-              ? `${data.ens?.name} (${data.address})`
-              : data.address.substring(0, 5) +
-                '...' +
-                data.address.substring(38, 42)}
-          </DropdownMenuItem>
-         
 
-          <DropdownMenuItem onClick={() => {disconnect(); serverDisconnect()}}>
-            {' '}
-            <Text>
-              <CrossCircledIcon
-                style={{ width: '18px', paddingRight: '10px', height: '18px' }}
-              />
-            </Text>
-            Disconnect
-          </DropdownMenuItem>
+              if (chain.unsupported) {
+                return (
+                  <button onClick={openChainModal} type="button">
+                    Wrong network
+                  </button>
+                )
+              }
 
-          {/* {error && <div>{error?.message ?? 'Failed to connect'}</div>} */}
-          {/* <DropdownMenuItem><SignMessage/></DropdownMenuItem> */}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    )
-  else
-    return (
-  
-      
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <WalletConnect >Connect Wallet</WalletConnect>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          {connectors.map((connector) => (
-            <DropdownMenuItem
-              disabled={!connector.ready}
-              key={connector.id}
-              onClick={() => {
-                signstuff(connector)
-              }}
-            >
-              <img
-                style={{ width: '15px', paddingRight: '10px' }}
-                src={connector.logo}
-              />
+              if (signedMessage) {
+                return (
+                  <div style={{ display: 'flex', gap: 1 }}>
+                    <WalletConnect
+                      onClick={() => {
+                        openChainModal()
+                      }}
+                      css={{ display: 'flex', alignItems: 'center' }}
+                      type="button"
+                    >
+                      {chain.hasIcon && (
+                        <div>
+                          {chain.iconUrl && (
+                            <img
+                              alt={chain.name ?? 'Chain icon'}
+                              src={chain.iconUrl}
+                              style={{
+                                width: 12,
+                                height: 12,
+                                alignSelf: 'center',
+                              }}
+                            />
+                          )}
+                        </div>
+                      )}
+                    </WalletConnect>
 
-              {connector.name}
-              {!connector.ready && ' (unsupported)'}
-            </DropdownMenuItem>
-          ))}
-
-          {/* {error && <div>{error?.message ?? 'Failed to connect'}</div>} */}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    )
+                    <WalletConnect  onClick={() => {setLogOut(true); openAccountModal()}} type="button">
+                      <div style={{ top: '4px' }}>{account.displayName}</div>
+                    </WalletConnect>
+                  </div>
+                )
+              }
+            })()}
+          </div>
+        )
+      }}
+    </ConnectButton.Custom>
+  )
 }
 export default Example

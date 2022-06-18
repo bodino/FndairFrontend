@@ -21,3 +21,19 @@ export const signedMessageObject = atom({
     default: false
 })
 
+export const ENSListObject = atom({
+    key: "ENSListObject",
+    default: false
+})
+
+export const WalletListArray = atom({
+    key: "WalletListArray",
+    default: false
+})
+
+export const trackedWalletListObject = atom({
+    key: "trackedWalletListObject",
+    default: false
+})
+
+

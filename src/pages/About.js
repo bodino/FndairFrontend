@@ -32,9 +32,7 @@ import Footer from '../components/Footer'
 
 function Portfolio() {
   return (
-    <Content>
-      <TopBox  css={{ flex: "1 1", textAlign:"center", justifyContent:"flex-start"}}>
-        <Navabar />
+    <>
 
         <HorizontalFlexBoxWithColor>
           <ParagraphBox>
@@ -99,8 +97,7 @@ function Portfolio() {
          
          </ParagraphBox>
         <Footer />
-      </TopBox>
-    </Content>
+        </>
   )
 }
 export default Portfolio

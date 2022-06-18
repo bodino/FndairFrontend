@@ -1,3 +1,4 @@
+import { display } from "@mui/system";
 import { styled } from "./stitches.config";
 
 export const LeftLargeItemsBox = styled('div', {
@@ -298,12 +299,13 @@ export const AirdropFlexBox = styled('div', {
 
     display: "flex",
     alignItems:"center",
-    width: "200px",
+    width: "380px",
+    boxShadow: "0px 4px 10px 1px rgba(0, 0, 0, 0.3)",
     // maxWidth: "1000px",
-    flexDirection: "column",
+    flexDirection: "row",
     minHeight:"200px",
-    background: "$secondaryHighLight",
-    borderRadius: "10px",
+    background: "rgb(41, 46, 65)",
+    borderRadius: "30px",
     fontWeight: "300",
     margin:"10px",
     
@@ -336,8 +338,9 @@ export const AirdropHorizontalFlexBox = styled('div', {
 export const TopBox = styled('div', {
     width: "100vw",
     display: "flex",
+    flex:"1 1",
     flexDirection: "column",
-    justifyContent: "center",
+  
     alignItems: "center",
     background: "linear-gradient(45deg, rgb(116, 27, 107), rgb(0, 80, 124))"
 
@@ -416,3 +419,44 @@ export const PaymentTextBoxNormal = styled('div', {
     paddingBottom:"20px",
    
 })
+
+export const AirdropInfo = styled('div', {
+
+    display: "flex",
+    // alignItems:"center",
+    fontSize:"$header1",
+    color:"$antibackground",
+    fontFamily: "Inter, Arial",
+    fontSize:"19px",
+    height:"200px",
+    flex:"1 1",
+    textAlign:"left",
+    alignItems:"center",
+    width: "150px",
+    
+    // maxWidth: "1000px",
+    // textShadow: "#467898 5px 5px",
+    flexDirection: "column",
+   
+   
+})
+
+
+export const AirdropIcon = styled('div', {
+
+   minWidth: "170px",
+   display:"flex",
+   justifyContent:"center",
+   alignItems:"center",
+   
+})
+
+export const AirdropInfoBox = styled('div', {
+
+    Width: "210px",
+    display:"flex",
+    justifyContent:"center",
+    flexDirection:"column",
+    alignItems:"flex-start"
+    
+ })

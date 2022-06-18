@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { connectors } from './hooks/wagmi';
 import {RecoilRoot} from 'recoil';
-import {client} from './hooks/wagmi.js'
+import {client, chains} from './hooks/wagmi.js'
+import '@rainbow-me/rainbowkit/styles.css';
+
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+
 
 import {WagmiConfig, Provider } from 'wagmi'
+
 
 
 
@@ -16,9 +23,14 @@ root.render(
   <React.StrictMode>
     <RecoilRoot>
     <WagmiConfig client={client}>
+    <RainbowKitProvider appInfo={{
+        appName: 'Fndair',
+      }} chains={chains}>
 
         <App />
-        </WagmiConfig>
+       
+    </RainbowKitProvider>
+    </WagmiConfig>
       </RecoilRoot>
   </React.StrictMode>
 );

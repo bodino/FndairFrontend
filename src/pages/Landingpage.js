@@ -49,6 +49,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import Footer from '../components/Footer'
 import Timelines from '../components/Timelines'
+import { WidthIcon } from '@radix-ui/react-icons'
 const axios = require('axios');
 
 
@@ -75,9 +76,7 @@ function Landingpage() {
 
   return (
  
-      <Content>
-        <TopBox>
-        <Navabar />
+      <>
         <HorizontalFlexBoxWithColor>
           <div style={{display:"flex",flexDirection:"column"}}>
           <ParagraphBox>
@@ -99,7 +98,7 @@ function Landingpage() {
           <Bubbles></Bubbles>
           </ParagraphBox>
         </HorizontalFlexBoxWithColor>
-        </TopBox>
+      <div style={{background:"rgb(27, 32, 48)", width:"100vw", display:"flex", flexDirection:"column", alignItems:"center", flex:"1 1 "}}>
         <BraggingBox>
           <HorizontalFlexBox>
             <InteranalParagraphBox>
@@ -131,7 +130,8 @@ function Landingpage() {
         </ParagraphBox>
      
         <Footer/>
-      </Content>
+        </div>
+        </>
   )
 }
 export default Landingpage

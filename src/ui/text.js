@@ -97,3 +97,53 @@ export const ListNamers = styled('li', {
 
 
 
+ export const ClaimButton = styled('div', {
+  color:"$antibackground",
+  fontSize:"$p1",
+  textAlign:"center",
+  display:"flex",
+  justifyContent:"center",
+  alignItems:"center",
+  width:"175px",
+  height:"45px",
+  marginTop: "15px",
+  marginBottom:"15px",
+
+  // filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+  borderRadius:"60px",
+  // opacity:".7",
+  // width:"100px !important",
+  background: "linear-gradient(45deg, rgb(116, 27, 107), rgb(0, 80, 124));",
+  // border: "1px solid rgba(255, 255, 255, 0.4)",
+  // border: "2px solid $gray400 ",
+  // borderRadius: "5px",
+  '&:hover': {
+      // backgroundColor: '$colorsgray6',
+      // border: "1px solid",
+      // boxShadow:"4px 4px",
+      cursor:"pointer",
+
+    },
+})
+
+
+export const StaticWalletConnect = styled('div', {
+  color:"$antibackground",
+  fontSize:"$p1",
+  padding:"10px",
+  filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+  borderRadius:"5px",
+  // opacity:".7",
+  // width:"100px !important",
+  background: "#0d4e7b",
+  // border: "1px solid rgba(255, 255, 255, 0.4)",
+  // border: "2px solid $gray400 ",
+  // borderRadius: "5px",
+  '&:hover': {
+      // backgroundColor: '$colorsgray6',
+      // border: "1px solid",
+      // boxShadow:"4px 4px",
+      // cursor:"pointer",
+
+    },
+})

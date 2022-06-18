@@ -1,35 +1,8 @@
-.swiper {
-  /* width: 600px; */
-  height: 250px;
-}
-svg {
-  width: 20px;
-  height: 19px;
-  /* padding-inline: 13px; */
-}
+
+/*  */
 html, body { height: 100% }
 
-button {
-  background:none !important;
-  background-color: transparent;
-  border: 0px;
-  appearance: none;
-  color: none;
-  padding: none;
-  padding: 0px 0px;
-  outline: none;
-  align-self: center;
-  justify-self: center;
-  align-items: center;
-  justify-content: center;
-  box-sizing: none;
-  display: flex;
-  border-width: 0px;
-  /* width: 50px; */
-  height: 50px;
 
-
-}
 
 .App {
   text-align: center;

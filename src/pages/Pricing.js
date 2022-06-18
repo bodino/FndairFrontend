@@ -54,9 +54,8 @@ import Timelines from '../components/Timelines'
 
 function Pricing() {
   return (
-    <Content>
-      <TopBox css={{ flex: "1 1", textAlign:"center", justifyContent:"flex-start"}}>
-        <Navabar />
+   <>
+      
 
         <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px' }}>
           <b>Premium Product, Fair Price </b>
@@ -161,10 +160,10 @@ function Pricing() {
         <Footer />
     
      
-      </TopBox>
+        </>
   
     
-    </Content>
+   
   )
 }
 export default Pricing

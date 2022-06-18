@@ -19,7 +19,7 @@ export function Mapairdrops() {
    
         {airDropList.map((item) =>(
             <>
-         {item.amount > 0 ? <Airdropbox item = {item} protocolList = {protocolList}/> : <></>}
+         {item.tokAvail > 0 ? <Airdropbox item = {item}/> : <></>}
             </>
         ))}
        </>

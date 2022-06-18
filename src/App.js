@@ -6,7 +6,7 @@ import './App.css';
 import { TwitterLogoIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons'
 import {styled, darkTheme, createGlobalStyle} from './ui/stitches.config';
 import {Text, Button} from './ui/text.js';
-import { useConnect, useAccount, useTransaction } from 'wagmi'
+import { useConnect, useAccount, useTransaction,useProvider } from 'wagmi'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 import { ThemeProvider } from 'next-themes'
@@ -15,7 +15,7 @@ import Landingpage from './pages/Landingpage';
 import Portfolio from './pages/Portfolio';
 import Pricing from './pages/Pricing';
 
-import { airDropListObject, protocolListObject } from './hooks/recoil';
+import { airDropListObject, protocolListObject, ENSListObject } from './hooks/recoil';
 import {
   RecoilRoot,
   atom,
@@ -33,6 +33,17 @@ import { Buffer } from "buffer";
 import axios from 'axios';
 import About from './pages/About';
 import Navabar from './components/Navabar';
+import {
+  BraggingBox,
+  Content,
+  Flexbox1,
+  Header,
+  IconBoxes,
+  InteranalParagraphBox,
+  NavabarContainer,
+  TopBox,
+  MiniParagraphBox
+} from './ui/flexboxes'
 
 
 
@@ -54,28 +65,7 @@ function App() {
   })
 
 
-  const [airDropList, setairDropList] = useRecoilState(airDropListObject)
   
-  const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
-
-  function convertObjectToArray(obj) {
-    var arr = [];
-    var i = 0;
-    for (const key in obj ) {
-        var address = `${key}`;
-        arr[i] = {
-         
-        name: address,
-        amount: obj[address]
-          
-        }
-        i++;
-        
-    }
-    // console.log(arr)
-    return arr
-  }
- 
 
 
  
@@ -92,9 +82,13 @@ function App() {
       }}
     >
       <Bg>
-
       <Router>
+      <Content>
+        <TopBox>
+      <Navabar/>
+
       <Routes>
+        
           <Route path="/"  element={<Landingpage/>}/>
 
           <Route path="/portfolio" element={<Portfolio/>}/>
@@ -102,7 +96,8 @@ function App() {
           <Route path="/about" element={<About/>}/>
 
         </Routes>
-      
+      </TopBox>
+      </Content>
      </Router>
  
 
