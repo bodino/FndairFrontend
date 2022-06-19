@@ -37,19 +37,20 @@ export const Button = styled('button', {
 export const WalletConnect = styled('div', {
   color:"$antibackground",
   fontSize:"$p1",
-  padding:"10px",
+  padding:"11px",
   mixBlendMode: "luminosity",
+  backdropFilter: "blur(15px)",
   filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
   borderRadius:"5px",
   // opacity:".7",
   // width:"100px !important",
   background: "rgba(255, 255, 255, 0.3)",
-  border: "1px solid rgba(255, 255, 255, 0.4)",
+  // border: "1px solid rgba(255, 255, 255, 0.4)",
   // border: "2px solid $gray400 ",
   // borderRadius: "5px",
   '&:hover': {
       // backgroundColor: '$colorsgray6',
-      border: "1px solid",
+      // border: "1px solid",
       boxShadow:"4px 4px",
       cursor:"pointer",
 

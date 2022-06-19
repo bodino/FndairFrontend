@@ -157,6 +157,8 @@ export const BraggingBox = styled('div', {
     display: "flex",
     alignItems:"center",
     padding:"",
+    backdropFilter: "blur(15px)",
+
 
     paddingBottom: "10px",
     paddingTop:"10px",
@@ -166,7 +168,7 @@ export const BraggingBox = styled('div', {
     width: "1380",
     // maxWidth: "1000px",
     flexDirection: "column",
-    background:"rgb(255,255,255,0.4)",
+    background:"rgb(255,255,255,0.3)",
     mixBlendMode: "luminosity",
     filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
     
@@ -235,7 +237,7 @@ export const HorizontalFlexBoxWithColor = styled('div', {
     display: "flex",
     alignItems:"center",
     
-
+   
     paddingTop:"20px",
     paddingBottom:"20px",
     marginBottom: "15px",
@@ -248,7 +250,6 @@ export const HorizontalFlexBoxWithColor = styled('div', {
     // paddingInline:"75px",
     fontWeight: "400",
     justifyContent:"space-between",
-    
     '@bp3': {
         width:"1000px",
       },
