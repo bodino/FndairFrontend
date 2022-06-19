@@ -127,22 +127,9 @@ export function Example() {
           serverDisconnect()
         })
     }
-    async function updateWallet() {
-      var Info = {Address: "0x23401927395871298375409127340978120"}
-      await axios
-      .post('http://localhost:3001/removewallet', {
-       Info,
-      })
-      .then(function (response) {
-       console.log("LETS GO!")
-      })
-      .catch(function (error) {
-        console.log(error)
-        console.log("FUCKOFFMATE")
-      })
-    }
+   
     checklogin()
-    // updateWallet()
+  
   }, [connector])
 
 

@@ -31,6 +31,8 @@ const slideUpAndFade = keyframes({
   
   const StyledContent = styled(DropdownMenuPrimitive.Content, {
     width: 50,
+    height:50,
+    marginBottom:"100px",
     // borderWidth: "0px",
     // borderRadius: "5px",
     justifyContent: 'center',
@@ -57,13 +59,14 @@ const slideUpAndFade = keyframes({
     all: 'unset',
     justifyContent: 'center',
     fontSize: 13,
-    marginTop: "5px",
-    marginBottom:"5px",
+   
+   
     // lineHeight: 1,
     color: "$antibackground",
     borderRadius: 5,
     border:"0px",
     display: 'flex',
+    width:"200px",
     alignItems: 'center',
     // height: 50,
     // padding: '0 5px',
@@ -83,10 +86,7 @@ const slideUpAndFade = keyframes({
       color: "$antibackground",
       borderWidth: "0px",
     },
-    '@bp1': {
-      display: "none",
-      borderWidth: "0px",
-    },
+    
   };
   
   const StyledItem = styled(DropdownMenuPrimitive.Item, { ...itemStyles });
@@ -96,6 +96,7 @@ const slideUpAndFade = keyframes({
     '&[data-state="open"]': {
       backgroundColor: violet.violet4,
       color: violet.violet11,
+      marginBottom:"100px",
      
     },
     ...itemStyles,
@@ -107,6 +108,7 @@ const slideUpAndFade = keyframes({
     fontSize: 12,
     lineHeight: '25px',
     color: mauve.mauve11,
+    
     
   });
   

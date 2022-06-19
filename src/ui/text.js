@@ -136,6 +136,7 @@ export const StaticWalletConnect = styled('div', {
   // opacity:".7",
   // width:"100px !important",
   background: "#0d4e7b",
+  cursor: "pointer",
   // border: "1px solid rgba(255, 255, 255, 0.4)",
   // border: "2px solid $gray400 ",
   // borderRadius: "5px",

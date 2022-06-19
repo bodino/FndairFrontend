@@ -137,7 +137,7 @@ function Portfolio() {
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
           <Mapairdrops />
         </AirdropHorizontalFlexBox>
-
+       
         <Footer />
       </div>
     )
