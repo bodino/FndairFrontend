@@ -72,16 +72,7 @@ function Footer() {
 
      
     </LeftLargeItemsBox>
-    <LeftSmallItemsBox>
-      <IconBoxes>
-          <Verticalnavbarcomp
-          homeClick = {homeClick}
-          handleHomeClick = {handleHomeClick}
-          writingClick = {writingClick}
-          handleWritingClick = {handleWritingClick}
-          />
-      </IconBoxes>
-    </LeftSmallItemsBox>
+   
 
 
    </NavabarContainer>

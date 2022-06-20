@@ -30,16 +30,25 @@ const slideUpAndFade = keyframes({
   });
   
   const StyledContent = styled(DropdownMenuPrimitive.Content, {
-    width: 50,
-    height:50,
-    marginBottom:"100px",
-    // borderWidth: "0px",
-    // borderRadius: "5px",
-    justifyContent: 'center',
-    backgroundColor: "$background",
-    // borderRadius: 6,
-    // padding: 5,
-    borderWidth: "0px",
+    // width: 150,
+    height:118.5,
+    color:"$antibackground",
+    fontSize:"$p1",
+    padding:"11px",
+    // mixBlendMode: "luminosity",
+    backdropFilter: "blur(10px)",
+    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+    borderRadius:"5px",
+    // opacity:".7",
+    // width:"100px !important",
+    background: "rgba(255, 255, 255, 0.3)",
+    '@bp1': {
+      display: "none",
+    },
+   
+    
+  
+    
     
     '@media (prefers-reduced-motion: no-preference)': {
       animationDuration: '400ms',
@@ -66,7 +75,7 @@ const slideUpAndFade = keyframes({
     borderRadius: 5,
     border:"0px",
     display: 'flex',
-    width:"200px",
+    width:"100px",
     alignItems: 'center',
     // height: 50,
     // padding: '0 5px',
@@ -86,6 +95,7 @@ const slideUpAndFade = keyframes({
       color: "$antibackground",
       borderWidth: "0px",
     },
+  
     
   };
   
@@ -104,7 +114,6 @@ const slideUpAndFade = keyframes({
   });
   
   const StyledLabel = styled(DropdownMenuPrimitive.Label, {
-    paddingLeft: 25,
     fontSize: 12,
     lineHeight: '25px',
     color: mauve.mauve11,
@@ -121,7 +130,7 @@ const slideUpAndFade = keyframes({
   const StyledItemIndicator = styled(DropdownMenuPrimitive.ItemIndicator, {
     position: 'absolute',
     left: 0,
-    width: 25,
+    width: 2,
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',

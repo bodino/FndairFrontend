@@ -6,6 +6,13 @@ import { css } from '../ui/stitches.config'
 import { styled, darkTheme, createGlobalStyle } from '../ui/stitches.config'
 import { Text, Button } from '../ui/text.js'
 import { ThemeToggle } from '../ThemeToggle'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
+import {
+  signedMessageObject,
+  setLogOutObject,
+  setClickedObject,
+} from '../hooks/recoil'
+import VertTimeline from '../components/VertTimeline'
 import Bubbles from '../components/Bubbles'
 import {
   BraggingBox,
@@ -16,7 +23,7 @@ import {
   InteranalParagraphBox,
   NavabarContainer,
   TopBox,
-  MiniParagraphBox
+  MiniParagraphBox,HortTime, VertTime
 } from '../ui/flexboxes'
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
@@ -50,55 +57,125 @@ import 'swiper/css/pagination'
 import Footer from '../components/Footer'
 import Timelines from '../components/Timelines'
 import { WidthIcon } from '@radix-ui/react-icons'
-const axios = require('axios');
-
-
-
-
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil'
+const axios = require('axios')
 
 function Landingpage() {
-
+  const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
+  const [clicked, setClicked] = useRecoilState(setClickedObject)
+  const [LogOut, setLogOut] = useRecoilState(setLogOutObject)
 
   var NewAirDrop = {
-    Password: "CryptoAirdropFinderCool",
-    Data:{}
+    Password: 'CryptoAirdropFinderCool',
+    Data: {},
   }
-  
-// var food = axios.post('http://localhost:3001/NewAirdrop', {
-//   NewAirDrop
-//   })
 
- 
-
-
-
-
+  // var food = axios.post('http://localhost:3001/NewAirdrop', {
+  //   NewAirDrop
+  //   })
 
   return (
- 
-      <>
-        <HorizontalFlexBoxWithColor>
-          <div style={{display:"flex",flexDirection:"column"}}>
+    <>
+      <HorizontalFlexBoxWithColor>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
           <ParagraphBox>
             <b>
-            We Find 
-          <br></br>
-            Airdrops For You
+              We Find
+              <br></br>
+              Airdrops For You
             </b>
           </ParagraphBox>
           <MiniParagraphBox>
-          Once you connect your wallet, we do the rest.
+            Once you connect your wallet, we do the rest.
           </MiniParagraphBox>
           <MiniParagraphBox>
-          <WalletConnect>Connect Wallet</WalletConnect>
+            <ConnectButton.Custom>
+              {({
+                account,
+                chain,
+                openAccountModal,
+                openChainModal,
+                openConnectModal,
+                mounted,
+              }) => {
+                return (
+                  <div
+                    {...(!mounted && {
+                      'aria-hidden': true,
+                      style: {
+                        opacity: 0,
+                        pointerEvents: 'none',
+                        userSelect: 'none',
+                      },
+                    })}
+                  >
+                    {(() => {
+                      if (!mounted || !account || !chain || !signedMessage) {
+                        return (
+                          <WalletConnect
+                            onClick={() => {
+                              setClicked(true)
+                              openConnectModal()
+                            }}
+                          >
+                            Connect Wallet
+                          </WalletConnect>
+                        )
+                      }
+
+                      if (chain.unsupported) {
+                        return (
+                          <button onClick={openChainModal} type="button">
+                            Wrong network
+                          </button>
+                        )
+                      }
+
+                      if (signedMessage) {
+                        return (
+                          <div style={{ display: 'flex', gap: 1 }}>
+                            <WalletConnect
+                              style={{ width: '108px', textAlign: 'center' }}
+                              onClick={() => {
+                                setLogOut(true)
+                                openAccountModal()
+                              }}
+                              type="button"
+                            >
+                              <div style={{ top: '4px' }}>
+                                {account.displayName}
+                              </div>
+                            </WalletConnect>
+                          </div>
+                        )
+                      }
+                    })()}
+                  </div>
+                )
+              }}
+            </ConnectButton.Custom>
           </MiniParagraphBox>
-         </div>
-          <ParagraphBox>
-          
+        </div>
+        <ParagraphBox>
           <Bubbles></Bubbles>
-          </ParagraphBox>
-        </HorizontalFlexBoxWithColor>
-      <div style={{background:"rgb(27, 32, 48)", width:"100vw", display:"flex", flexDirection:"column", alignItems:"center", flex:"1 1 "}}>
+        </ParagraphBox>
+      </HorizontalFlexBoxWithColor>
+      <div
+        style={{
+          background: 'rgb(27, 32, 48)',
+          width: '100vw',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          flex: '1 1 ',
+        }}
+      >
         <BraggingBox>
           <HorizontalFlexBox>
             <InteranalParagraphBox>
@@ -106,7 +183,7 @@ function Landingpage() {
 
               <Bottom> Protocol Integrations </Bottom>
             </InteranalParagraphBox>
-   
+
             <InteranalParagraphBox>
               <Top>10+</Top>
               <Bottom>Address Per User </Bottom>
@@ -118,20 +195,27 @@ function Landingpage() {
             </InteranalParagraphBox>
           </HorizontalFlexBox>
         </BraggingBox>
-        <ParagraphBox css={{ flex: "1 1", textAlign:"center"}}>
-          <div style={{paddingBottom:"10px"}}>
-        <b>Simple 3 Steps</b>
-        </div>
-      
-        <MiniParagraphBox css={{justifyContent:"center"}}>
-          You Connect, We Find, You Profit
+        <ParagraphBox css={{ flex: '1 1', textAlign: 'center' }}>
+          <div style={{ paddingBottom: '10px' }}>
+            <b>Simple 3 Steps</b>
+          </div>
+
+          <MiniParagraphBox css={{ justifyContent: 'center' }}>
+            You Connect, We Find, You Profit
           </MiniParagraphBox>
-        <Timelines/>
+          <HortTime>
+          <Timelines/>
+          </HortTime>
+        
+          <VertTime>
+          <VertTimeline />
+          </VertTime>
+         
         </ParagraphBox>
-     
-        <Footer/>
-        </div>
-        </>
+        
+        <Footer />
+      </div>
+    </>
   )
 }
 export default Landingpage

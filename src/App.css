@@ -2,7 +2,11 @@
 /*  */
 html, body { height: 100% }
 
-
+button { 
+ background: none;
+ border: 0px;
+ outline: none;
+}
 
 .App {
   text-align: center;

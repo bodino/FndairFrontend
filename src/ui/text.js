@@ -15,7 +15,6 @@ export const Text = styled('span', {
 })
 export const RotateHamburger = styled('span', {
     transitionDuration: '100ms',
-
     
     '&:hover': {
         transform: 'rotate(90deg)'
@@ -148,4 +147,24 @@ export const StaticWalletConnect = styled('div', {
       // cursor:"pointer",
 
     },
+})
+
+export const SmallLogo = styled('img', {
+  display:"flex",
+  height: "35px", width:"165px",paddingTop:"8px",
+  
+  '@bp4': {
+    display:"none",
+   
+  },
+
+})
+
+export const BigLogo = styled('img', {
+  display:"none",
+  height: "35px",  width:"25px",paddingTop:"8px",
+  '@bp4': {
+    display:"flex"
+  },
+
 })

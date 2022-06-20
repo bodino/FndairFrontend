@@ -9,8 +9,37 @@ export const LeftLargeItemsBox = styled('div', {
     padding:"",
     height:"50px",
     paddingInline:"20px",
+    // '@bp2': {
+    //     display: "none",
+    //   },
+
+   
+})
+export const CenterLargeItemsBox = styled('div', {
+
+    display: "flex",
+    alignContent: "center",
+    alignItems: "center",
+    padding:"",
+    height:"50px",
+    paddingInline:"20px",
     '@bp2': {
         display: "none",
+      },
+
+   
+})
+
+export const Breaker = styled('div', {
+
+    display: "none",
+    alignContent: "center",
+    alignItems: "center",
+    padding:"",
+    height:"50px",
+    paddingInline:"20px",
+    '@bp2': {
+        display: "flex",
       },
 
    
@@ -65,7 +94,7 @@ export const NavabarContainer = styled('div', {
     padding:"",
     height:"50px",
     paddingTop:"15px",
-    width: "1380",
+    width: "100%",
     // maxWidth: "1000px",
     flexDirection: "row",
     height: "80px",
@@ -171,10 +200,9 @@ export const BraggingBox = styled('div', {
     background:"rgb(255,255,255,0.3)",
     mixBlendMode: "luminosity",
     filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
-    
-    '@bp3': {
-        width:"970px",
-      },
+    maxWidth:"980px",
+    width:"90%",
+
    
     
 })
@@ -186,14 +214,14 @@ export const InteranalParagraphBox = styled('div', {
     alignItems:"center",
     padding:"",
     fontSize:"30px",
-    width: "1380",
+
     // maxWidth: "1000px",
     flexDirection: "column",
     height: "80px",
     color:"#FFFFFF",
     
     '@bp3': {
-        width:"1000px",
+   
       },
    
     
@@ -221,13 +249,12 @@ export const HorizontalFlexBox = styled('div', {
     alignItems:"center",
     padding:"",
     paddingTop:"10px",
-    width: "1380",
+    width: "100%",
+    justifyContent:"space-evenly",
     // maxWidth: "1000px",
     flexDirection: "row",
     
-    '@bp3': {
-        width:"1000px",
-      },
+   
    
     
 })
@@ -253,8 +280,31 @@ export const HorizontalFlexBoxWithColor = styled('div', {
     '@bp3': {
         width:"1000px",
       },
+
+      '@bp0': {
+        flexDirection:"column",
+      },
    
     
+})
+
+export const VertTime = styled('div', {
+    display:"none",
+
+      '@bp0': {
+        display:"flex"
+      },
+   
+    
+})
+
+export const HortTime = styled('div', {
+    display:"flex",
+    '@bp0': {
+      display:"none"
+    },
+ 
+  
 })
 
 
@@ -350,7 +400,7 @@ export const TopBox = styled('div', {
 export const DiscriptorBox = styled('div', {
     // width: "100px",
     height:"340px",
-    Width:"300px",
+    width:"300px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -461,3 +511,49 @@ export const AirdropInfoBox = styled('div', {
     alignItems:"flex-start"
     
  })
+
+
+
+export const ProtocolBox = styled('div', {
+
+    display: "flex",
+    // alignItems:"center",
+    fontSize:"$header1",
+    color:"$antibackground",
+    fontFamily: "Inter, Arial",
+    fontSize:"19px",
+    boxShadow: "0px 4px 10px 1px rgba(0, 0, 0, 0.3)",
+    borderRadius: "60px",
+    height:"65px",
+    flex:"1 1",
+    textAlign:"left",
+    alignItems:"center",
+    width: "228px",
+    
+    // maxWidth: "1000px",
+    // textShadow: "#467898 5px 5px",
+    flexDirection: "column",
+   
+   
+})
+
+export const ProtocolFlexBox = styled('div', {
+
+    display: "flex",
+    alignItems:"center",
+    boxShadow: "0px 4px 10px 1px rgba(0, 0, 0, 0.3)",
+    // maxWidth: "1000px",
+    flexDirection: "row",
+    minHeight:"65px",
+    background: "rgb(41, 46, 65)",
+    borderRadius: "30px",
+    fontWeight: "300",
+    margin:"10px",
+    width: "228px",
+    
+    '@bp3': {
+        width:"200x",
+      },
+   
+    
+})

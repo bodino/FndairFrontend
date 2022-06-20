@@ -27,6 +27,7 @@ import { IconBoxes } from '../ui/flexboxes'
 import { Separator } from '@radix-ui/react-dropdown-menu'
 import { css } from '../ui/stitches.config'
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
+import { Link } from 'react-router-dom'
 
 
 
@@ -38,34 +39,42 @@ function Verticalnavbarcomp({homeClick,handleHomeClick,writingClick,handleWritin
   return (
     <DropdownMenu>
                
-               <RotateHamburger>
+               {/* <RotateHamburger> */}
       <DropdownMenuTrigger>
      
+       <HamburgerMenuIcon style={{width:"20px", height:"20px",paddingTop:"8px"}}/>
 
-       <HamburgerMenuIcon/>
       
 
       </DropdownMenuTrigger>
-      </RotateHamburger>
+      {/* </RotateHamburger> */}
       <DropdownMenuContent>
 
-      <DropdownMenuItem onClick={handleHomeClick} css={{backgroundColor: homeClick ? "$buttoncolor" : ""}}>       
-        <HomeIcon />
+      <DropdownMenuItem >  
+      <Link to="/portfolio" style={{  textDecoration:"none"}}>
+      <IconBoxes>     
+        Portfolio
+      </IconBoxes>
+      </Link>
+
       </DropdownMenuItem>
-      <DropdownMenuItem onClick={handleWritingClick} css={{backgroundColor: writingClick ? "$buttoncolor" : ""}}>        
-        <Pencil1Icon />
+      <DropdownMenuItem >     
+      <Link to="/pricing" style={{  textDecoration:"none"}}>
+   
+      <IconBoxes>
+        Pricing
+      </IconBoxes>
+      </Link>
       </DropdownMenuItem>
   
-      <DropdownMenuItem>       
+      <DropdownMenuItem>  
+      <Link to="/about" style={{  textDecoration:"none"}}>     
+      <IconBoxes>
+        About</IconBoxes>
+        </Link>
 
-        <GitHubLogoIcon />
       </DropdownMenuItem>
 
-      <DropdownMenuItem>       
-
-      
-        <TwitterLogoIcon/>
-      </DropdownMenuItem>
 
 
      

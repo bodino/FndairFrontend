@@ -37,3 +37,14 @@ export const trackedWalletListObject = atom({
 })
 
 
+export const setLogOutObject = atom({
+    key: "trackedWalletListObject",
+    default: false
+})
+
+
+export const setClickedObject = atom({
+    key: "trackedWalletListObject",
+    default: false
+})
+

@@ -2,10 +2,10 @@ import { useState } from 'react';
 import React from 'react';
 import { css } from '../ui/stitches.config';
 import {styled, darkTheme, createGlobalStyle} from '../ui/stitches.config';
-import {Text, Button} from '../ui/text.js';
+import {Text, Button, SmallLogo, BigLogo} from '../ui/text.js';
 import { Example } from '../components/Example'
 import { ThemeProvider } from 'next-themes';
-import { RightItemsBox, LeftSmallItemsBox,LeftLargeItemsBox, IconBoxes, NavabarContainer,  } from '../ui/flexboxes'
+import { RightItemsBox, LeftSmallItemsBox,LeftLargeItemsBox, IconBoxes, NavabarContainer,CenterLargeItemsBox,Breaker  } from '../ui/flexboxes'
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 import { ThemeToggle } from '../ThemeToggle'
 import { useMediaQuery } from 'react-responsive'
@@ -69,14 +69,22 @@ function Navabar() {
     <LeftLargeItemsBox>
   
     <Link to="/">
-      <img style={{ height: "35px", width:"165px",paddingTop:"8px"}}src={'/Logo.svg'}></img> 
+    
+      <BigLogo src={'/VectorSmalLogo.svg'}></BigLogo> 
+
+      <SmallLogo src={'/Logo.svg'}></SmallLogo> 
       </Link>
       
-    
+      <Breaker>
+    <Verticalnavbarcomp/>
+    </Breaker>
      
     </LeftLargeItemsBox>
 
-    <LeftLargeItemsBox>
+   
+    <CenterLargeItemsBox>
+     
+
     <Link to="/portfolio" style={{  textDecoration:"none", paddingInline:"10px"}}>
       <IconBoxes>
       Portfolio
@@ -93,18 +101,8 @@ function Navabar() {
       About
       </IconBoxes>
       </Link>
-    </LeftLargeItemsBox>
-    <LeftSmallItemsBox>
-   
-      <IconBoxes>
-          <Verticalnavbarcomp
-          homeClick = {homeClick}
-          handleHomeClick = {handleHomeClick}
-          writingClick = {writingClick}
-          handleWritingClick = {handleWritingClick}
-          />
-      </IconBoxes>
-    </LeftSmallItemsBox>
+    </CenterLargeItemsBox>
+  
 
     <RightItemsBox>
    

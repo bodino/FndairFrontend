@@ -60,7 +60,7 @@ const slideUpAndFade = keyframes({
     borderRadius: 3,
     display: 'flex',
     alignItems: 'center',
-    height: 25,
+    height: 50,
     padding: '0 5px',
     position: 'relative',
     // paddingLeft: 5,

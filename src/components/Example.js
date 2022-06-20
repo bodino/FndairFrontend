@@ -38,7 +38,7 @@ import {
 } from '../hooks/recoil'
 import { useDisconnect } from 'wagmi'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { ENSListObject, WalletListArray, trackedWalletListObject} from '../hooks/recoil';
+import { ENSListObject, WalletListArray, trackedWalletListObject, setLogOutObject, setClickedObject} from '../hooks/recoil';
 
 
 
@@ -60,8 +60,8 @@ export function Example() {
     refetch,
   } = useSigner()
   // const [clicked, setClicked] = useState(false);
-  const [clicked, setClicked] = useState(false)
-  const [LogOut, setLogOut] = useState(false)
+  const [clicked, setClicked] = useRecoilState(setClickedObject)
+  const [LogOut, setLogOut] = useRecoilState(setLogOutObject)
   const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
   // const provider = useProvider()
   const { data, isLoading, error } = useAccount()

@@ -55,6 +55,7 @@ import 'swiper/css/pagination'
 import Footer from '../components/Footer'
 import Mapairdrops from '../components/Mapairdops'
 import MapWallets from '../components/MapWallets'
+import MapProtocols from '../components/MapProtocols'
 import { useEnsAddress } from 'wagmi'
 
 import {
@@ -136,6 +137,14 @@ function Portfolio() {
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
           <Mapairdrops />
+        </AirdropHorizontalFlexBox>
+
+        <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start'  }}>
+          <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Protocols We Support</ParagraphBox>
+        </AirdropHorizontalFlexBox>
+
+        <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
+          <MapProtocols />
         </AirdropHorizontalFlexBox>
        
         <Footer />

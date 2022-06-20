@@ -15,6 +15,7 @@ const Section = styled.section`
 
 const Container = styled.div`
   display: flex;
+  max-width: 450px;
  
   @media screen and (max-width: 768px) {
     grid-grid-template-columns: 1fr;

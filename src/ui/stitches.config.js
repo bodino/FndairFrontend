@@ -61,9 +61,11 @@ export const {
 
  
   media: {
+    bp0:  '(max-width: 999px)',
     bp1: '(min-width: 750px)',
     bp2: '(max-width: 749px)',
     bp3: '(min-width: 1000px)',
+    bp4: '(max-width: 500px)',
     vbp1:'(min-height: 1250px)',
     
     dark: "(prefers-color-scheme: dark)",
