@@ -17,7 +17,12 @@ export const PorfolioSeperator = styled('span', {
     height: "1.5px",
     width: "960px",
     justifySelf:"center",
-    marginBottom:"20px"
+    marginBottom:"20px",
+    '@bp0': {
+        alignSelf:"center",
+        width: '96%',
+      },
+   
    
   
 })

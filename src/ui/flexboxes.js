@@ -155,6 +155,9 @@ export const ParagraphBox = styled('div', {
     flexDirection: "column",
     minWidth:"450px",
     paddingBottom:"40px",
+    '@bp0': {
+        minWidth:"300px",
+      },
    
 })
 
@@ -200,8 +203,10 @@ export const BraggingBox = styled('div', {
     background:"rgb(255,255,255,0.3)",
     mixBlendMode: "luminosity",
     filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
-    maxWidth:"980px",
-    width:"90%",
+    width:"980px",
+    '@bp0': {
+        width:"90%",
+    }
 
    
     
@@ -222,6 +227,48 @@ export const InteranalParagraphBox = styled('div', {
     
     '@bp3': {
    
+      },
+   
+    
+})
+
+
+
+export const InteranalParagraphBoxDisapear = styled('div', {
+
+    display: "flex",
+    justifyContent:"center",
+    alignItems:"center",
+    padding:"",
+    fontSize:"30px",
+
+    // maxWidth: "1000px",
+    flexDirection: "column",
+    height: "80px",
+    color:"#FFFFFF",
+    
+    '@bp630': {
+        display:"none"
+      },
+   
+    
+})
+
+export const InteranalParagraphBoxDisapearLater = styled('div', {
+
+    display: "flex",
+    justifyContent:"center",
+    alignItems:"center",
+    padding:"",
+    fontSize:"30px",
+
+    // maxWidth: "1000px",
+    flexDirection: "column",
+    height: "80px",
+    color:"#FFFFFF",
+    
+    '@bp400': {
+        display:"none"
       },
    
     
@@ -284,6 +331,31 @@ export const HorizontalFlexBoxWithColor = styled('div', {
       '@bp0': {
         flexDirection:"column",
       },
+   
+    
+})
+
+
+
+export const BottomAboutFlexBox = styled('div', {
+
+    display: "flex",
+    alignItems:"center",
+    
+    flexDirection: 'row', justifyContent: 'flex-start',
+    paddingTop:"20px",
+    paddingBottom:"20px",
+    marginBottom: "15px",
+    maxWidth: "1000px",
+    minHeight:"350px",
+    // background: "$secondaryHighLight",
+    borderRadius: "10px",
+    // paddingInline:"75px",
+    fontWeight: "400",
+    '@bp0': {
+       flexDirection:"column",
+      },
+
    
     
 })
@@ -553,6 +625,22 @@ export const ProtocolFlexBox = styled('div', {
     
     '@bp3': {
         width:"200x",
+      },
+   
+    
+})
+
+
+export const PorfolioContainer = styled('div', {
+
+    background: 'rgb(27, 32, 48)',
+    width: '100vw',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    
+    '@bp0': {
+        alignItems: 'flex-start',
       },
    
     

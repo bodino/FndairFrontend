@@ -23,7 +23,7 @@ import {
   InteranalParagraphBox,
   NavabarContainer,
   TopBox,
-  MiniParagraphBox,HortTime, VertTime
+  MiniParagraphBox,HortTime, VertTime, InteranalParagraphBoxDisapearLater
 } from '../ui/flexboxes'
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
@@ -44,6 +44,7 @@ import {
   Top,
   Bottom,
   TestamonyBox,
+  InteranalParagraphBoxDisapear,
 } from '../ui/flexboxes'
 import { BbSeperator, HorizontalSeperator } from '../ui/background'
 import { Navigation, Pagination, Autoplay } from 'swiper'
@@ -178,16 +179,16 @@ function Landingpage() {
       >
         <BraggingBox>
           <HorizontalFlexBox>
-            <InteranalParagraphBox>
+            <InteranalParagraphBoxDisapearLater>
               <Top>20+</Top>
 
               <Bottom> Protocol Integrations </Bottom>
-            </InteranalParagraphBox>
+            </InteranalParagraphBoxDisapearLater>
 
-            <InteranalParagraphBox>
+            <InteranalParagraphBoxDisapear>
               <Top>10+</Top>
               <Bottom>Address Per User </Bottom>
-            </InteranalParagraphBox>
+            </InteranalParagraphBoxDisapear>
 
             <InteranalParagraphBox>
               <Top>$18~</Top>

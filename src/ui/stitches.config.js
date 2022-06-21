@@ -67,6 +67,10 @@ export const {
     bp3: '(min-width: 1000px)',
     bp4: '(max-width: 500px)',
     vbp1:'(min-height: 1250px)',
+
+    bp630: '(max-width: 630px)',
+    bp400: '(max-width: 400px)',
+
     
     dark: "(prefers-color-scheme: dark)",
   },

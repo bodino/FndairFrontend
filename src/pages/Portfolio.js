@@ -14,6 +14,7 @@ import {
   IconBoxes,
   InteranalParagraphBox,
   NavabarContainer,
+  PorfolioContainer
 } from '../ui/flexboxes'
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
@@ -78,14 +79,8 @@ function Portfolio() {
 
   if (account) {
     return (
-      <div
-        style={{
-          background: 'rgb(27, 32, 48)',
-          width: '100vw',
-          display: 'flex',
-          alignItems: 'center',
-          flexDirection: 'column',
-        }}
+      <PorfolioContainer
+    
       >
         <HorizontalFlexBoxWithColor
           css={{ alignItems: 'flex-start', minHeight: '0px' }}
@@ -148,7 +143,7 @@ function Portfolio() {
         </AirdropHorizontalFlexBox>
        
         <Footer />
-      </div>
+      </PorfolioContainer>
     )
   }
 }

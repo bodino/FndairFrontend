@@ -22,6 +22,7 @@ import {
   HorizontalFlexBox,
   HorizontalFlexBoxWithColor,
   AirdropHorizontalFlexBox,
+  BottomAboutFlexBox,
   Top,
   Bottom,
   TestamonyBox,
@@ -50,8 +51,8 @@ function Portfolio() {
         </HorizontalFlexBoxWithColor>
        
 
-        <HorizontalFlexBoxWithColor
-          css={{ flexDirection: 'row', justifyContent: 'flex-start' }}
+        <BottomAboutFlexBox
+         
         >
 
 
@@ -92,7 +93,7 @@ function Portfolio() {
            </ParagraphBox>
            <img style={{ width: '500px' }} src={Mockup}></img>
         
-        </HorizontalFlexBoxWithColor>
+        </BottomAboutFlexBox>
         <ParagraphBox css={{ flex: "1 1", textAlign:"center"}}>
          
          </ParagraphBox>
