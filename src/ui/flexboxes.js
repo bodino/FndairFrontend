@@ -88,7 +88,7 @@ export const Content = styled('div', {
 export const NavabarContainer = styled('div', {
 
     display: "flex",
-  
+    
      justifyContent: "space-between",
      alignItems:"center",
     padding:"",
@@ -488,9 +488,9 @@ export const DiscriptorBox = styled('div', {
 export const PriceBox = styled('div', {
 
     display: "flex",
-    alignItems:"flex-start",
+    alignItems:"center",
     padding:"",
-    height:"720px",
+    height:"446px",
     marginInline:"15px",
    
     borderRadius:"10px",
@@ -503,7 +503,7 @@ export const PriceBox = styled('div', {
   
     
     '@bp3': {
-        width:"420px",
+        minWidth:"305px",
       },
    
     
@@ -517,12 +517,12 @@ export const PaymentTextBox = styled('div', {
     fontSize:"$header1",
     color:"$antibackground",
     fontFamily: "Inter, Arial",
-    textAlign:"left",
-    paddingInline: "50px",
-    paddingTop:"40px",
+    textAlign:"center",
+    alignItems:"flex-end",
+  
 
-    flexDirection: "column",
-    paddingBottom:"40px",
+    flexDirection: "row",
+    paddingBottom:"5px",
    
 })
 
@@ -535,11 +535,10 @@ export const PaymentTextBoxNormal = styled('div', {
     fontFamily: "Inter, Arial",
     fontSize:"19px",
     textAlign:"left",
-    paddingInline: "50px",
+    // paddingInline: "50px",
     // maxWidth: "1000px",
     // textShadow: "#467898 5px 5px",
     flexDirection: "column",
-    paddingBottom:"20px",
    
 })
 
@@ -617,6 +616,7 @@ export const ProtocolFlexBox = styled('div', {
     // maxWidth: "1000px",
     flexDirection: "row",
     minHeight:"65px",
+    textAlign:"left",
     background: "rgb(41, 46, 65)",
     borderRadius: "30px",
     fontWeight: "300",
@@ -638,6 +638,7 @@ export const PorfolioContainer = styled('div', {
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
+    flex: '1 1',
     
     '@bp0': {
         alignItems: 'flex-start',

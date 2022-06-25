@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import React from 'react'
-import { useAccount } from 'wagmi'
+import { useAccount,useContractWrite,useContract,useSigner } from 'wagmi'
 import '../App.css'
 import { css } from '../ui/stitches.config'
 import { styled, darkTheme, createGlobalStyle } from '../ui/stitches.config'
@@ -43,7 +43,9 @@ import { BbSeperator, HorizontalSeperator } from '../ui/background'
 import { Navigation, Pagination, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Avatar, AvatarImage, AvatarFallback } from '../ui/icons'
-
+import {
+  PaySeperator
+} from '../ui/background'
 // import Swiper and modules styles
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -51,8 +53,39 @@ import 'swiper/css/pagination'
 import Footer from '../components/Footer'
 import Mapairdrops from '../components/Mapairdops'
 import Timelines from '../components/Timelines'
+import abi from '../abi/USDC.json'
+import { ethers } from 'ethers'
+
 
 function Pricing() {
+
+  const { data:signerData, error, isLoading, refetch } = useSigner()
+  const contract = useContract({
+    addressOrName: '0x46D14FA8fE262aDaB112F34852AaB430C53565e5',
+    contractInterface: abi.abi,
+    signerOrProvider: signerData,
+  });
+
+  const {
+    write,
+    data: mintResponse,
+    status: status,
+  } = useContractWrite(
+    {
+      addressOrName: '0x46D14FA8fE262aDaB112F34852AaB430C53565e5',
+      contractInterface: abi.abi,
+      signerOrProvider: signerData,
+    },
+    "Join",
+    {
+      args: 1,
+      overrides: { value: ethers.utils.parseEther('0.5') },
+      onError: (error) => {
+        console.log(error.message)
+      },
+    }
+  );
+
   return (
    <>
       
@@ -61,24 +94,30 @@ function Pricing() {
           <b>Premium Product, Fair Price </b>
         </ParagraphBox>
 
-        <MiniParagraphBox css={{ paddingBottom: '60px' }}>
+        <MiniParagraphBox css={{ paddingBottom: '60px',fontSize:"18px"  }}>
           Average user finds $200
         </MiniParagraphBox>
-        <HorizontalFlexBoxWithColor css={{ justifyContent: 'space-around' }}>
+        <HorizontalFlexBoxWithColor css={{ justifyContent: 'center' }}>
           <PriceBox>
-            <PaymentTextBox>$0 / Forever</PaymentTextBox>
+            
             <PaymentTextBoxNormal>
-              <div style={{ fontSize: '25px' }}>
-                <b>
-                  <i>FREE</i> Mode
-                </b>
+              <div style={{ fontSize: '25px',fontWeight: "400", marginTop:"20px"}}>       
+                  1 Month
               </div>
-              check before joining
             </PaymentTextBoxNormal>
-            <PaymentTextBoxNormal>
+            <PaymentTextBox><div style={{ fontSize: '35px',fontWeight: "400",position:"relative", top:"2px"}}>$</div><div style={{ fontSize: '60px',fontWeight: "400", position:"relative", top:"8px"}}>28</div> <div style={{ fontSize: '18px',fontWeight: "400"}}>&nbsp;/ month</div></PaymentTextBox>
+            <div style={{ fontSize: '15px',fontWeight: "400"}}>
+             
+            Billed Monthly
+       
+         </div>
+         <PaySeperator></PaySeperator>
+            <PaymentTextBoxNormal css={{alignSelf:"flex-start", marginLeft:"25px"}}>
               <ul>
-                <ListNamers>Watch up to 5 address </ListNamers>{' '}
+                <ListNamers>Watch up to 10 address </ListNamers>{' '}
                 <ListNamers>View value eligible to claim </ListNamers>{' '}
+                <ListNamers>Claim directly from the site </ListNamers>{' '}
+                <ListNamers>View hidden airdrops </ListNamers>{' '}
                 <ListNamers>Get email alerts on new airdrops</ListNamers>
               </ul>
             </PaymentTextBoxNormal>
@@ -86,74 +125,133 @@ function Pricing() {
               css={{
                 alignSelf: 'center',
                 marginBottom: '10px',
-                width: '300px',
+                width: '187px',
               }}
             >
-              Free, Just Connect Your Wallet
+              Join Now
             </WalletConnect>
           </PriceBox>
-          <PriceBox style={{ width: '500px', border: '2px solid #ffff' }}>
-            <PaymentTextBox>Only $18 / month</PaymentTextBox>
+
+          <PriceBox css={{height:"500px"}}>
+            
             <PaymentTextBoxNormal>
-              <div style={{ fontSize: '25px' }}>
-                <b>
-                  <i>WAGMI</i> MODE
-                </b>
+              <div style={{ fontSize: '25px',fontWeight: "400", marginTop:"20px"}}>       
+                  6 Months
               </div>
-              for web3 maxis
             </PaymentTextBoxNormal>
-            <PaymentTextBoxNormal>
+            <PaymentTextBox><div style={{ fontSize: '35px',fontWeight: "400",position:"relative", top:"2px"}}>$</div><div style={{ fontSize: '60px',fontWeight: "400", position:"relative", top:"8px"}}>24</div> <div style={{ fontSize: '18px',fontWeight: "400"}}>&nbsp;/ month</div></PaymentTextBox>
+            <div style={{ fontSize: '15px',fontWeight: "400"}}>
+             
+            Billed Semi Annually
+       
+         </div>
+         <PaySeperator></PaySeperator>
+            <PaymentTextBoxNormal css={{alignSelf:"flex-start", marginLeft:"25px"}}>
               <ul>
-                <ListNamers>Track up to 10 accounts</ListNamers>
-                <ListNamers>View airdrops from dozens of protocols</ListNamers>
-                <ListNamers>Claim directly from the site</ListNamers>
-                <ListNamers>Email alerts (coming soon)</ListNamers>
-                <ListNamers>Privacy preserving, login with wallet</ListNamers>
+                <ListNamers>Watch up to 10 address </ListNamers>{' '}
+                <ListNamers>View value eligible to claim </ListNamers>{' '}
+                <ListNamers>Claim directly from the site </ListNamers>{' '}
+                <ListNamers>View hidden airdrops </ListNamers>{' '}
+                <ListNamers>Get custom poap for your support </ListNamers>{' '}
+                <ListNamers>Get email alerts on new airdrops</ListNamers>
               </ul>
             </PaymentTextBoxNormal>
-
             <WalletConnect
               css={{
                 alignSelf: 'center',
                 marginBottom: '10px',
-                width: '300px',
+                width: '187px',
               }}
             >
-              ​ 1 Month - $28 per month
+              Join Now
             </WalletConnect>
-            <WalletConnect
-              css={{
-                alignSelf: 'center',
-                marginBottom: '10px',
-                width: '300px',
-              }}
-            >
-              {' '}
-              6 Months - $24 per month
-            </WalletConnect>
-            <WalletConnect
-              css={{
-                alignSelf: 'center',
-                marginBottom: '10px',
-                width: '300px',
-              }}
-            >
-              12 Months - $18 per month
-            </WalletConnect>
-            <PaymentTextBoxNormal
-              css={{
-                fontSize: '11px',
-                alignSelf: 'center',
-                textAlign: 'center',
-                paddingTop: '10px',
-              }}
-            >
-              Pay On Ethereum, Optimism, Arbitrum, and Matic. All payments
-              conducted on chain and are final
-            </PaymentTextBoxNormal>
           </PriceBox>
+
+          <PriceBox>
+            
+            <PaymentTextBoxNormal>
+              <div style={{ fontSize: '25px',fontWeight: "400", marginTop:"20px"}}>       
+                  12 Months
+              </div>
+            </PaymentTextBoxNormal>
+            <PaymentTextBox><div style={{ fontSize: '35px',fontWeight: "400",position:"relative", top:"2px"}}>$</div><div style={{ fontSize: '60px',fontWeight: "400", position:"relative", top:"8px"}}>18</div> <div style={{ fontSize: '18px',fontWeight: "400"}}>&nbsp;/ month</div></PaymentTextBox>
+            <div style={{ fontSize: '15px',fontWeight: "400"}}>
+             
+            Billed Annually
+       
+         </div>
+         <PaySeperator></PaySeperator>
+            <PaymentTextBoxNormal css={{alignSelf:"flex-start", marginLeft:"25px"}}>
+              <ul>
+                <ListNamers>Watch up to 10 address </ListNamers>{' '}
+                <ListNamers>View value eligible to claim </ListNamers>{' '}
+                <ListNamers>Claim directly from the site </ListNamers>{' '}
+                <ListNamers>View hidden airdrops </ListNamers>{' '}
+                <ListNamers>Get email alerts on new airdrops</ListNamers>
+              </ul>
+            </PaymentTextBoxNormal>
+            <WalletConnect
+            onClick={() => {
+              write({ 
+                args: [
+                "0x0bBD3a3d952fddf9A8811bC650445B7515a4B9e6", 
+              ], overrides: {
+                value: ethers.utils.parseEther("0.01")
+              }});
+            }}
+              css={{
+                alignSelf: 'center',
+                marginBottom: '10px',
+                width: '187px',
+              }}
+            >
+              Join Now
+            </WalletConnect>
+          </PriceBox>
+      
+      
+          
         </HorizontalFlexBoxWithColor>
    
+        <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px' }}>
+          <b>Not sure which one to choose?  </b>
+        </ParagraphBox>
+
+        <MiniParagraphBox css={{ paddingBottom: '60px', fontSize:"18px" }}>
+        Find your airdrop for free        
+        </MiniParagraphBox>
+        
+        <PriceBox css={{height:"314px", width:"775px", background: "rgba(0, 0, 0, 0.45)", flexDirection:"row", alignItems:"center", justifyContent:"space-around"}}>
+
+           
+              <div>
+            <PaymentTextBoxNormal>
+              <div style={{ fontSize: '25px',fontWeight: "500", marginTop:"20px"}}>       
+                  Free
+              </div>
+            </PaymentTextBoxNormal>
+            <PaymentTextBox css={{paddingBottom:"40px"}}><div style={{ fontSize: '60px',fontWeight: "400",position:"relative", top:"5px"}}>$</div><div style={{ fontSize: '130px',fontWeight: "400", position:"relative", top:"25px"}}>0</div> <div style={{ fontSize: '30px',fontWeight: "400"}}>&nbsp;/ month</div></PaymentTextBox>
+            </div>
+            <div>
+            <PaymentTextBoxNormal css={{}}>
+                <ListNamers>Free for life</ListNamers>
+                <ListNamers>Watch up to 5 address </ListNamers>{' '}
+                <ListNamers>View value eligible to claim </ListNamers>{' '}
+                <ListNamers>Get email alerts on new airdrops</ListNamers>
+            </PaymentTextBoxNormal>
+            <WalletConnect
+              css={{
+                alignSelf: 'center',
+                marginBottom: '10px',
+                width: '187px',
+              }}
+            >
+              Try For Free
+            </WalletConnect>
+            </div>
+          </PriceBox>
+
+
         <ParagraphBox css={{ flex: "1 1", textAlign:"center"}}>
          
         </ParagraphBox>
@@ -167,3 +265,5 @@ function Pricing() {
   )
 }
 export default Pricing
+
+

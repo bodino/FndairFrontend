@@ -80,10 +80,12 @@ function Portfolio() {
   const [ENS, setENS] = useRecoilState(ENSListObject)
   const [airDropList, setairDropList] = useRecoilState(airDropListObject)
   const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
+  const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
 
 
-  if (airDropList && account) {
+  if (airDropList && account && protocolList) {
     return (
+      <>
       <PorfolioContainer
     
       >
@@ -104,6 +106,12 @@ function Portfolio() {
                   return (
                     <ParagraphBox css={{ paddingBottom: '10px' }}>
                       <b>Welcome Back {account.displayName}</b>
+                    </ParagraphBox>
+                  )
+                } else {
+                  return (
+                  <ParagraphBox css={{ paddingBottom: '10px' }}>
+                      <b>Welcome Back</b>
                     </ParagraphBox>
                   )
                 }
@@ -147,9 +155,21 @@ function Portfolio() {
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
           <MapProtocols />
         </AirdropHorizontalFlexBox>
-       
-        <Footer />
+        <ParagraphBox css={{ flex: "1 1", textAlign:"center"}}/>
+
+            <Footer/>
+
       </PorfolioContainer>
+      </>
+    )
+  } else {
+    return(
+    <>
+    <PorfolioContainer css={{    background: "rgb(27, 32, 48)"}}>
+              {/* <ParagraphBox css={{ flex: "1 1", textAlign:"center"}}/> */}
+
+    </PorfolioContainer>
+    </>
     )
   }
 }

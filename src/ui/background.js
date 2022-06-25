@@ -27,3 +27,12 @@ export const PorfolioSeperator = styled('span', {
   
 })
 
+
+export const PaySeperator = styled('span', {
+    background: "#FFFF",
+    height: "1.2px",
+    width: "200px",
+    marginTop:"20px",
+    marginBottom:"2px",
+  
+})

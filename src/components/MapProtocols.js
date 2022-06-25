@@ -17,9 +17,9 @@ export function MapProtocols() {
     return !airDropList ? (<h1></h1>) :     
         <> 
    
-        {airDropList.map((item) =>(
+        {protocolList.map((item) =>(
             <>
-         {item.tokAvail > 0 ? <ProtocolBox item = {item}/> : <></>}
+           <ProtocolBox item = {item}/>
             </>
         ))}
        </>

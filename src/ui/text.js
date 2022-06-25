@@ -93,6 +93,7 @@ export const TesitmonyNamer = styled('div', {
 
 export const ListNamers = styled('li', {
   paddingBottom:"20px",
+  fontSize:"12px"
  })
 
 

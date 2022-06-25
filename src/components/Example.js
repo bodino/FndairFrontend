@@ -37,7 +37,7 @@ import {
 } from '../hooks/recoil'
 import { useDisconnect } from 'wagmi'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { ENSListObject, WalletListArray, trackedWalletListObject, setLogOutObject, setClickedObject} from '../hooks/recoil';
+import { ENSListObject, WalletListArray, trackedWalletListObject, setLogOutObject, setClickedObject, protocolListObject} from '../hooks/recoil';
 import { useNavigate } from "react-router-dom";
 
 
@@ -50,6 +50,8 @@ export function Example() {
   axios.defaults.withCredentials = true
   const [airDropList, setairDropList] = useRecoilState(airDropListObject)
   const [trackedWalletList, settrackedWalletListt] = useRecoilState(trackedWalletListObject)
+  const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
+
 
   const [walletList, setwalletList] = useRecoilState(WalletListArray)
   const [ENS, setENS] = useRecoilState(ENSListObject)
@@ -94,6 +96,7 @@ export function Example() {
             }
           }
           setairDropList(eligableAirdrops)
+          setprotocolList(res.data.protocols)
           settrackedWalletListt(res.data.followedAddresses)
   }
 
@@ -114,6 +117,7 @@ export function Example() {
             } else {
               setairDropList()
               settrackedWalletListt()
+              setprotocolList()
               disconnect()
               serverDisconnect()
            
@@ -153,6 +157,8 @@ export function Example() {
       setSignedMessage(false);
       setairDropList()
       settrackedWalletListt()
+      setprotocolList()
+
     }
 
     

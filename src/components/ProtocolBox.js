@@ -23,7 +23,14 @@ export function ProtocolBox({item}) {
   return (
     //needs image
     <ProtocolFlexBox>
-      ProtocolFlexBox
+        <img style={{width:"40px", marginInline:"25px", borderRadius:"50px"}}src={item.icon}></img>
+    
+
+          <div style={{display:"flex", flexDirection:"column", width:"150px",}}>
+                 <div style={{fontSize:"15px"}}>{item.name}</div>
+                 <div style={{fontWeight: "500", fontSize:"25px"}}>${item.priceUsd.toFixed(2)}</div>
+          </div>
+  
     </ProtocolFlexBox>
   )
 }
