@@ -96,6 +96,7 @@ QontoStepIcon.propTypes = {
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
     top: 14,
+    color:"red"
     
   },
   [`&.${stepConnectorClasses.active}`]: {

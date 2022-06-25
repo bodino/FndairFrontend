@@ -64,6 +64,7 @@ import {
   protocolListObject,
   ENSListObject,
   trackedWalletListObject,
+  signedMessageObject
 } from '../hooks/recoil'
 import {
   RecoilRoot,
@@ -72,12 +73,16 @@ import {
   useRecoilState,
   useRecoilValue,
 } from 'recoil'
+import Mapfreeairdrops from '../components/Mapfreeairdrops'
 
 function Portfolio() {
   const { data: account } = useAccount()
   const [ENS, setENS] = useRecoilState(ENSListObject)
+  const [airDropList, setairDropList] = useRecoilState(airDropListObject)
+  const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
 
-  if (account) {
+
+  if (airDropList && account) {
     return (
       <PorfolioContainer
     
@@ -94,12 +99,14 @@ function Portfolio() {
               }}
             >
               <ConnectButton.Custom>
-                {({ account, mounted }) => {
+                {({ account, mounted, chain }) => {
+                   if (mounted && account && chain) {
                   return (
                     <ParagraphBox css={{ paddingBottom: '10px' }}>
                       <b>Welcome Back {account.displayName}</b>
                     </ParagraphBox>
                   )
+                }
                 }}
               </ConnectButton.Custom>
 
@@ -110,7 +117,7 @@ function Portfolio() {
                 Wallets You Follow
               </ParagraphBox>
               <HorizontalFlexBox>
-                <MapWallets />
+                <MapWallets/>
               </HorizontalFlexBox>
             </div>
           </AirdropHorizontalFlexBox>
@@ -121,9 +128,7 @@ function Portfolio() {
         </AirdropHorizontalFlexBox>
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start',  paddingBottom:"20px", paddingLeft:"20px" }}>
-          <Mapairdrops />
-          <Mapairdrops />
-          
+        {airDropList[0].info ? <Mapairdrops />: <Mapfreeairdrops/>}          
         </AirdropHorizontalFlexBox>
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start'  }}>
@@ -131,8 +136,9 @@ function Portfolio() {
         </AirdropHorizontalFlexBox>
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
-          <Mapairdrops />
+          {/* <Mapairdrops /> */}
         </AirdropHorizontalFlexBox>
+        
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start'  }}>
           <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Protocols We Support</ParagraphBox>

@@ -40,7 +40,8 @@ export function MapWallets() {
     const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
     const [trackedWalletList, settrackedWalletListt] = useRecoilState(trackedWalletListObject)
     const [address, setAddress] = useState('')
- 
+    const { data, isLoading, error } = useAccount()
+
 
     function convertObjectToArray(res) {
       var eligableAirdrops = [];
@@ -49,14 +50,15 @@ export function MapWallets() {
               var x =0;
               for (var j =0; j < res.data.wallet.length; j++){
                 console.log(res.data);
-              for(var i =0; i < res.data.wallet[j].data.length; i++){
-               
-                res.data.wallet[j].data[i].address = res.data.wallet[j]._id;
-                eligableAirdrops[x] =  res.data.wallet[j].data[i];
+              for(var i =0; i < res.data.wallet[j].toClaim.length; i++){
+               console.log(res.data.wallet[j]._id)
+                res.data.wallet[j].toClaim[i].address = res.data.wallet[j]._id;
+                eligableAirdrops[x] =  res.data.wallet[j].toClaim[i];
   
                 x++;
               }
             }
+            console.log(res.data.followedAddresses)
             setairDropList(eligableAirdrops)
             settrackedWalletListt(res.data.followedAddresses)
     }
@@ -66,41 +68,36 @@ export function MapWallets() {
         .get('http://localhost:3001/login', {})
         .then(function (res) {
           if ((res.data.loggedin = true)) {
-            
-           
               convertObjectToArray(res);
               console.log(res)
-              
           }
         })
         .catch(function (error) {
       
         })
     }
-   
-
+ 
 
     async function updateWallet(passedAddress) {
-        var Info = {Address: passedAddress}
+        
         if (ethers.utils.isAddress(passedAddress)){
+          console.log(passedAddress)
           await axios
-          .post('http://localhost:3001/addwallet', {
-          Info,
+          .put('http://localhost:3001/user/'+data.address+"/"+passedAddress, {
           })
           .then(function (response) {
+            console.log("Hi")
             checklogin()
           })
           .catch(function (error) {
-          
-
           })
         } else {
           console.log("hi")
           toast("Address is not valid");
         }
       }
-
-    return !trackedWalletList ? (<h1></h1>) :    
+      if (trackedWalletList){
+    return (    
      
         <> 
 
@@ -109,7 +106,6 @@ export function MapWallets() {
             <FollowedWallet checklogin={checklogin}item={item}></FollowedWallet>
       
             </>
-            
         ))}
         
   
@@ -149,6 +145,8 @@ export function MapWallets() {
   <ToastContainer />
 
        </>
-};
+    );
+   }
+  }
 
 export default MapWallets

@@ -21,7 +21,6 @@ import { Text, WalletConnect } from '../ui/text'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from 'axios'
-import { SignMessage } from './SignMessage'
 import { ethers } from 'ethers'
 import { useProvider, useSigner } from 'wagmi'
 import {
@@ -39,6 +38,7 @@ import {
 import { useDisconnect } from 'wagmi'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { ENSListObject, WalletListArray, trackedWalletListObject, setLogOutObject, setClickedObject} from '../hooks/recoil';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -66,7 +66,7 @@ export function Example() {
   // const provider = useProvider()
   const { data, isLoading, error } = useAccount()
   const provider = useProvider()
-
+  const navigate = useNavigate()
   const { isConnected, connector, connectors, connectAsync } = useConnect()
   const {
     data: signingmessagedata,
@@ -85,10 +85,10 @@ export function Example() {
             var x =0;
             for (var j =0; j < res.data.wallet.length; j++){
               console.log(res.data);
-            for(var i =0; i < res.data.wallet[j].data.length; i++){
-             
-              res.data.wallet[j].data[i].address = res.data.wallet[j]._id;
-              eligableAirdrops[x] =  res.data.wallet[j].data[i];
+            for(var i =0; i < res.data.wallet[j].toClaim.length; i++){
+             console.log(res.data.wallet[j]._id)
+              res.data.wallet[j].toClaim[i].address = res.data.wallet[j]._id;
+              eligableAirdrops[x] =  res.data.wallet[j].toClaim[i];
 
               x++;
             }
@@ -112,10 +112,11 @@ export function Example() {
               setSignedMessage(true)
               
             } else {
+              setairDropList()
+              settrackedWalletListt()
               disconnect()
               serverDisconnect()
-              setairDropList("")
-              settrackedWalletListt("")
+           
             }
           } else {
             disconnect()
@@ -127,7 +128,8 @@ export function Example() {
           serverDisconnect()
         })
     }
-   
+
+
     checklogin()
   
   }, [connector])
@@ -149,6 +151,8 @@ export function Example() {
       disconnect()
       serverDisconnect()
       setSignedMessage(false);
+      setairDropList()
+      settrackedWalletListt()
     }
 
     
@@ -172,6 +176,7 @@ export function Example() {
           setSignedMessage(true)
           convertObjectToArray(response)
           console.log(response)
+          navigate("/portfolio");
           ensgetter();
         })
         .catch(function (error) {
