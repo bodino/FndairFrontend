@@ -136,7 +136,7 @@ function Portfolio() {
         </AirdropHorizontalFlexBox>
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start',  paddingBottom:"20px", paddingLeft:"20px" }}>
-        {airDropList[0].info ? <Mapairdrops />: <Mapfreeairdrops/>}          
+        {airDropList[0]?.info ? <Mapairdrops />: <Mapfreeairdrops/>}          
         </AirdropHorizontalFlexBox>
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start'  }}>

@@ -196,7 +196,7 @@ function Pricing() {
                 args: [
                 "0x0bBD3a3d952fddf9A8811bC650445B7515a4B9e6", 
               ], overrides: {
-                value: ethers.utils.parseEther("0.01")
+                value: ethers.utils.parseEther("0.02319878040697289")
               }});
             }}
               css={{
