@@ -49,3 +49,9 @@ export const setClickedObject = atom({
 })
 
 
+
+export const subscriptionInfoObject
+= atom({
+    key: "subscriptionInfoObject",
+    default: false
+})

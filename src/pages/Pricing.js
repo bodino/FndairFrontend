@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import React from 'react'
-import { useAccount,useContractWrite,useContract,useSigner } from 'wagmi'
+import { useAccount,useContractWrite,useContract,useSigner, useNetwork } from 'wagmi'
 import '../App.css'
 import { css } from '../ui/stitches.config'
 import { styled, darkTheme, createGlobalStyle } from '../ui/stitches.config'
@@ -55,9 +55,35 @@ import Mapairdrops from '../components/Mapairdops'
 import Timelines from '../components/Timelines'
 import abi from '../abi/USDC.json'
 import { ethers } from 'ethers'
+import axios from 'axios';
+import {
+  useRecoilState,
+} from 'recoil'
+import {subscriptionInfoObject} from '../hooks/recoil'
+// axios.defaults.withCredentials = true
+
+
 
 
 function Pricing() {
+  const [subscriptionInfo, setsubscriptionInfo] = useRecoilState(subscriptionInfoObject)
+
+  const { activeChain, chains, data:chaindata, switchNetworkAsync } = useNetwork()
+  const [priceData, setpriceData] = useState();
+  async function updatePricing(){
+    await axios
+    .get('http://localhost:3001/pricing', {})
+    .then(function (response) {
+      setpriceData(response.data);
+      
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+  }
+  useEffect(() => {
+    updatePricing()
+  }, []);
 
   const { data:signerData, error, isLoading, refetch } = useSigner()
   const contract = useContract({
@@ -86,6 +112,32 @@ function Pricing() {
     }
   );
 
+  async function Join(months){
+
+    console.log(activeChain)
+    var priceObject;
+    var payAmount = 0;
+    if (activeChain.id === 1 ||activeChain.id === 10 || activeChain.id === 42161 || activeChain.id === 3) {
+      priceObject = priceData[0]
+    } else if (activeChain.id == 137) { 
+      priceObject = priceData[1]
+    }
+    if (months === 1) {
+      payAmount = priceObject.amount1Month
+    } else if (months === 6) {
+      payAmount = priceObject.amount6Month
+    } else if (months === 12) {
+      payAmount = priceObject.amount12Month
+    }
+      
+    write({ 
+      args: [
+      "0x0bBD3a3d952fddf9A8811bC650445B7515a4B9e6", 
+    ], overrides: {
+      value: ethers.utils.parseEther(payAmount.toString())
+    }});
+  }
+
   return (
    <>
       
@@ -93,9 +145,8 @@ function Pricing() {
         <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px' }}>
           <b>Premium Product, Fair Price </b>
         </ParagraphBox>
-
         <MiniParagraphBox css={{ paddingBottom: '60px',fontSize:"18px"  }}>
-          Average user finds $200
+          Pay on Ethereum, Optimism, Arbitrum, or Polygon
         </MiniParagraphBox>
         <HorizontalFlexBoxWithColor css={{ justifyContent: 'center' }}>
           <PriceBox>
@@ -121,14 +172,16 @@ function Pricing() {
                 <ListNamers>Get email alerts on new airdrops</ListNamers>
               </ul>
             </PaymentTextBoxNormal>
-            <WalletConnect
+            <WalletConnect onClick={() => {
+             Join(1);
+            }}
               css={{
                 alignSelf: 'center',
                 marginBottom: '10px',
                 width: '187px',
               }}
             >
-              Join Now
+              {subscriptionInfo.status === true ?  "Extend Subscription": "Join Now" }
             </WalletConnect>
           </PriceBox>
 
@@ -156,14 +209,16 @@ function Pricing() {
                 <ListNamers>Get email alerts on new airdrops</ListNamers>
               </ul>
             </PaymentTextBoxNormal>
-            <WalletConnect
+            <WalletConnect onClick={() => {
+             Join(6);
+            }}
               css={{
                 alignSelf: 'center',
                 marginBottom: '10px',
                 width: '187px',
               }}
             >
-              Join Now
+               {subscriptionInfo.status === true ?  "Extend Subscription": "Join Now" }
             </WalletConnect>
           </PriceBox>
 
@@ -192,12 +247,7 @@ function Pricing() {
             </PaymentTextBoxNormal>
             <WalletConnect
             onClick={() => {
-              write({ 
-                args: [
-                "0x0bBD3a3d952fddf9A8811bC650445B7515a4B9e6", 
-              ], overrides: {
-                value: ethers.utils.parseEther("0.02319878040697289")
-              }});
+             Join(12);
             }}
               css={{
                 alignSelf: 'center',
@@ -205,7 +255,7 @@ function Pricing() {
                 width: '187px',
               }}
             >
-              Join Now
+               {subscriptionInfo.status === true ?  "Extend Subscription": "Join Now" }
             </WalletConnect>
           </PriceBox>
       
