@@ -155,6 +155,7 @@ function Portfolio() {
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
           <MapProtocols />
         </AirdropHorizontalFlexBox>
+        
         <ParagraphBox css={{ flex: "1 1", textAlign:"center"}}/>
 
             <Footer/>
