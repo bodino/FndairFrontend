@@ -78,7 +78,6 @@ function Portfolio() {
   const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
   const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
 
-
   if (airDropList && account && protocolList) {
     return (
       <>
@@ -151,6 +150,7 @@ function Portfolio() {
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
           <MapProtocols />
         </AirdropHorizontalFlexBox>
+        
         <ParagraphBox css={{ flex: "1 1", textAlign:"center"}}/>
 
             <Footer/>
