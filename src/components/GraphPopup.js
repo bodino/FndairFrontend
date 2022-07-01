@@ -2,71 +2,28 @@ import { React, useState } from 'react';
 import {
     PopupBackground,
     PopupContainer,
-    CloseButton
+    ButtonContainer,
+    CloseButton,
+    ContentContainer,
+    LeftContainer,
+    IconContainer,
+    Description,
+    GraphContainer
   } from '../ui/popup'
 
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJs } from 'chart.js/auto';
 
-const prices = [
-    0.0790833178072016, 0.07803820100461548,  0.0780624154339648,
-   0.07778181871095977, 0.07712532212188668, 0.07666006491069563,
-   0.07574411166134756, 0.07464889828470672, 0.07501916544565886,
-   0.07458131538542272, 0.07638615192728611,  0.0842652714033781,
-   0.08556685803816674, 0.08093551616432464,  0.0805410468901216,
-   0.08322718990161172, 0.08301784207491152, 0.08170655209502288,
-    0.0816246209633769, 0.08267246870903695, 0.07544437972160471,
-   0.07601354655079509,  0.0718353124271487,  0.0709806415645932,
-   0.07235652288089903, 0.07663212245554957, 0.07442201702246212,
-   0.06978856488308728,  0.0708994929210815, 0.07113752461903272,
-     0.071193567396299, 0.07094727881041307, 0.07072615680206423,
-    0.0703837223605313, 0.07079591684596942, 0.07035967281849408,
-   0.08690881855566208,  0.0882462696902953,   0.109580518609669,
-   0.11161453221428129, 0.12146382218147322, 0.12001226254640335,
-   0.11833162616513829, 0.12163288505252598, 0.12057105400448664,
-   0.11447018594567127, 0.11435525304073235, 0.11935944458916502,
-   0.12449230259141583,  0.1212549603756638,  0.1234090675966545,
-   0.11860922063007168, 0.11483959393878819, 0.11418715195324604,
-   0.10249605633148401, 0.09362698079983763, 0.09100007677573083,
-   0.08937055769250192, 0.09273518865739738, 0.09327225046160087,
-   0.09815960562550896,  0.0955123522849175, 0.09690155744482896,
-   0.09423201211806322, 0.09539913447203642, 0.09261241086242826,
-   0.09012535203504775, 0.08400983982444672, 0.08290110662928567,
-   0.08713358878421444, 0.08680116424383878, 0.09066396469573072,
-   0.08924269919613706
- ]
-const price1 = prices.slice(prices.length - 30, prices.length - 1)
-const dates = [
-    '05/-25/2022', '05/-24/2022', '05/-23/2022', '05/-22/2022',
-    '05/-21/2022', '05/-20/2022', '05/-19/2022', '05/-18/2022',
-    '05/-17/2022', '05/-16/2022', '05/-15/2022', '05/-14/2022',
-    '05/-13/2022', '05/-12/2022', '05/-11/2022', '05/-10/2022',
-    '05/-9/2022',  '05/-8/2022',  '05/-7/2022',  '05/-6/2022',
-    '05/-5/2022',  '05/-4/2022',  '05/-3/2022',  '05/-2/2022',
-    '05/-1/2022',  '05/00/2022',  '05/01/2022',  '05/02/2022',
-    '05/03/2022',  '05/04/2022',  '05/05/2022',  '05/06/2022',
-    '05/07/2022',  '05/08/2022',  '05/09/2022',  '05/10/2022',
-    '05/11/2022',  '05/12/2022',  '05/13/2022',  '05/14/2022',
-    '05/15/2022',  '05/16/2022',  '05/17/2022',  '05/18/2022',
-    '05/19/2022',  '05/20/2022',  '05/21/2022',  '05/22/2022',
-    '05/23/2022',  '05/24/2022',  '05/25/2022',  '05/26/2022',
-    '05/27/2022',  '05/28/2022',  '05/29/2022',  '05/30/2022',
-    '06/01/2022',  '06/02/2022',  '06/03/2022',  '06/04/2022',
-    '06/05/2022',  '06/06/2022',  '06/07/2022',  '06/08/2022',
-    '06/09/2022',  '06/10/2022',  '06/11/2022',  '06/12/2022',
-    '06/13/2022',  '06/14/2022',  '06/15/2022',  '06/16/2022',
-    '06/17/2022'
-  ]
-const date1 = dates.slice(prices.length - 30, prices.length - 1)
-
 export default function GraphPopup(props) {
-    const price1 = props.prices.slice(props.prices.length - 30, props.prices.length - 1)
-    const date1 = props.dates.slice(props.prices.length - 30, props.prices.length - 1)
+
+    
+    // const price1 = props.prices.slice(props.prices.length - 30, props.prices.length - 1)
+    // const date1 = props.dates.slice(props.prices.length - 30, props.prices.length - 1)
     const data = {
-        labels: date1,
+        labels: ["Sun", 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'],
         datasets:[{
             label: 'test data',
-            data: price1,
+            data: [1.2, 1.15, 1.03, 0.98, 0.87, 0.85, 0.84],
             fill: {
                 target: 'origin',
                 above: 'rgb(0, 80, 124, 0.20)'
@@ -77,6 +34,7 @@ export default function GraphPopup(props) {
     }
 
     var options = {
+        responsive: true,
         scales: {
             y: {
                 ticks: {
@@ -98,17 +56,24 @@ export default function GraphPopup(props) {
             }
         }
     }
+    console.log(props.trigger)
     return (props.trigger) ? (
         <PopupBackground>
             <PopupContainer>
-                <CloseButton onClick={()=>{props.setTrigger(false)}}>X</CloseButton>
-                {/* <div>
-                    <img src={props.desc}/>
-                    <p>{props.desc}</p>
-                </div>
-                <div>
-                    <Line data={data} options={options}/>
-                </div> */}
+                <ButtonContainer>
+                    <CloseButton onClick={()=>{props.setTrigger(false)}}>X</CloseButton>
+                </ButtonContainer>
+                <ContentContainer>
+                    <LeftContainer>
+                        <IconContainer>
+                            <img style={{width:"150px", borderRadius:"50%"}} src={props.icon}/>
+                        </IconContainer>
+                        <Description>This protocol is really dope and this paragraph should tell you more about what they protocol does. It also needs to be styled correctly</Description>
+                    </LeftContainer>
+                    <GraphContainer>
+                        <Line data={data} options={options}/>
+                    </GraphContainer>
+                </ContentContainer>
             </PopupContainer>
         </PopupBackground>
     ) : "";

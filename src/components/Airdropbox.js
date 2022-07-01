@@ -13,13 +13,13 @@ import {
   } from '../ui/flexboxes'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 
-  import {ClaimButton} from '../ui/text'
+import {ClaimButton} from '../ui/text'
 
 import GraphPopup from './GraphPopup'
 
 export function Airdropbox({item}) {
 
-  const [trigger, setTrigger] = useState(false);
+  const [trigger1, setTrigger1] = useState(false);
 
   const openInNewTab = (url) => {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
@@ -32,7 +32,7 @@ export function Airdropbox({item}) {
   return (
     <AirdropFlexBox>
       <AirdropIcon>
-        <img style={{width:"100px", borderRadius:"10px"}}src={item.info.icon} onClick={() => {setTrigger(true)}}></img>
+        <img style={{width:"100px", borderRadius:"10px"}}src={item.info.icon} onClick={() => {setTrigger1(true)}}></img>
       </AirdropIcon> 
       <AirdropInfo>
           <ClaimButton  onClick={onClickUrl(item.info.website)}><b>Click To Claim</b></ClaimButton>
@@ -42,7 +42,7 @@ export function Airdropbox({item}) {
                 <div style={{fontSize:"15px"}}> {item.address.substring(0, 5)}...{item.address.substring(38, 42)}</div>
           </div>
       </AirdropInfo>
-      <GraphPopup trigger={trigger} icon={item.info.icon} desc={item.info.desc} closePopup={setTrigger}/>
+      <GraphPopup trigger={trigger1} icon={item.info.icon} desc={item.info.desc} setTrigger={setTrigger1}/>
 
                 {/* <div>{protocolList[item.name]?.Claimable}</div> */}
     </AirdropFlexBox>

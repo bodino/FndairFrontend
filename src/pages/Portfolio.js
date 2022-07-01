@@ -82,7 +82,6 @@ function Portfolio() {
   const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
   const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
 
-
   if (airDropList && account && protocolList) {
     return (
       <>
