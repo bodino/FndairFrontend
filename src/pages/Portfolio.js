@@ -67,11 +67,7 @@ import {
   signedMessageObject
 } from '../hooks/recoil'
 import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
+  useRecoilState,  
 } from 'recoil'
 import Mapfreeairdrops from '../components/Mapfreeairdrops'
 
