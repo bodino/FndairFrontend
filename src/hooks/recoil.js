@@ -55,3 +55,18 @@ export const subscriptionInfoObject
     key: "subscriptionInfoObject",
     default: false
 })
+
+export const claimedAirDropListObject
+= atom({
+    key: "claimedAirDropListObject",
+    default: false
+})
+
+
+export const totalClaimedObject
+= atom({
+    key: "totalClaimedObject",
+    default: false
+})
+
+

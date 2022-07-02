@@ -39,7 +39,7 @@ export function AirdropboxFree({item}) {
       <Link to="/pricing" style={{  textDecoration:"none"}}><ClaimButton  ><b>Join To Claim</b></ClaimButton></Link>
           <div style={{display:"flex", flexDirection:"column",gap:"15px", width:"150px"}}>
                  <div style={{fontSize:"15px"}}>{}</div>
-                 <div style={{fontSize:"35px"}}>${item.valueUsd.toFixed(1)}</div>
+                 <div style={{fontSize:"35px"}}>${item.valueUsd.toFixed(1).toLocaleString()}</div>
                 <div style={{fontSize:"15px"}}> {item.address.substring(0, 5)}...{item.address.substring(38, 42)}</div>
           </div>
       </AirdropInfo>

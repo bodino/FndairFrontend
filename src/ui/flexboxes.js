@@ -295,11 +295,16 @@ export const HorizontalFlexBox = styled('div', {
     display: "flex",
     alignItems:"center",
     padding:"",
-    paddingTop:"10px",
+   
     width: "100%",
     justifyContent:"space-evenly",
     // maxWidth: "1000px",
     flexDirection: "row",
+ 
+
+      '&::-webkit-scrollbar': { 
+        display: "none", 
+    }
     
    
    

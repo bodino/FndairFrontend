@@ -37,6 +37,7 @@ import {
   Top,
   Bottom,
   TestamonyBox,
+  AirdropFlexBox
 } from '../ui/flexboxes'
 
 
@@ -64,12 +65,15 @@ import {
   protocolListObject,
   ENSListObject,
   trackedWalletListObject,
-  signedMessageObject
+  signedMessageObject,
+  claimedAirDropListObject,
+  totalClaimedObject
 } from '../hooks/recoil'
 import {
   useRecoilState,  
 } from 'recoil'
 import Mapfreeairdrops from '../components/Mapfreeairdrops'
+import MapClaimedAirdrops from '../components/MapClaimedAirdrops'
 
 function Portfolio() {
   const { data: account } = useAccount()
@@ -77,6 +81,10 @@ function Portfolio() {
   const [airDropList, setairDropList] = useRecoilState(airDropListObject)
   const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
   const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
+  const [claimedAirDropList, setclaimedAirDropList] = useRecoilState(claimedAirDropListObject)
+  const [totalClaimed, settotalClaimed] = useRecoilState(totalClaimedObject)
+
+
 
   if (airDropList && account && protocolList) {
     return (
@@ -99,7 +107,7 @@ function Portfolio() {
                 {({ account, mounted, chain }) => {
                    if (mounted && account && chain) {
                   return (
-                    <ParagraphBox css={{ paddingBottom: '10px' }}>
+                    <ParagraphBox css={{ paddingBottom: '10px', fontSize:"35px" }}>
                       <b>Welcome Back {account.displayName}</b>
                     </ParagraphBox>
                   )
@@ -113,16 +121,26 @@ function Portfolio() {
                 }}
               </ConnectButton.Custom>
 
-              <ParagraphBox css={{ fontSize: '20px' }}>
-                Total Claimed $4,235
+              <ParagraphBox css={{ fontSize: '25px', color:"#9a9a9a" }}>
+                Total Claimed ${totalClaimed.toLocaleString()}
               </ParagraphBox>
               <ParagraphBox css={{ fontSize: '20px', paddingBottom: '10px' }}>
                 Wallets You Follow
               </ParagraphBox>
-              <HorizontalFlexBox>
+                <div style={{display:"flex", justifyContent:"flex-start", flexDirection:"row", alignItems:"center"}}>
                 <MapWallets/>
-              </HorizontalFlexBox>
+                </div>
             </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+              }}
+            >
+              
+              <AirdropFlexBox css={{height:"250px"}}> </AirdropFlexBox>
+              </div>
           </AirdropHorizontalFlexBox>
         </HorizontalFlexBoxWithColor>
         <PorfolioSeperator />
@@ -139,7 +157,7 @@ function Portfolio() {
         </AirdropHorizontalFlexBox>
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
-          {/* <Mapairdrops /> */}
+        <MapClaimedAirdrops />       
         </AirdropHorizontalFlexBox>
         
 

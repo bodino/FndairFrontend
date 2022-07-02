@@ -66,7 +66,7 @@ export function Airdropbox({ checklogin, item }) {
   if (Show) {
     return (
       <StaticWalletConnect
-        css={{ width: '100px', marginLeft: '20px' }}
+        css={{ width: '100px', marginRight: '20px' }}
         onMouseDown={startCounter}
         onMouseUp={stopCounter}
         onMouseLeave={stopCounter}

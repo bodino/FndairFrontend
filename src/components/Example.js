@@ -37,7 +37,7 @@ import {
 } from '../hooks/recoil'
 import { useDisconnect } from 'wagmi'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { ENSListObject, WalletListArray, trackedWalletListObject, setLogOutObject, setClickedObject, protocolListObject, subscriptionInfoObject} from '../hooks/recoil';
+import { ENSListObject, WalletListArray, trackedWalletListObject, setLogOutObject, setClickedObject, protocolListObject, subscriptionInfoObject, claimedAirDropListObject, totalClaimedObject} from '../hooks/recoil';
 import { useNavigate } from "react-router-dom";
 
 
@@ -49,8 +49,12 @@ export function Example() {
   const { disconnect } = useDisconnect()
   axios.defaults.withCredentials = true
   const [airDropList, setairDropList] = useRecoilState(airDropListObject)
+  const [claimedAirDropList, setclaimedAirDropList] = useRecoilState(claimedAirDropListObject)
+
   const [trackedWalletList, settrackedWalletListt] = useRecoilState(trackedWalletListObject)
   const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
+  const [totalClaimed, settotalClaimed] = useRecoilState(totalClaimedObject)
+
   const [subscriptionInfo, setsubscriptionInfo] = useRecoilState(subscriptionInfoObject)
 
 
@@ -84,11 +88,20 @@ export function Example() {
 
   function convertObjectToArray(res) {
     var eligableAirdrops = [];
+    var claimedAirdrops = [];
+    var totalClaimed = 0;
 
     console.log(res.data)
             var x =0;
+            var y =0;
             for (var j =0; j < res.data.wallet.length; j++){
               console.log(res.data);
+              for(var i =0; i < res.data.wallet[j].claimed.length; i++){
+                 res.data.wallet[j].claimed[i].address = res.data.wallet[j]._id;
+                 claimedAirdrops[y] =  res.data.wallet[j].claimed[i];
+                 totalClaimed = res.data.wallet[j].claimed[i].valueUsd + totalClaimed;
+                 y++;
+               }
             for(var i =0; i < res.data.wallet[j].toClaim.length; i++){
              console.log(res.data.wallet[j]._id)
               res.data.wallet[j].toClaim[i].address = res.data.wallet[j]._id;
@@ -97,8 +110,10 @@ export function Example() {
               x++;
             }
           }
+          setclaimedAirDropList(claimedAirdrops)
           setairDropList(eligableAirdrops)
           setprotocolList(res.data.protocols)
+          settotalClaimed(totalClaimed)
           settrackedWalletListt(res.data.followedAddresses)
           setsubscriptionInfo(res.data.subscriptionInfo)
   }
@@ -118,7 +133,9 @@ export function Example() {
               setSignedMessage(true)
               
             } else {
+              setclaimedAirDropList()
               setairDropList()
+              settotalClaimed()
               settrackedWalletListt()
               setprotocolList()
               disconnect()
@@ -149,16 +166,16 @@ export function Example() {
 
   useEffect(() => {
     if (isConnected && !signedMessage && clicked) {
-      console.log('hi')
       singstuff()
     }
 
     if (!isConnected && LogOut) {
-      console.log('SEEYABITCH')
       disconnect()
       serverDisconnect()
       setSignedMessage(false);
+      setclaimedAirDropList()
       setairDropList()
+      settotalClaimed()
       settrackedWalletListt()
       setprotocolList()
 
