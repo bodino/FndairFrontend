@@ -52,7 +52,7 @@ export function Airdropbox({ checklogin, item }) {
 
   async function removeWallet(passedAddress) {
     await axios
-      .delete('http://localhost:3001/user/'+data.address+"/"+passedAddress, {
+      .delete('https://backend.fndair.com/user/'+data.address+"/"+passedAddress, {
       })
       .then(function (response) {
         console.log('LETS GO!')

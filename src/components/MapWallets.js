@@ -78,7 +78,7 @@ export function MapWallets() {
   
     async function checklogin() {
       await axios
-        .get('http://localhost:3001/login', {})
+        .get('https://backend.fndair.com/login', {})
         .then(function (res) {
           if ((res.data.loggedin = true)) {
               convertObjectToArray(res);
@@ -96,7 +96,7 @@ export function MapWallets() {
         if (ethers.utils.isAddress(passedAddress)){
           console.log(passedAddress)
           await axios
-          .put('http://localhost:3001/user/'+data.address+"/"+passedAddress, {
+          .put('https://backend.fndair.com/user/'+data.address+"/"+passedAddress, {
           })
           .then(function (response) {
             console.log("Hi")

@@ -110,10 +110,10 @@ export function Example() {
               x++;
             }
           }
+          settotalClaimed(totalClaimed)
           setclaimedAirDropList(claimedAirdrops)
           setairDropList(eligableAirdrops)
           setprotocolList(res.data.protocols)
-          settotalClaimed(totalClaimed)
           settrackedWalletListt(res.data.followedAddresses)
           setsubscriptionInfo(res.data.subscriptionInfo)
   }
@@ -123,7 +123,7 @@ export function Example() {
   useEffect(() => {
     async function checklogin() {
       await axios
-        .get('http://localhost:3001/login', {})
+        .get('https://backend.fndair.com/login', {})
         .then(function (res) {
           if ((res.data.loggedin = true && data)) {
             if ((res.data._id == data.address)) {
@@ -195,7 +195,7 @@ export function Example() {
         address: data.address,
       }
       await axios
-        .post('http://localhost:3001/login', {
+        .post('https://backend.fndair.com/login', {
           UserInfo,
         })
         .then(function (response) {
@@ -216,7 +216,7 @@ export function Example() {
 
   async function serverDisconnect() {
     await axios
-      .get('http://localhost:3001/disconnect', {})
+      .get('https://backend.fndair.com/disconnect', {})
       .then(function (response) {
         if ((response.data.loggedin = false)) {
           setSignedMessage(false)
