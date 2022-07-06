@@ -53,6 +53,7 @@ import { Avatar, AvatarImage, AvatarFallback } from '../ui/icons'
 
 // import Swiper and modules styles
 import 'swiper/css'
+import {useParams} from 'react-router-dom'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import Footer from '../components/Footer'
@@ -68,6 +69,7 @@ import {
 const axios = require('axios')
 
 function Landingpage() {
+  const {id} = useParams()
   const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
   const [clicked, setClicked] = useRecoilState(setClickedObject)
   const [LogOut, setLogOut] = useRecoilState(setLogOutObject)
@@ -89,7 +91,7 @@ function Landingpage() {
             <b>
               We Find
               <br></br>
-              Airdrops For You
+              Airdrops For You {id}
             </b>
           </ParagraphBox>
           <MiniParagraphBox>

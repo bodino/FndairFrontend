@@ -161,6 +161,25 @@ export const ParagraphBox = styled('div', {
    
 })
 
+export const ReferralHeader = styled('div', {
+
+    display: "flex",
+    // alignItems:"center",
+    fontSize:"$header1",
+    color:"$antibackground",
+    fontFamily: "Inter, Arial",
+    textAlign:"center",
+    paddingInline: "20px",
+    marginBottom:"10px",
+    // maxWidth: "1000px",
+    // textShadow: "#467898 5px 5px",
+    flexDirection: "column",
+
+    
+  
+   
+})
+
 export const MiniParagraphBox = styled('div', {
 
     display: "flex",
@@ -311,6 +330,26 @@ export const HorizontalFlexBox = styled('div', {
     
 })
 
+export const WalletFlexBox = styled('div', {
+
+    display: "flex",
+    alignItems:"center",
+    padding:"",
+   
+    justifyContent:"flex-start",
+    // maxWidth: "1000px",
+    flexDirection: "row",
+ 
+
+      '&::-webkit-scrollbar': { 
+        display: "none", 
+    }
+    
+   
+   
+    
+})
+
 export const HorizontalFlexBoxWithColor = styled('div', {
 
     display: "flex",
@@ -440,6 +479,23 @@ export const AirdropFlexBox = styled('div', {
     '@bp3': {
         width:"200x",
       },
+   
+    
+})
+
+export const ReferralBox = styled('div', {
+    display: "flex",
+    alignItems:"center",
+    width: "400px",
+    boxShadow: "0px 4px 10px 1px rgba(0, 0, 0, 0.3)",
+    // maxWidth: "1000px",
+    flexDirection: "column",
+    minHeight:"200px",
+    background: "rgb(41, 46, 65)",
+    borderRadius: "30px",
+    fontWeight: "300",
+    margin:"10px",
+  
    
     
 })

@@ -14,7 +14,8 @@ import {
   IconBoxes,
   InteranalParagraphBox,
   NavabarContainer,
-  PorfolioContainer
+  PorfolioContainer,
+  ReferralHeader
 } from '../ui/flexboxes'
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
@@ -37,7 +38,8 @@ import {
   Top,
   Bottom,
   TestamonyBox,
-  AirdropFlexBox
+  AirdropFlexBox,
+  ReferralBox
 } from '../ui/flexboxes'
 
 
@@ -74,6 +76,7 @@ import {
 } from 'recoil'
 import Mapfreeairdrops from '../components/Mapfreeairdrops'
 import MapClaimedAirdrops from '../components/MapClaimedAirdrops'
+import MapClaimedfreeairdrops from '../components/MapClaimedfreeairdrops'
 
 function Portfolio() {
   const { data: account } = useAccount()
@@ -95,7 +98,7 @@ function Portfolio() {
         <HorizontalFlexBoxWithColor
           css={{ alignItems: 'flex-start', minHeight: '0px' }}
         >
-          <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start' }}>
+          <AirdropHorizontalFlexBox css={{ justifyContent: 'space-between' }}>
             <div
               style={{
                 display: 'flex',
@@ -108,13 +111,13 @@ function Portfolio() {
                    if (mounted && account && chain) {
                   return (
                     <ParagraphBox css={{ paddingBottom: '10px', fontSize:"35px" }}>
-                      <b>Welcome Back {account.displayName}</b>
+                      <b>Welcome {account.displayName}</b>
                     </ParagraphBox>
                   )
                 } else {
                   return (
                   <ParagraphBox css={{ paddingBottom: '10px' }}>
-                      <b>Welcome Back</b>
+                      <b>Welcome</b>
                     </ParagraphBox>
                   )
                 }
@@ -139,7 +142,25 @@ function Portfolio() {
               }}
             >
               
-              <AirdropFlexBox css={{height:"250px"}}> </AirdropFlexBox>
+              <ReferralBox><ReferralHeader css={{fontSize: '35px', marginTop:"30px"}}>
+                      $1,281.69
+                    </ReferralHeader>
+                    <ReferralHeader css={{fontSize: '20px', color:"rgb(154, 154, 154)"}}>
+                      Earned from referrals 
+                    </ReferralHeader>
+                    <ReferralBox css={{minHeight:"45px", maxWidth:"300px", borderRadius:"10px",flexDirection:"row", marginTop:"20px",marginBottom:"20px" }}>
+                      <div style={{backgroundImage: "linear-gradient(45deg, #FFFFFF, rgb(27, 32, 48))", WebkitBackgroundClip: "text", WebkitTextFillColor:"transparent", backgroundSize: "100%", overflow: "hidden", width:"200px", marginLeft:"20px"}}>
+                        https://asdfasdfsadfasdmflkasdlfasdffasdfas
+                      </div>
+                      <div style={{width:"80px", background:"rgb(13, 78, 123)", height:"45px",borderTopRightRadius:"10px",borderBottomRightRadius:"10px", alignItems:"center",display:"flex", justifyContent:"center"}}>
+                        Copy
+                      </div>
+                    </ReferralBox>
+                    <ReferralHeader css={{fontSize: '14px', paddingBottom:"30px"}}>
+                      Earn up to $40 instantly per referral 
+                    </ReferralHeader>
+
+                   </ReferralBox>
               </div>
           </AirdropHorizontalFlexBox>
         </HorizontalFlexBoxWithColor>
@@ -153,11 +174,13 @@ function Portfolio() {
         </AirdropHorizontalFlexBox>
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start'  }}>
+          
           <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Claimed</ParagraphBox>
         </AirdropHorizontalFlexBox>
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
-        <MapClaimedAirdrops />       
+        
+        {claimedAirDropList[0]?.info ? <MapClaimedAirdrops />: <MapClaimedfreeairdrops/>}                 
         </AirdropHorizontalFlexBox>
         
 

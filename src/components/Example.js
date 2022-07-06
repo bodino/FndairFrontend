@@ -123,7 +123,7 @@ export function Example() {
   useEffect(() => {
     async function checklogin() {
       await axios
-        .get('https://backend.fndair.com/login', {})
+        .get('http://localhost:3001/login', {})
         .then(function (res) {
           if ((res.data.loggedin = true && data)) {
             if ((res.data._id == data.address)) {
@@ -195,7 +195,7 @@ export function Example() {
         address: data.address,
       }
       await axios
-        .post('https://backend.fndair.com/login', {
+        .post('http://localhost:3001/login', {
           UserInfo,
         })
         .then(function (response) {
@@ -216,7 +216,7 @@ export function Example() {
 
   async function serverDisconnect() {
     await axios
-      .get('https://backend.fndair.com/disconnect', {})
+      .get('http://localhost:3001/disconnect', {})
       .then(function (response) {
         if ((response.data.loggedin = false)) {
           setSignedMessage(false)

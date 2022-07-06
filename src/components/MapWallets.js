@@ -9,7 +9,7 @@ import Airdropbox from './Airdropbox';
 import { FaceIcon, ImageIcon, PlusCircledIcon } from '@radix-ui/react-icons'
 import axios from 'axios';
 import Verticalnavbarcomp from './Verticlenavbarcomp';
-import {IconBoxes,HorizontalFlexBox} from '../ui/flexboxes'
+import {IconBoxes,HorizontalFlexBox,WalletFlexBox} from '../ui/flexboxes'
 import {
   CookieIcon,
   CrossCircledIcon,
@@ -78,7 +78,7 @@ export function MapWallets() {
   
     async function checklogin() {
       await axios
-        .get('https://backend.fndair.com/login', {})
+        .get('http://localhost:3001/login', {})
         .then(function (res) {
           if ((res.data.loggedin = true)) {
               convertObjectToArray(res);
@@ -96,7 +96,7 @@ export function MapWallets() {
         if (ethers.utils.isAddress(passedAddress)){
           console.log(passedAddress)
           await axios
-          .put('https://backend.fndair.com/user/'+data.address+"/"+passedAddress, {
+          .put('http://localhost:3001/user/'+data.address+"/"+passedAddress, {
           })
           .then(function (response) {
             console.log("Hi")
@@ -113,7 +113,7 @@ export function MapWallets() {
     return (    
      
         <> 
-              <HorizontalFlexBox css={{maxWidth:"450px", overflowX: "scroll", justifyContent:"flex-start", marginLeft:"20px"
+          <WalletFlexBox css={{maxWidth:"450px", overflowX: "scroll", justifyContent:"flex-start", marginLeft:"20px",width: "",
 }}>
         {trackedWalletList.map((item) =>(
             <>
@@ -122,7 +122,7 @@ export function MapWallets() {
             </>
         ))}
         
-        </HorizontalFlexBox>
+        </WalletFlexBox>
 
      
  
