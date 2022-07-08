@@ -14,7 +14,8 @@ import {
   IconBoxes,
   InteranalParagraphBox,
   NavabarContainer,
-  PorfolioContainer
+  PorfolioContainer,
+  ReferralHeader
 } from '../ui/flexboxes'
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
@@ -37,6 +38,8 @@ import {
   Top,
   Bottom,
   TestamonyBox,
+  AirdropFlexBox,
+  ReferralBox
 } from '../ui/flexboxes'
 
 
@@ -64,16 +67,16 @@ import {
   protocolListObject,
   ENSListObject,
   trackedWalletListObject,
-  signedMessageObject
+  signedMessageObject,
+  claimedAirDropListObject,
+  totalClaimedObject
 } from '../hooks/recoil'
 import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
+  useRecoilState,  
 } from 'recoil'
 import Mapfreeairdrops from '../components/Mapfreeairdrops'
+import MapClaimedAirdrops from '../components/MapClaimedAirdrops'
+import MapClaimedfreeairdrops from '../components/MapClaimedfreeairdrops'
 
 function Portfolio() {
   const { data: account } = useAccount()
@@ -81,6 +84,10 @@ function Portfolio() {
   const [airDropList, setairDropList] = useRecoilState(airDropListObject)
   const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
   const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
+  const [claimedAirDropList, setclaimedAirDropList] = useRecoilState(claimedAirDropListObject)
+  const [totalClaimed, settotalClaimed] = useRecoilState(totalClaimedObject)
+
+
 
   if (airDropList && account && protocolList) {
     return (
@@ -91,7 +98,7 @@ function Portfolio() {
         <HorizontalFlexBoxWithColor
           css={{ alignItems: 'flex-start', minHeight: '0px' }}
         >
-          <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start' }}>
+          <AirdropHorizontalFlexBox css={{ justifyContent: 'space-between' }}>
             <div
               style={{
                 display: 'flex',
@@ -103,30 +110,58 @@ function Portfolio() {
                 {({ account, mounted, chain }) => {
                    if (mounted && account && chain) {
                   return (
-                    <ParagraphBox css={{ paddingBottom: '10px' }}>
-                      <b>Welcome Back {account.displayName}</b>
+                    <ParagraphBox css={{ paddingBottom: '10px', fontSize:"35px" }}>
+                      <b>Welcome {account.displayName}</b>
                     </ParagraphBox>
                   )
                 } else {
                   return (
                   <ParagraphBox css={{ paddingBottom: '10px' }}>
-                      <b>Welcome Back</b>
+                      <b>Welcome</b>
                     </ParagraphBox>
                   )
                 }
                 }}
               </ConnectButton.Custom>
 
-              <ParagraphBox css={{ fontSize: '20px' }}>
-                Total Claimed $4,235
+              <ParagraphBox css={{ fontSize: '25px', color:"#9a9a9a" }}>
+                Total Claimed ${totalClaimed.toLocaleString()}
               </ParagraphBox>
               <ParagraphBox css={{ fontSize: '20px', paddingBottom: '10px' }}>
                 Wallets You Follow
               </ParagraphBox>
-              <HorizontalFlexBox>
+                <div style={{display:"flex", justifyContent:"flex-start", flexDirection:"row", alignItems:"center"}}>
                 <MapWallets/>
-              </HorizontalFlexBox>
+                </div>
             </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+              }}
+            >
+              
+              <ReferralBox><ReferralHeader css={{fontSize: '35px', marginTop:"30px"}}>
+                      $1,281.69
+                    </ReferralHeader>
+                    <ReferralHeader css={{fontSize: '20px', color:"rgb(154, 154, 154)"}}>
+                      Earned from referrals 
+                    </ReferralHeader>
+                    <ReferralBox css={{minHeight:"45px", maxWidth:"300px", borderRadius:"10px",flexDirection:"row", marginTop:"20px",marginBottom:"20px" }}>
+                      <div style={{backgroundImage: "linear-gradient(45deg, #FFFFFF, rgb(27, 32, 48))", WebkitBackgroundClip: "text", WebkitTextFillColor:"transparent", backgroundSize: "100%", overflow: "hidden", width:"200px", marginLeft:"20px"}}>
+                        https://asdfasdfsadfasdmflkasdlfasdffasdfas
+                      </div>
+                      <div style={{width:"80px", background:"rgb(13, 78, 123)", height:"45px",borderTopRightRadius:"10px",borderBottomRightRadius:"10px", alignItems:"center",display:"flex", justifyContent:"center"}}>
+                        Copy
+                      </div>
+                    </ReferralBox>
+                    <ReferralHeader css={{fontSize: '14px', paddingBottom:"30px"}}>
+                      Earn up to $40 instantly per referral 
+                    </ReferralHeader>
+
+                   </ReferralBox>
+              </div>
           </AirdropHorizontalFlexBox>
         </HorizontalFlexBoxWithColor>
         <PorfolioSeperator />
@@ -139,11 +174,13 @@ function Portfolio() {
         </AirdropHorizontalFlexBox>
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start'  }}>
+          
           <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Claimed</ParagraphBox>
         </AirdropHorizontalFlexBox>
 
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
-          {/* <Mapairdrops /> */}
+        
+        {claimedAirDropList[0]?.info ? <MapClaimedAirdrops />: <MapClaimedfreeairdrops/>}                 
         </AirdropHorizontalFlexBox>
         
 

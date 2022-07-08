@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react'
 import {useRecoilState} from 'recoil'
 import { useAccount } from 'wagmi'
 import {ethers} from 'ethers'
-import { airDropListObject, protocolListObject,trackedWalletListObject } from '../hooks/recoil';
+import { airDropListObject, protocolListObject,trackedWalletListObject,totalClaimedObject,claimedAirDropListObject } from '../hooks/recoil';
 import { WalletConnect,StaticWalletConnect } from '../ui/text';
 import Airdropbox from './Airdropbox';
 import { FaceIcon, ImageIcon, PlusCircledIcon } from '@radix-ui/react-icons'
 import axios from 'axios';
 import Verticalnavbarcomp from './Verticlenavbarcomp';
-import {IconBoxes} from '../ui/flexboxes'
+import {IconBoxes,HorizontalFlexBox,WalletFlexBox} from '../ui/flexboxes'
 import {
   CookieIcon,
   CrossCircledIcon,
@@ -39,26 +39,39 @@ export function MapWallets() {
     const [airDropList, setairDropList] = useRecoilState(airDropListObject)
     const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
     const [trackedWalletList, settrackedWalletListt] = useRecoilState(trackedWalletListObject)
+    const [claimedAirDropList, setclaimedAirDropList] = useRecoilState(claimedAirDropListObject)
+    const [totalClaimed, settotalClaimed] = useRecoilState(totalClaimedObject)
+
     const [address, setAddress] = useState('')
     const { data, isLoading, error } = useAccount()
 
 
     function convertObjectToArray(res) {
       var eligableAirdrops = [];
+      var claimedAirdrops = [];
+      var totalClaimed = 0;
   
-      console.log(res.data)
-              var x =0;
-              for (var j =0; j < res.data.wallet.length; j++){
-                console.log(res.data);
-              for(var i =0; i < res.data.wallet[j].toClaim.length; i++){
-               console.log(res.data.wallet[j]._id)
-                res.data.wallet[j].toClaim[i].address = res.data.wallet[j]._id;
-                eligableAirdrops[x] =  res.data.wallet[j].toClaim[i];
-  
-                x++;
+            var x =0;
+            var y =0;
+            for (var j =0; j < res.data.wallet.length; j++){
+              console.log(res.data);
+              for(var i =0; i < res.data.wallet[j].claimed.length; i++){
+                res.data.wallet[j].claimed[i].address = res.data.wallet[j]._id;
+                claimedAirdrops[y] =  res.data.wallet[j].claimed[i];
+                totalClaimed = res.data.wallet[j].claimed[i].valueUsd + totalClaimed;
+                y++;
               }
+            for(var i =0; i < res.data.wallet[j].toClaim.length; i++){
+            console.log(res.data.wallet[j]._id)
+              res.data.wallet[j].toClaim[i].address = res.data.wallet[j]._id;
+              eligableAirdrops[x] =  res.data.wallet[j].toClaim[i];
+
+              x++;
             }
+          }
             console.log(res.data.followedAddresses)
+            settotalClaimed(totalClaimed)
+            setclaimedAirDropList(claimedAirdrops)
             setairDropList(eligableAirdrops)
             settrackedWalletListt(res.data.followedAddresses)
     }
@@ -100,7 +113,8 @@ export function MapWallets() {
     return (    
      
         <> 
-
+          <WalletFlexBox css={{maxWidth:"450px", overflowX: "scroll", justifyContent:"flex-start", marginLeft:"20px",width: "",
+}}>
         {trackedWalletList.map((item) =>(
             <>
             <FollowedWallet checklogin={checklogin}item={item}></FollowedWallet>
@@ -108,7 +122,7 @@ export function MapWallets() {
             </>
         ))}
         
-  
+        </WalletFlexBox>
 
      
  

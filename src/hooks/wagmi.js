@@ -23,7 +23,7 @@ const infuraId = "d825deabe0454bbe8223e500dd8dd785"
 
 
 
-export const { chains } = configureChains([chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum, chain.ropsten], [
+export const { chains } = configureChains([chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum, chain.ropsten, chain.goerli], [
 
   infuraProvider({ infuraId }),
   publicProvider(),

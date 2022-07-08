@@ -53,7 +53,22 @@ export const subscriptionInfoObject = atom({
     default: false
 })
 
-export const chartInfo = atom({
-    key: "chartInfoObject",
-    default: []
+export const claimedAirDropListObject
+= atom({
+    key: "claimedAirDropListObject",
+    default: false
 })
+
+
+export const totalClaimedObject
+= atom({
+    key: "totalClaimedObject",
+    default: false
+})
+
+export const referralAddressObject
+= atom({
+    key: "referralAddressObject",
+    default: false
+})
+
