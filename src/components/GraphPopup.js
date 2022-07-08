@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import {
     PopupBackground,
     PopupContainer,
@@ -15,28 +15,30 @@ import { Line } from 'react-chartjs-2';
 import { Chart as ChartJs } from 'chart.js/auto';
 
 export default function GraphPopup(props) {
-    const [datas, setDatas] = useState();
+    const [dates, setDates] = useState();
+    const [prices, setPrices] = useState();
 
     async function updateData(){
         await axios
         .get('http://localhost:3001/projects/' + props.address, {})
         .then(function (response) {
-          setDatas(response.data);
+            setDates(response.data.dates);
+            setPrices(response.data.usdPrices);
+          
         })
         .catch(function (error) {
           console.log(error)
         })
     }
-    updateData();
-    console.log(datas)
+    useEffect(() => {
+        updateData()
+      }, []);
 
-    // const price1 = props.prices.slice(props.prices.length - 30, props.prices.length - 1)
-    // const date1 = props.dates.slice(props.prices.length - 30, props.prices.length - 1)
     const data = {
-        labels: ["Sun", 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'],
+        labels: dates,
         datasets:[{
             label: 'test data',
-            data: [1.2, 1.15, 1.03, 0.98, 0.87, 0.85, 0.84],
+            data: prices,
             fill: {
                 target: 'origin',
                 above: 'rgb(0, 80, 124, 0.20)'
