@@ -69,4 +69,9 @@ export const totalClaimedObject
     default: false
 })
 
+export const referralAddressObject
+= atom({
+    key: "referralAddressObject",
+    default: false
+})
 

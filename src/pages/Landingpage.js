@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import React from 'react'
 import { useAccount } from 'wagmi'
 import '../App.css'
@@ -11,6 +11,7 @@ import {
   signedMessageObject,
   setLogOutObject,
   setClickedObject,
+  referralAddressObject
 } from '../hooks/recoil'
 import VertTimeline from '../components/VertTimeline'
 import Bubbles from '../components/Bubbles'
@@ -59,6 +60,7 @@ import 'swiper/css/pagination'
 import Footer from '../components/Footer'
 import Timelines from '../components/Timelines'
 import { WidthIcon } from '@radix-ui/react-icons'
+import { ethers } from 'ethers'
 import {
   RecoilRoot,
   atom,
@@ -66,11 +68,26 @@ import {
   useRecoilState,
   useRecoilValue,
 } from 'recoil'
+import useLocalStorage from '../hooks/use-local-storage';
+
 const axios = require('axios')
 
 function Landingpage() {
-  const {id} = useParams()
+  const [referralAddress, setreferralAddress] = useLocalStorage('referralAddressObject','')
+
+  const food = useParams()
+
+useEffect(() => {
+  if (ethers.utils.isAddress(food.id)){
+    console.log(food.id)
+    setreferralAddress(food.id);
+  }
+}, []);
+
+
+  
   const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
+
   const [clicked, setClicked] = useRecoilState(setClickedObject)
   const [LogOut, setLogOut] = useRecoilState(setLogOutObject)
 
@@ -91,7 +108,7 @@ function Landingpage() {
             <b>
               We Find
               <br></br>
-              Airdrops For You {id}
+              Airdrops For You
             </b>
           </ParagraphBox>
           <MiniParagraphBox>
