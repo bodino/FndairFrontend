@@ -18,13 +18,14 @@ export const PopupContainer = styled('div', {
     borderRadius: '12px',
     backgroundColor: 'white',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row-reverse',
     padding: '10px'
 })
 
 export const ButtonContainer = styled('div', {
     display: 'flex',
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
+    alignItems: 'flex-start'
 })
 
 export const CloseButton = styled('button', {
@@ -36,6 +37,10 @@ export const CloseButton = styled('button', {
 })
 
 export const ContentContainer = styled('div', {
+    paddingTop: '12px',
+    paddingLeft: '5px',
+    maxHeight: '100%',
+    maxWidth: '95%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: "center",
@@ -45,13 +50,14 @@ export const ContentContainer = styled('div', {
 export const LeftContainer = styled('div', {
     display: 'flex',
     flexDirection: 'column',
-    width: '30%',
-    height: '100%'
+    maxWidth: '28%',
+    maxHeight: '100%'
 })
 
 export const IconContainer = styled('div', {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingBottom: '5px'
 })
 
 export const Description = styled('p', {
@@ -62,6 +68,9 @@ export const Description = styled('p', {
 })
 
 export const GraphContainer = styled('div', {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '70%',
     height: '100%',
     paddingLeft: '7px'

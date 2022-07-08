@@ -10,13 +10,26 @@ import {
     Description,
     GraphContainer
   } from '../ui/popup'
-
+import axios from 'axios';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJs } from 'chart.js/auto';
 
 export default function GraphPopup(props) {
+    const [datas, setDatas] = useState();
 
-    
+    async function updateData(){
+        await axios
+        .get('http://localhost:3001/projects/' + props.address, {})
+        .then(function (response) {
+          setDatas(response.data);
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    }
+    updateData();
+    console.log(datas)
+
     // const price1 = props.prices.slice(props.prices.length - 30, props.prices.length - 1)
     // const date1 = props.dates.slice(props.prices.length - 30, props.prices.length - 1)
     const data = {
@@ -56,7 +69,6 @@ export default function GraphPopup(props) {
             }
         }
     }
-    console.log(props.trigger)
     return (props.trigger) ? (
         <PopupBackground>
             <PopupContainer>
@@ -66,12 +78,12 @@ export default function GraphPopup(props) {
                 <ContentContainer>
                     <LeftContainer>
                         <IconContainer>
-                            <img style={{width:"150px", borderRadius:"50%"}} src={props.icon}/>
+                            <img style={{width:"120px", borderRadius:"50%"}} src={props.icon}/>
                         </IconContainer>
                         <Description>This protocol is really dope and this paragraph should tell you more about what they protocol does. It also needs to be styled correctly</Description>
                     </LeftContainer>
                     <GraphContainer>
-                        <Line data={data} options={options}/>
+                        <Line data={data} options={options} style={{maxHeight: "100%", maxWidth: "95%"}}/>
                     </GraphContainer>
                 </ContentContainer>
             </PopupContainer>

@@ -48,10 +48,12 @@ export const setClickedObject = atom({
     default: false
 })
 
-
-
-export const subscriptionInfoObject
-= atom({
+export const subscriptionInfoObject = atom({
     key: "subscriptionInfoObject",
     default: false
+})
+
+export const chartInfo = atom({
+    key: "chartInfoObject",
+    default: []
 })
