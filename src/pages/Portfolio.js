@@ -15,7 +15,8 @@ import {
   InteranalParagraphBox,
   NavabarContainer,
   PorfolioContainer,
-  ReferralHeader
+  ReferralHeader,
+  TopPorfolioFlexBox
 } from '../ui/flexboxes'
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
@@ -98,7 +99,7 @@ function Portfolio() {
         <HorizontalFlexBoxWithColor
           css={{ alignItems: 'flex-start', minHeight: '0px' }}
         >
-          <AirdropHorizontalFlexBox css={{ justifyContent: 'space-between' }}>
+          <TopPorfolioFlexBox>
             <div
               style={{
                 display: 'flex',
@@ -125,7 +126,7 @@ function Portfolio() {
               </ConnectButton.Custom>
 
               <ParagraphBox css={{ fontSize: '25px', color:"#9a9a9a" }}>
-                Total Claimed ${totalClaimed.toLocaleString()}
+                Total Claimed ${totalClaimed.toFixed(2).toLocaleString()}
               </ParagraphBox>
               <ParagraphBox css={{ fontSize: '20px', paddingBottom: '10px' }}>
                 Wallets You Follow
@@ -162,7 +163,7 @@ function Portfolio() {
 
                    </ReferralBox>
               </div>
-          </AirdropHorizontalFlexBox>
+          </TopPorfolioFlexBox>
         </HorizontalFlexBoxWithColor>
         <PorfolioSeperator />
         <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start' }}>

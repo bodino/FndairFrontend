@@ -519,6 +519,27 @@ export const AirdropHorizontalFlexBox = styled('div', {
     
 })
 
+export const TopPorfolioFlexBox = styled('div', {
+    justifyContent:"space-between",
+
+    display: "flex",
+    alignItems:"center",
+    padding:"",
+    paddingTop:"10px",
+    width:"1000px",
+    // maxWidth: "1000px",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  
+    '@bp0': {
+        justifyContent:"center",
+        flexDirection:"column",
+        width:"100vw",
+      },
+   
+    
+})
+
 export const TopBox = styled('div', {
     width: "100vw",
     display: "flex",
