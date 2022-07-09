@@ -16,7 +16,8 @@ import {
   NavabarContainer,
   PorfolioContainer,
   ReferralHeader,
-  TopPorfolioFlexBox
+  TopPorfolioFlexBox,
+  SecondHalfFlexBox
 } from '../ui/flexboxes'
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
@@ -151,9 +152,9 @@ function Portfolio() {
                     </ReferralHeader>
                     <ReferralBox css={{minHeight:"45px", maxWidth:"300px", borderRadius:"10px",flexDirection:"row", marginTop:"20px",marginBottom:"20px" }}>
                       <div style={{backgroundImage: "linear-gradient(45deg, #FFFFFF, rgb(27, 32, 48))", WebkitBackgroundClip: "text", WebkitTextFillColor:"transparent", backgroundSize: "100%", overflow: "hidden", width:"200px", marginLeft:"20px"}}>
-                        https://asdfasdfsadfasdmflkasdlfasdffasdfas
+                        https://fndair.com/{account.address}
                       </div>
-                      <div style={{width:"80px", background:"rgb(13, 78, 123)", height:"45px",borderTopRightRadius:"10px",borderBottomRightRadius:"10px", alignItems:"center",display:"flex", justifyContent:"center"}}>
+                      <div onClick={() => {navigator.clipboard.writeText("https://fndair.com/"+account.address)}} style={{width:"80px", background:"rgb(13, 78, 123)", height:"45px",borderTopRightRadius:"10px",borderBottomRightRadius:"10px", alignItems:"center",display:"flex", justifyContent:"center", cursor: "pointer"}}>
                         Copy
                       </div>
                     </ReferralBox>
@@ -166,32 +167,35 @@ function Portfolio() {
           </TopPorfolioFlexBox>
         </HorizontalFlexBoxWithColor>
         <PorfolioSeperator />
-        <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start' }}>
+        <SecondHalfFlexBox>
+        <AirdropHorizontalFlexBox css={{ }}>
           <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Unclaimed</ParagraphBox>
         </AirdropHorizontalFlexBox>
 
-        <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start',  paddingBottom:"20px", paddingLeft:"20px" }}>
+        <AirdropHorizontalFlexBox css={{   paddingBottom:"20px", paddingLeft:"20px" }}>
         {airDropList[0]?.info ? <Mapairdrops />: <Mapfreeairdrops/>}          
         </AirdropHorizontalFlexBox>
 
-        <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start'  }}>
+        <AirdropHorizontalFlexBox css={{  }}>
           
           <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Claimed</ParagraphBox>
         </AirdropHorizontalFlexBox>
 
-        <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
+        <AirdropHorizontalFlexBox css={{  paddingLeft:"20px" }}>
         
         {claimedAirDropList[0]?.info ? <MapClaimedAirdrops />: <MapClaimedfreeairdrops/>}                 
         </AirdropHorizontalFlexBox>
         
 
-        <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start'  }}>
+        <AirdropHorizontalFlexBox css={{}}>
           <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Protocols We Support</ParagraphBox>
         </AirdropHorizontalFlexBox>
 
-        <AirdropHorizontalFlexBox css={{ justifyContent: 'flex-start', paddingLeft:"20px" }}>
+        <AirdropHorizontalFlexBox css={{paddingLeft:"20px" }}>
           <MapProtocols />
         </AirdropHorizontalFlexBox>
+
+        </SecondHalfFlexBox>
         
         <ParagraphBox css={{ flex: "1 1", textAlign:"center"}}/>
 

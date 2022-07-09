@@ -157,6 +157,7 @@ export const ParagraphBox = styled('div', {
     paddingBottom:"40px",
     '@bp0': {
         minWidth:"300px",
+        textAlign:"center"
       },
    
 })
@@ -501,11 +502,11 @@ export const ReferralBox = styled('div', {
 })
 
 export const AirdropHorizontalFlexBox = styled('div', {
-    justifyContent:"center",
+    justifyContent:"flex-start",
 
     display: "flex",
     alignItems:"center",
-    padding:"",
+
     paddingTop:"10px",
     width: "1380",
     // maxWidth: "1000px",
@@ -515,10 +516,28 @@ export const AirdropHorizontalFlexBox = styled('div', {
     '@bp3': {
         width:"1000px",
       },
+
+      '@bp0': {
+        justifyContent:"center",
+        paddingLeft:"0px !important",
+      },
    
     
 })
 
+
+export const SecondHalfFlexBox = styled('div', {
+   
+    display:"flex",
+    flexDirection:"column",
+    maxWidth:"1000px",
+    '@bp0': {
+        justifyContent:"center",
+        alignItems:"center"
+      },
+   
+    
+})
 export const TopPorfolioFlexBox = styled('div', {
     justifyContent:"space-between",
 
