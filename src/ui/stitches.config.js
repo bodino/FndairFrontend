@@ -67,6 +67,8 @@ export const {
     bp3: '(min-width: 1000px)',
     bp4: '(max-width: 500px)',
     vbp1:'(min-height: 1250px)',
+    bp918: '(max-width: 918px)',
+    bp734: '(max-width: 733px)',
 
     bp630: '(max-width: 630px)',
     bp400: '(max-width: 400px)',
