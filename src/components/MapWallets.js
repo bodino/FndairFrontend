@@ -113,7 +113,7 @@ export function MapWallets() {
     return (    
      
         <> 
-          <WalletFlexBox css={{maxWidth:"450px", overflowX: "scroll", justifyContent:"flex-start", marginLeft:"20px",width: "",
+          <WalletFlexBox css={{maxWidth:"300px", overflowX: "scroll", justifyContent:"flex-start", marginLeft:"20px",width: "",
 }}>
         {trackedWalletList.map((item) =>(
             <>

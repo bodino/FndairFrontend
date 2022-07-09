@@ -61,6 +61,8 @@ import {
 } from 'recoil'
 import useLocalStorage from '../hooks/use-local-storage';
 import {subscriptionInfoObject,referralAddressObject} from '../hooks/recoil'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // axios.defaults.withCredentials = true
 
 
@@ -109,11 +111,21 @@ function Pricing() {
       args: 1,
       overrides: { value: ethers.utils.parseEther('0.5') },
       onError: (error) => {
-        console.log(error.message)
+        console.log(error.data.code)
+        if (error.data.code == "-32000"){
+          toast("Not Enough Funds")
+        }
+      },
+      async onSuccess(data) {
+        await notify()
+       
       },
     }
   );
 
+  async function notify(){
+    await toast("Payment Pending")
+  }
   async function Join(months){
 
     console.log(activeChain)
@@ -147,7 +159,7 @@ function Pricing() {
 
   return (
    <>
-      
+        <ToastContainer />
 
         <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px' }}>
           <b>Premium Product, Fair Price </b>
@@ -314,8 +326,9 @@ function Pricing() {
         </ParagraphBox>
         <Footer />
     
-     
+      
         </>
+        
   
     
    
