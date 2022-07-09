@@ -45,7 +45,7 @@ function Portfolio() {
             </div>
           </ParagraphBox>
           <ParagraphBox css={{ fontSize: '20px', lineHeight: '35px' }}>
-            Tracking all the airdrops your eligible is hard. Every year millions of dollars are lost from crypto users who aren't aware of airdrops they are eligible for.
+            Tracking all the airdrops you're eligible for is hard. Every year, crypto users lose millions of dollars because they aren't aware of airdrops that they are eligible for.
             It's happened to us too. So we built Fndair to help you never miss an airdrop again.
           </ParagraphBox>
         </HorizontalFlexBoxWithColor>
@@ -64,20 +64,20 @@ function Portfolio() {
                </div>
                <ParagraphBox css={{ fontSize: '20px', lineHeight: '35px', paddingInline:"0px" }}>
               
-                    Whats and Airdrop
+                    What is an Airdrop?
                     <li>
                       An Airdrop is a mechanism for projects to distribute Goverance power to the community.
                       </li>
                       How does Fndair work?
                     <li>
-                      We aggregate all the avaliable airdrops and display them to you
+                      We aggregate all the avaliable airdrops and display them to you, so that you ccann easily track your airdrops and make sure to claim them as soon as they are available.
                     </li>
 
-                    How do I create an account
-                    <li>Just connect directly with your wallet, sign the verification message, and voala!</li>
-                    How can I see if I'm eligible for an Airdrop?
+                    How do I create an account?
+                    <li>Just connect directly with your wallet, sign the verification message, and voila!</li>
+                    How do I know if I'm eligible for an Airdrop?
                     <li>
-                      You can check your eligibility by connecting your wallet and checking the portfolio page
+                      Once you connect your wallet, all the airdrops associated with your wallet will be displayed in the portfolio page. You will also be able to keep track of multiple wallets.
                     </li>
                   
                     How private is Fndair?
