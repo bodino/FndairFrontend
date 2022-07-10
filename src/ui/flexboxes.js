@@ -787,3 +787,9 @@ export const PorfolioContainer = styled('div', {
    
     
 })
+
+export const AboutImageContainer = styled('div', {
+    '@bp4': {
+        display: "none"
+    }
+})
