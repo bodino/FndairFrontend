@@ -92,7 +92,12 @@ export const Description = styled('p', {
     color: 'Black',
     fontFamily: "Inter, Arial",
     fontSize: "15px",
-    alignItems: "left"
+    alignItems: "left",
+    overflowY: 'scroll',
+
+    '&::-webkit-scrollbar': { 
+        display: "none", 
+    }
 })
 
 export const GraphContainer = styled('div', {
