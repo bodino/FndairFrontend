@@ -8,7 +8,8 @@ import {
     LeftContainer,
     IconContainer,
     Description,
-    GraphContainer
+    GraphContainer,
+    TitleContainer
   } from '../ui/popup'
 import axios from 'axios';
 import { Line } from 'react-chartjs-2';
@@ -79,7 +80,10 @@ export default function GraphPopup(props) {
                 </ButtonContainer>
                 <ContentContainer>
                     <LeftContainer>
-                        <h3 style={{color: 'black', textAlign: 'center'}}>{props.name}</h3>
+                        <TitleContainer>
+                            <h3 style={{color: 'black', textAlign: 'center'}}>{props.name}</h3>
+                        </TitleContainer>
+                        
                         <IconContainer>
                             <img style={{width:"120px", borderRadius:"50%"}} src={props.icon}/>
                         </IconContainer>

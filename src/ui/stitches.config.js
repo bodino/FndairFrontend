@@ -73,6 +73,7 @@ export const {
 
     bp630: '(max-width: 630px)',
     bp400: '(max-width: 400px)',
+    bp140: '(max-width: 140px)',
 
     
     dark: "(prefers-color-scheme: dark)",

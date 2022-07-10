@@ -4,8 +4,8 @@ export const PopupBackground = styled('div', {
     position: 'fixed',
     left: '-1vw',
     top: "-1vh",
-    width: '100vw',
-    height: '100vh',
+    width: '100%',
+    height: '100%',
     backgroundColor: 'rgb(0, 0, 0, 0.6)',
     display: 'flex',
     justifyContent: "center",
@@ -32,7 +32,11 @@ export const PopupContainer = styled('div', {
     backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'row-reverse',
-    padding: '10px'
+    padding: '10px',
+
+    "@bp734": {
+        flexDirection: 'column'
+    }
 })
 
 export const PopupContainerLogin = styled('div', {
@@ -72,20 +76,39 @@ export const ContentContainer = styled('div', {
     display: 'flex',
     flexDirection: 'row',
     alignItems: "center",
-    justifyContent: 'center'
+    justifyContent: 'center',
+
+    "@bp734": {
+        flexDirection: 'column-reverse',
+        overflowY: 'scroll'
+    },
+    '&::-webkit-scrollbar': { 
+        display: "none", 
+    }
 })
 
 export const LeftContainer = styled('div', {
     display: 'flex',
     flexDirection: 'column',
     maxWidth: '28%',
-    maxHeight: '100%'
+    maxHeight: '100%',
+
+    "@bp734": {
+        height: '50%',
+        maxWidth: '100%',
+        paddingLeft: '2px',
+        paddingBottom: '2px'
+    }
 })
 
 export const IconContainer = styled('div', {
     display: 'flex',
     justifyContent: 'center',
-    paddingBottom: '5px'
+    paddingBottom: '5px',
+
+    "@bp734": {
+        display: 'none'
+    }
 })
 
 export const Description = styled('p', {
@@ -95,6 +118,9 @@ export const Description = styled('p', {
     alignItems: "left",
     overflowY: 'scroll',
 
+    "@bp734": {
+        overflowY: 'none'
+    },
     '&::-webkit-scrollbar': { 
         display: "none", 
     }
@@ -106,5 +132,18 @@ export const GraphContainer = styled('div', {
     alignItems: 'center',
     width: '70%',
     height: '100%',
-    paddingLeft: '7px'
+    paddingLeft: '7px',
+
+    "@bp734": {
+        height: '60%',
+        width: '100%',
+        paddingLeft: '2px',
+        paddingBottom: '2px'
+    }
+})
+
+export const TitleContainer = styled('div', {
+    "@bp734": {
+        display: 'none'
+    }
 })
