@@ -72,6 +72,7 @@ export const {
     bp450: '(max-width: 450px)',
 
     bp630: '(max-width: 630px)',
+    bp800: '(max-width: 800px)',
     bp400: '(max-width: 400px)',
     bp140: '(max-width: 140px)',
 
