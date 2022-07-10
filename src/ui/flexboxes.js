@@ -162,6 +162,27 @@ export const ParagraphBox = styled('div', {
    
 })
 
+export const PortfolioItemBox = styled('div', {
+
+    display: "flex",
+    // alignItems:"center",
+    fontSize:"$header1",
+    color:"$antibackground",
+    fontFamily: "Inter, Arial",
+    width: "365.09px",
+    textAlign:"left",
+    paddingInline: "20px",
+    // maxWidth: "1000px",
+    // textShadow: "#467898 5px 5px",
+    flexDirection: "column",
+    // minWidth:"450px",
+    paddingBottom:"40px",
+    '@bp450': {
+        width:"310px",
+      },
+   
+})
+
 export const ReferralHeader = styled('div', {
 
     display: "flex",
@@ -776,6 +797,7 @@ export const PorfolioContainer = styled('div', {
     alignItems: 'center',
     flexDirection: 'column',
     flex: '1 1',
+    // filter:"blur(3px)",
     
     '@bp0': {
         alignItems: 'flex-start',
