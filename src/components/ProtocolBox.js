@@ -31,7 +31,7 @@ export function ProtocolBox({item}) {
         <div style={{fontWeight: "500", fontSize:"25px"}}>${item.priceUsd.toFixed(2)}</div>
       </div>
       </div>
-      <GraphPopup trigger={trigger} icon={item.icon} setTrigger={setTrigger} address={item.gekoId}/>
+      <GraphPopup trigger={trigger} icon={item.icon} setTrigger={setTrigger} address={item.gekoId} description={item.desc} name={item.name}/>
     </ProtocolFlexBox>
   )
 }

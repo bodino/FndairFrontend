@@ -79,10 +79,11 @@ export default function GraphPopup(props) {
                 </ButtonContainer>
                 <ContentContainer>
                     <LeftContainer>
+                        <h3 style={{color: 'black', textAlign: 'center'}}>{props.name}</h3>
                         <IconContainer>
                             <img style={{width:"120px", borderRadius:"50%"}} src={props.icon}/>
                         </IconContainer>
-                        <Description>This protocol is really dope and this paragraph should tell you more about what they protocol does. It also needs to be styled correctly</Description>
+                        <Description>{props.description}</Description>
                     </LeftContainer>
                     <GraphContainer>
                         <Line data={data} options={options} style={{maxHeight: "100%", maxWidth: "95%"}}/>
