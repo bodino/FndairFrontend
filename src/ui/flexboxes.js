@@ -606,12 +606,10 @@ export const TopPorfolioFlexBox = styled('div', {
     flexDirection: "row",
     flexWrap: "wrap",
   
-    // '@bp0': {
-    //     // justifyContent:"center",
-    //     alignItems:"flex-start",
-    //     flexDirection:"column",
-    //     width:"100vw",
-    //   },
+    '@bp734': {
+ 
+        width:"375px",
+      },
    
     
 })
