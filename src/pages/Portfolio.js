@@ -251,18 +251,18 @@ function Portfolio() {
               }}
             >
              
-                    <ParagraphBox css={{ paddingBottom: '10px', fontSize:"35px" }}>
+                    <PortfolioItemBox css={{ paddingBottom: '10px', fontSize:"35px" }}>
                       <b>Welcome Vitalik.eth</b>
-                    </ParagraphBox>
+                    </PortfolioItemBox>
                
              
 
-              <ParagraphBox css={{ fontSize: '25px', color:"#9a9a9a" }}>
+              <PortfolioItemBox css={{ fontSize: '25px', color:"#9a9a9a" }}>
                 Total Claimed $1,782
-              </ParagraphBox>
-              <ParagraphBox css={{ fontSize: '20px', paddingBottom: '10px' }}>
+              </PortfolioItemBox>
+              <PortfolioItemBox css={{ fontSize: '20px', paddingBottom: '10px' }}>
                 Wallets You Follow
-              </ParagraphBox>
+              </PortfolioItemBox>
                 <div style={{display:"flex", justifyContent:"flex-start", flexDirection:"row", alignItems:"center"}}>
                 {/* <MapWallets/> */}
                 </div>
