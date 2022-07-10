@@ -161,13 +161,13 @@ function Pricing() {
    <>
         <ToastContainer />
 
-        <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px' }}>
+        <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px', textAlign:"center" }}>
           <b>Premium Product, Fair Price </b>
         </ParagraphBox>
-        <MiniParagraphBox css={{ paddingBottom: '60px',fontSize:"18px"  }}>
+        <MiniParagraphBox css={{ paddingBottom: '60px',fontSize:"18px", textAlign:"center"  }}>
           Pay on Ethereum, Optimism, Arbitrum, or Polygon
         </MiniParagraphBox>
-        <HorizontalFlexBoxWithColor css={{ justifyContent: 'center' }}>
+        <HorizontalFlexBoxWithColor css={{ justifyContent: 'center', maxWidth:"1100px", flexWrap:"wrap", flexDirection:"row", width:"unset" }}>
           <PriceBox>
             
             <PaymentTextBoxNormal>
@@ -282,15 +282,17 @@ function Pricing() {
           
         </HorizontalFlexBoxWithColor>
    
-        <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px' }}>
+        <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px', textAlign:"center" }}>
           <b>Not sure which one to choose?  </b>
         </ParagraphBox>
 
-        <MiniParagraphBox css={{ paddingBottom: '60px', fontSize:"18px" }}>
+        <MiniParagraphBox css={{ paddingBottom: '60px', fontSize:"18px", textAlign:"center" }}>
         Find your airdrop for free        
         </MiniParagraphBox>
         
-        <PriceBox css={{height:"314px", width:"775px", background: "rgba(0, 0, 0, 0.45)", flexDirection:"row", alignItems:"center", justifyContent:"space-around"}}>
+        <PriceBox css={{height:"314px", width:"775px", background: "rgba(0, 0, 0, 0.45)", flexDirection:"row", alignItems:"center", justifyContent:"space-around",  '@bp800': {
+        flexDirection:"column", width:"375px", height:"470px", paddingBottom:"10px"
+      },}}>
 
            
               <div>

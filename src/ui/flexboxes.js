@@ -650,7 +650,7 @@ export const PriceBox = styled('div', {
     marginInline:"15px",
    
     borderRadius:"10px",
-    width: "1380",
+    width: "305px",
     // maxWidth: "1000px",
     flexDirection: "column",
     background:"rgb(255,255,255,0.4)",
@@ -658,10 +658,12 @@ export const PriceBox = styled('div', {
     filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
   
     
-    '@bp3': {
-        minWidth:"305px",
+    '@bp0': {
+        marginBottom:"20px",
       },
-   
+
+     
+    
     
 })
 
