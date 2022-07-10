@@ -12,6 +12,19 @@ export const PopupBackground = styled('div', {
     alignItems: "center"
 })
 
+export const PopupBackgroundLogin = styled('div', {
+    position: 'fixed',
+    top:"110px",
+    width: '100vw',
+    height: 'calc(100% - 110px)',
+    display: 'flex',
+    justifyContent: "center",
+    alignItems: "center",
+ 
+
+
+})
+
 export const PopupContainer = styled('div', {
     width: '55vw',
     height: '45vh',
@@ -19,6 +32,21 @@ export const PopupContainer = styled('div', {
     backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'row-reverse',
+    padding: '10px'
+})
+
+export const PopupContainerLogin = styled('div', {
+    width: '400px',
+    height: '200px',
+    borderRadius: '12px',
+    background: "linear-gradient(45deg, rgb(116, 27, 107), rgb(0, 80, 124))",
+    // mixBlendMode: "luminosity",
+    // backdropFilter: "blur(15px)",
+    filter: "drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px)",
+    justifyContent:"center",
+    alignItems:"center",
+    display: 'flex',
+    flexDirection: 'column',
     padding: '10px'
 })
 

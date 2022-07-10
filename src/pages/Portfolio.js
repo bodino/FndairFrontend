@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 import React from 'react'
 import { useAccount } from 'wagmi'
 import '../App.css'
 import { css } from '../ui/stitches.config'
 import { styled, darkTheme, createGlobalStyle } from '../ui/stitches.config'
-import { Text, Button } from '../ui/text.js'
+import { Text } from '../ui/text.js'
 import { ThemeToggle } from '../ThemeToggle'
 import {
   BraggingBox,
@@ -42,7 +42,8 @@ import {
   TestamonyBox,
   AirdropFlexBox,
   ReferralBox,
-  PortfolioFlexBoxWithColor
+  PortfolioFlexBoxWithColor,
+  PortfolioItemBox
 } from '../ui/flexboxes'
 
 
@@ -72,7 +73,9 @@ import {
   trackedWalletListObject,
   signedMessageObject,
   claimedAirDropListObject,
-  totalClaimedObject
+  totalClaimedObject,
+  setClickedObject,
+  setLogOutObject
 } from '../hooks/recoil'
 import {
   useRecoilState,  
@@ -80,6 +83,19 @@ import {
 import Mapfreeairdrops from '../components/Mapfreeairdrops'
 import MapClaimedAirdrops from '../components/MapClaimedAirdrops'
 import MapClaimedfreeairdrops from '../components/MapClaimedfreeairdrops'
+import DemoAirdropboxFree from '../components/DemoAirdropboxFree'
+import {
+  PopupBackgroundLogin,
+  PopupContainerLogin,
+  ButtonContainer,
+  CloseButton,
+  ContentContainer,
+  LeftContainer,
+  IconContainer,
+  Description,
+  GraphContainer
+} from '../ui/popup'
+
 
 function Portfolio() {
   const { data: account } = useAccount()
@@ -89,6 +105,8 @@ function Portfolio() {
   const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
   const [claimedAirDropList, setclaimedAirDropList] = useRecoilState(claimedAirDropListObject)
   const [totalClaimed, settotalClaimed] = useRecoilState(totalClaimedObject)
+  const [clicked, setClicked] = useRecoilState(setClickedObject)
+  const [LogOut, setLogOut] = useRecoilState(setLogOutObject)
 
 
 
@@ -113,26 +131,26 @@ function Portfolio() {
                 {({ account, mounted, chain }) => {
                    if (mounted && account && chain) {
                   return (
-                    <ParagraphBox css={{ paddingBottom: '10px', fontSize:"35px" }}>
+                    <PortfolioItemBox css={{ paddingBottom: '10px', fontSize:"35px" }}>
                       <b>Welcome {account.displayName}</b>
-                    </ParagraphBox>
+                    </PortfolioItemBox>
                   )
                 } else {
                   return (
-                  <ParagraphBox css={{ paddingBottom: '10px' }}>
+                  <PortfolioItemBox css={{ paddingBottom: '10px' }}>
                       <b>Welcome</b>
-                    </ParagraphBox>
+                    </PortfolioItemBox>
                   )
                 }
                 }}
               </ConnectButton.Custom>
 
-              <ParagraphBox css={{ fontSize: '25px', color:"#9a9a9a" }}>
+              <PortfolioItemBox css={{ fontSize: '25px', color:"#9a9a9a" }}>
                 Total Claimed ${(totalClaimed.toFixed(2)).toLocaleString()}
-              </ParagraphBox>
-              <ParagraphBox css={{ fontSize: '20px', paddingBottom: '10px' }}>
+              </PortfolioItemBox>
+              <PortfolioItemBox css={{ fontSize: '20px', paddingBottom: '10px' }}>
                 Wallets You Follow
-              </ParagraphBox>
+              </PortfolioItemBox>
                 <div style={{display:"flex", justifyContent:"flex-start", flexDirection:"row", alignItems:"center"}}>
                 <MapWallets/>
                 </div>
@@ -215,12 +233,192 @@ function Portfolio() {
     )
   } else {
     return(
-    <>
-    <PorfolioContainer css={{    background: "rgb(27, 32, 48)"}}>
-              {/* <ParagraphBox css={{ flex: "1 1", textAlign:"center"}}/> */}
+      <>
+      <PorfolioContainer css={{ 
+   
+   filter: "blur(2px) brightness(50%)"}}
+      >
+        
+        <PortfolioFlexBoxWithColor
+          css={{ alignItems: 'flex-start', minHeight: '0px' }}
+        >
+          <TopPorfolioFlexBox>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+              }}
+            >
+             
+                    <PortfolioItemBox css={{ paddingBottom: '10px', fontSize:"35px" }}>
+                      <b>Welcome Vitalik.eth</b>
+                    </PortfolioItemBox>
+               
+             
 
-    </PorfolioContainer>
-    </>
+              <PortfolioItemBox css={{ fontSize: '25px', color:"#9a9a9a" }}>
+                Total Claimed $1,782
+              </PortfolioItemBox>
+              <PortfolioItemBox css={{ fontSize: '20px', paddingBottom: '10px' }}>
+                Wallets You Follow
+              </PortfolioItemBox>
+                <div style={{display:"flex", justifyContent:"flex-start", flexDirection:"row", alignItems:"center"}}>
+                {/* <MapWallets/> */}
+                </div>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+              }}
+            >
+              
+              <ReferralBox><ReferralHeader css={{fontSize: '35px', marginTop:"30px"}}>
+                      $1,281.69
+                    </ReferralHeader>
+                    <ReferralHeader css={{fontSize: '20px', color:"rgb(154, 154, 154)"}}>
+                      Earned from referrals 
+                    </ReferralHeader>
+                    <ReferralBox css={{minHeight:"45px", maxWidth:"300px", borderRadius:"10px",flexDirection:"row", marginTop:"20px",marginBottom:"20px",  '@bp918': {
+        width:"200px",
+      }, }}>
+                      <div style={{backgroundImage: "linear-gradient(45deg, #FFFFFF, rgb(27, 32, 48))", WebkitBackgroundClip: "text", WebkitTextFillColor:"transparent", backgroundSize: "100%", overflow: "hidden", width:"200px", marginLeft:"20px"}}>
+                        https://fndair.com/0x123412351235123452
+                      </div>
+                      <div onClick={() => {navigator.clipboard.writeText("https://fndair.com/"+account.address)}} style={{width:"80px", background:"rgb(13, 78, 123)", height:"45px",borderTopRightRadius:"10px",borderBottomRightRadius:"10px", alignItems:"center",display:"flex", justifyContent:"center", cursor: "pointer"}}>
+                        Copy
+                      </div>
+                    </ReferralBox>
+                    <ReferralHeader css={{fontSize: '14px', paddingBottom:"30px"}}>
+                      Earn up to $40 instantly per referral 
+                    </ReferralHeader>
+
+                   </ReferralBox>
+              </div>
+          </TopPorfolioFlexBox>
+        </PortfolioFlexBoxWithColor>
+        <PorfolioSeperator />
+        <SecondHalfFlexBox>
+        <AirdropHorizontalFlexBox css={{ }}>
+          <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Unclaimed</ParagraphBox>
+        </AirdropHorizontalFlexBox>
+
+        <AirdropHorizontalFlexBox css={{   paddingBottom:"20px", paddingLeft:"20px", '@bp734': {
+       paddingLeft:"0px",
+      }, }}>
+       <DemoAirdropboxFree/> <DemoAirdropboxFree/>
+        </AirdropHorizontalFlexBox>
+
+        <AirdropHorizontalFlexBox css={{  }}>
+          
+          <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Claimed</ParagraphBox>
+        </AirdropHorizontalFlexBox>
+
+        <AirdropHorizontalFlexBox css={{  paddingBottom:"20px",paddingLeft:"20px",  '@bp734': {
+       paddingLeft:"0px",
+      }, }}>
+        
+        <DemoAirdropboxFree/> 
+        </AirdropHorizontalFlexBox>
+        
+
+        <AirdropHorizontalFlexBox css={{}}>
+          <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Protocols We Support</ParagraphBox>
+        </AirdropHorizontalFlexBox>
+
+        <AirdropHorizontalFlexBox css={{paddingLeft:"20px", '@bp734': {
+       paddingLeft:"0px",
+      }, }}>
+        
+        </AirdropHorizontalFlexBox>
+
+        </SecondHalfFlexBox>
+        
+        <ParagraphBox css={{ flex: "1 1", textAlign:"center"}}/>
+
+            <Footer/>
+
+      </PorfolioContainer>
+
+      <PopupBackgroundLogin>
+            <PopupContainerLogin>
+               
+      <div style={{width:"280px", fontSize:"20px"}}> To View Your Portfolio Connect Your Wallet</div>
+      <br></br>
+                    <ConnectButton.Custom>
+              {({
+                account,
+                chain,
+                openAccountModal,
+                openChainModal,
+                openConnectModal,
+                mounted,
+              }) => {
+                return (
+                  <div
+                    {...(!mounted && {
+                      'aria-hidden': true,
+                      style: {
+                        opacity: 0,
+                        pointerEvents: 'none',
+                        userSelect: 'none',
+                      },
+                    })}
+                  >
+                    {(() => {
+                      if (!mounted || !account || !chain || !signedMessage) {
+                        return (
+                          <WalletConnect
+                            onClick={() => {
+                              setClicked(true)
+                              openConnectModal()
+                            }}
+                          >
+                            Connect Wallet
+                          </WalletConnect>
+                        )
+                      }
+
+                      if (chain.unsupported) {
+                        return (
+                          <button onClick={openChainModal} type="button">
+                            Wrong network
+                          </button>
+                        )
+                      }
+
+                      if (signedMessage) {
+                        return (
+                          <div style={{ display: 'flex', gap: 1 }}>
+                            <WalletConnect
+                              style={{ width: '108px', textAlign: 'center' }}
+                              onClick={() => {
+                                setLogOut(true)
+                                openAccountModal()
+                              }}
+                              type="button"
+                            >
+                              <div style={{ top: '4px' }}>
+                                {account.displayName}
+                              </div>
+                            </WalletConnect>
+                          </div>
+                        )
+                      }
+                    })()}
+                  </div>
+                )
+              }}
+            </ConnectButton.Custom>
+   
+            
+             
+            </PopupContainerLogin>
+        </PopupBackgroundLogin>
+    
+      </>
     )
   }
 }
