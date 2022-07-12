@@ -41,7 +41,7 @@ export function Airdropbox({item}) {
                 <div style={{fontSize:"15px"}}> {item.address.substring(0, 5)}...{item.address.substring(38, 42)}</div>
           </div>
       </AirdropInfo>
-      <GraphPopup trigger={trigger1} icon={item.info.icon} desc={item.info.desc} setTrigger={setTrigger1} address={item.info.gekoId}/>
+      <GraphPopup trigger={trigger1} icon={item.info.icon} desc={item.info.desc} setTrigger={setTrigger1} address={item.info.gekoId} item={item.info}/>
 
                 {/* <div>{protocolList[item.name]?.Claimable}</div> */}
     </AirdropFlexBox>

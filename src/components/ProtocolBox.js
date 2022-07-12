@@ -20,6 +20,11 @@ import {ClaimButton} from '../ui/text'
 
 export function ProtocolBox({item}) {
   const [trigger, setTrigger] = useState(false);
+  console.log("TESTTEST")
+  console.log(item)
+
+
+
   return (
     //needs image
     <ProtocolFlexBox >
@@ -31,7 +36,7 @@ export function ProtocolBox({item}) {
         <div style={{fontWeight: "500", fontSize:"25px"}}>${item.priceUsd.toFixed(2)}</div>
       </div>
       </div>
-      <GraphPopup trigger={trigger} icon={item.icon} setTrigger={setTrigger} address={item.gekoId} description={item.desc} name={item.name}/>
+      <GraphPopup trigger={trigger} icon={item.icon} setTrigger={setTrigger} address={item.gekoId} description={item.desc} name={item.name} item={item}/>
     </ProtocolFlexBox>
   )
 }
