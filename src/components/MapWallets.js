@@ -20,6 +20,7 @@ import {
   TwitterLogoIcon,
   LinkBreak2Icon,
   Cross2Icon,
+
 } from '@radix-ui/react-icons'
 import {
   DropdownMenu,
@@ -99,13 +100,13 @@ export function MapWallets() {
           .put('http://localhost:3001/user/'+data.address+"/"+passedAddress, {
           })
           .then(function (response) {
-            console.log("Hi")
+            console.log(response)
             checklogin()
           })
           .catch(function (error) {
           })
         } else {
-          console.log("hi")
+          console.log("error")
           toast("Address is not valid");
         }
       }

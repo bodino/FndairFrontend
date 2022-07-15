@@ -17,6 +17,8 @@ import { Example } from '../components/Example'
 import Connected from '../components/Connected'
 import Navabar from '../components/Navabar'
 import Steps from 'rc-steps'
+import { Link } from 'react-router-dom'
+
 import {
   Name,
   Ptext,
@@ -310,6 +312,7 @@ function Pricing() {
                 <ListNamers>View value eligible to claim </ListNamers>{' '}
                 <ListNamers>Get email alerts on new airdrops</ListNamers>
             </PaymentTextBoxNormal>
+            <Link style={{textDecoration:"none"}} to="/portfolio">
             <WalletConnect
               css={{
                 alignSelf: 'center',
@@ -319,6 +322,7 @@ function Pricing() {
             >
               Try For Free
             </WalletConnect>
+            </Link>
             </div>
           </PriceBox>
 

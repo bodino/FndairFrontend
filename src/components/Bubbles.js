@@ -118,7 +118,7 @@ const Bubbles = () => {
             animate={{ opacity: .8, y: 0, transition: { duration: 1 } }}
           />
           <Image
-            src={"https://aws1.discourse-cdn.com/standard10/uploads/bc41dd/original/1X/391d6e71a279a9f881f75bfa7df5cdf3cf905b3f.png"}
+            src={"https://assets.coingecko.com/coins/images/26149/large/YCvKDfl8_400x400.jpeg?1656041509"}
             alt='planet'
             whileTap={{ scale: 0.6 }}
             drag={true}
