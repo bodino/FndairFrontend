@@ -20,6 +20,7 @@ import {
   TwitterLogoIcon,
   LinkBreak2Icon,
   Cross2Icon,
+
 } from '@radix-ui/react-icons'
 import {
   DropdownMenu,
@@ -78,7 +79,7 @@ export function MapWallets() {
   
     async function checklogin() {
       await axios
-        .get('http://localhost:3001/login', {})
+        .get(process.env.REACT_APP_BACKEND_API_LINK+'login', {})
         .then(function (res) {
           if ((res.data.loggedin = true)) {
               convertObjectToArray(res);
@@ -96,16 +97,16 @@ export function MapWallets() {
         if (ethers.utils.isAddress(passedAddress)){
           console.log(passedAddress)
           await axios
-          .put('http://localhost:3001/user/'+data.address+"/"+passedAddress, {
+          .put(process.env.REACT_APP_BACKEND_API_LINK+'user/'+data.address+"/"+passedAddress, {
           })
           .then(function (response) {
-            console.log("Hi")
+            console.log(response)
             checklogin()
           })
           .catch(function (error) {
           })
         } else {
-          console.log("hi")
+          console.log("error")
           toast("Address is not valid");
         }
       }
@@ -139,7 +140,7 @@ export function MapWallets() {
       
       <Fieldset>
         <Label htmlFor="username">Wallet Address</Label>
-        <Input onChange={event => setAddress(event.target.value)} id="username" defaultValue="0x0000000000000000000000000" />
+        <Input onChange={event => setAddress(event.target.value)} id="username" placeholder="0x0000000000000000000000000000000000000000" />
       </Fieldset>
       <Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}>
         <DialogClose onClick={() => {

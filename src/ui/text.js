@@ -131,13 +131,19 @@ export const ListNamers = styled('li', {
 export const StaticWalletConnect = styled('div', {
   color:"$antibackground",
   fontSize:"$p1",
-  padding:"10px",
+  paddingLeft:"10px",
+  paddingTop:"10px",
+  paddingBottom:"10px",
+  paddingRight:"10px",
+  display:"flex",
+  width:"125px",
+  
   filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
   borderRadius:"5px",
   // opacity:".7",
   // width:"100px !important",
   background: "#0d4e7b",
-  cursor: "pointer",
+  
   // border: "1px solid rgba(255, 255, 255, 0.4)",
   // border: "2px solid $gray400 ",
   // borderRadius: "5px",

@@ -72,3 +72,10 @@ export const referralAddressObject
     default: false
 })
 
+export const totalRefferedObject
+= atom({
+    key: "totalRefferedObject",
+    default: false
+})
+
+

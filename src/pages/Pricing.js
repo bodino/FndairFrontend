@@ -17,6 +17,8 @@ import { Example } from '../components/Example'
 import Connected from '../components/Connected'
 import Navabar from '../components/Navabar'
 import Steps from 'rc-steps'
+import { Link } from 'react-router-dom'
+
 import {
   Name,
   Ptext,
@@ -76,7 +78,7 @@ function Pricing() {
   const [priceData, setpriceData] = useState();
   async function updatePricing(){
     await axios
-    .get('http://localhost:3001/pricing', {})
+    .get(process.env.REACT_APP_BACKEND_API_LINK+'pricing', {})
     .then(function (response) {
       setpriceData(response.data);
       
@@ -91,7 +93,7 @@ function Pricing() {
 
   const { data:signerData, error, isLoading, refetch } = useSigner()
   const contract = useContract({
-    addressOrName: '0xA14d175d92011C63478b9107Bd1C552e4a47c9F2',
+    addressOrName: '0x4bf279EcA150D9551573A701035c531BFb916621',
     contractInterface: abi.abi,
     signerOrProvider: signerData,
   });
@@ -102,7 +104,7 @@ function Pricing() {
     status: status,
   } = useContractWrite(
     {
-      addressOrName: '0xA14d175d92011C63478b9107Bd1C552e4a47c9F2',
+      addressOrName: '0x4bf279EcA150D9551573A701035c531BFb916621',
       contractInterface: abi.abi,
       signerOrProvider: signerData,
     },
@@ -134,7 +136,7 @@ function Pricing() {
     console.log(priceData)
     if (activeChain.id === 1 ||activeChain.id === 10 || activeChain.id === 42161 || activeChain.id === 5 ) {
       priceObject = priceData[0]
-    } else if (activeChain.id == 137) { 
+    } else if (activeChain.id === 137) { 
       priceObject = priceData[1]
     }
     if (months === 1) {
@@ -144,8 +146,8 @@ function Pricing() {
     } else if (months === 12) {
       payAmount = priceObject.amount12Month
     }
-    var passedAddress =  '0x89B09F9aEf618cC154c0CaD9eE349bb2aE61B73D';
-      if (referralAddress != ""){
+    var passedAddress =  '0x5F073217aE80C06ca6E3cF653427EeB62742B597';
+      if (referralAddress !== ""){
         passedAddress = referralAddress
       }
       console.log(passedAddress);
@@ -310,6 +312,7 @@ function Pricing() {
                 <ListNamers>View value eligible to claim </ListNamers>{' '}
                 <ListNamers>Get email alerts on new airdrops</ListNamers>
             </PaymentTextBoxNormal>
+            <Link style={{textDecoration:"none"}} to="/portfolio">
             <WalletConnect
               css={{
                 alignSelf: 'center',
@@ -319,6 +322,7 @@ function Pricing() {
             >
               Try For Free
             </WalletConnect>
+            </Link>
             </div>
           </PriceBox>
 

@@ -75,7 +75,8 @@ import {
   claimedAirDropListObject,
   totalClaimedObject,
   setClickedObject,
-  setLogOutObject
+  setLogOutObject,
+  totalRefferedObject
 } from '../hooks/recoil'
 import {
   useRecoilState,  
@@ -107,6 +108,7 @@ function Portfolio() {
   const [totalClaimed, settotalClaimed] = useRecoilState(totalClaimedObject)
   const [clicked, setClicked] = useRecoilState(setClickedObject)
   const [LogOut, setLogOut] = useRecoilState(setLogOutObject)
+  const [totalReffered, settotalReffered] = useRecoilState(totalRefferedObject)
 
 
 
@@ -164,7 +166,7 @@ function Portfolio() {
             >
               
               <ReferralBox><ReferralHeader css={{fontSize: '35px', marginTop:"30px"}}>
-                      $1,281.69
+                      ${totalReffered.toLocaleString()}
                     </ReferralHeader>
                     <ReferralHeader css={{fontSize: '20px', color:"rgb(154, 154, 154)"}}>
                       Earned from referrals 
@@ -216,7 +218,9 @@ function Portfolio() {
           <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Protocols We Support</ParagraphBox>
         </AirdropHorizontalFlexBox>
 
-        <AirdropHorizontalFlexBox css={{paddingLeft:"20px", '@bp734': {
+        <AirdropHorizontalFlexBox css={{paddingLeft:"20px", '@bp3': {
+        width:"980px",
+      }, '@bp734': {
        paddingLeft:"0px",
       }, }}>
           <MapProtocols />

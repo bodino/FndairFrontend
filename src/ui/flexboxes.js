@@ -779,7 +779,7 @@ export const ProtocolFlexBox = styled('div', {
     borderRadius: "30px",
     fontWeight: "300",
     margin:"10px",
-    width: "228px",
+    width: "225px",
     
     '@bp3': {
         width:"200x",

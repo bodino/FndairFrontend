@@ -19,27 +19,27 @@ export default function GraphPopup(props) {
     const [dates, setDates] = useState();
     const [prices, setPrices] = useState();
 
-    async function updateData(){
-        await axios
-        .get('http://localhost:3001/projects/' + props.address, {})
-        .then(function (response) {
-            setDates(response.data.dates);
-            setPrices(response.data.usdPrices);
+    // async function updateData(){
+    //     await axios
+    //     .get('http://localhost:3001/projects/' + props.address, {})
+    //     .then(function (response) {
+    //         setDates(response.data.dates);
+    //         setPrices(response.data.usdPrices);
           
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-    }
-    useEffect(() => {
-        updateData()
-      }, []);
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error)
+    //     })
+    // }
+    // useEffect(() => {
+    //     updateData()
+    //   }, []);
 
     const data = {
-        labels: dates,
+        labels: props.item.graphData.dates,
         datasets:[{
             label: 'test data',
-            data: prices,
+            data: props.item.graphData.prices,
             fill: {
                 target: 'origin',
                 above: 'rgb(0, 80, 124, 0.20)'

@@ -17,7 +17,7 @@ import {
 
   import {ClaimButton} from '../ui/text'
 
-export function AirdropboxFree({item}) {
+export function DemoAirdropboxFree({item}) {
 
 
   return (
@@ -40,4 +40,4 @@ export function AirdropboxFree({item}) {
   )
 }
 
-export default AirdropboxFree
+export default DemoAirdropboxFree
