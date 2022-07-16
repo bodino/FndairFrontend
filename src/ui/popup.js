@@ -4,12 +4,25 @@ export const PopupBackground = styled('div', {
     position: 'fixed',
     left: '-1vw',
     top: "-1vh",
-    width: '100vw',
-    height: '100vh',
+    width: '100%',
+    height: '100%',
     backgroundColor: 'rgb(0, 0, 0, 0.6)',
     display: 'flex',
     justifyContent: "center",
     alignItems: "center"
+})
+
+export const PopupBackgroundLogin = styled('div', {
+    position: 'fixed',
+    top:"110px",
+    width: '100vw',
+    height: 'calc(100% - 110px)',
+    display: 'flex',
+    justifyContent: "center",
+    alignItems: "center",
+ 
+
+
 })
 
 export const PopupContainer = styled('div', {
@@ -18,13 +31,33 @@ export const PopupContainer = styled('div', {
     borderRadius: '12px',
     backgroundColor: 'white',
     display: 'flex',
+    flexDirection: 'row-reverse',
+    padding: '10px',
+
+    "@bp734": {
+        flexDirection: 'column'
+    }
+})
+
+export const PopupContainerLogin = styled('div', {
+    width: '400px',
+    height: '200px',
+    borderRadius: '12px',
+    background: "linear-gradient(45deg, rgb(116, 27, 107), rgb(0, 80, 124))",
+    // mixBlendMode: "luminosity",
+    // backdropFilter: "blur(15px)",
+    filter: "drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px)",
+    justifyContent:"center",
+    alignItems:"center",
+    display: 'flex',
     flexDirection: 'column',
     padding: '10px'
 })
 
 export const ButtonContainer = styled('div', {
     display: 'flex',
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
+    alignItems: 'flex-start'
 })
 
 export const CloseButton = styled('button', {
@@ -36,33 +69,81 @@ export const CloseButton = styled('button', {
 })
 
 export const ContentContainer = styled('div', {
+    paddingTop: '12px',
+    paddingLeft: '5px',
+    maxHeight: '100%',
+    maxWidth: '95%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: "center",
-    justifyContent: 'center'
+    justifyContent: 'center',
+
+    "@bp734": {
+        flexDirection: 'column-reverse',
+        overflowY: 'scroll'
+    },
+    '&::-webkit-scrollbar': { 
+        display: "none", 
+    }
 })
 
 export const LeftContainer = styled('div', {
     display: 'flex',
     flexDirection: 'column',
-    width: '30%',
-    height: '100%'
+    maxWidth: '28%',
+    maxHeight: '100%',
+
+    "@bp734": {
+        height: '50%',
+        maxWidth: '100%',
+        paddingLeft: '2px',
+        paddingBottom: '2px'
+    }
 })
 
 export const IconContainer = styled('div', {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingBottom: '5px',
+
+    "@bp734": {
+        display: 'none'
+    }
 })
 
 export const Description = styled('p', {
     color: 'Black',
     fontFamily: "Inter, Arial",
     fontSize: "15px",
-    alignItems: "left"
+    alignItems: "left",
+    overflowY: 'scroll',
+
+    "@bp734": {
+        overflowY: 'none'
+    },
+    '&::-webkit-scrollbar': { 
+        display: "none", 
+    }
 })
 
 export const GraphContainer = styled('div', {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '70%',
     height: '100%',
-    paddingLeft: '7px'
+    paddingLeft: '7px',
+
+    "@bp734": {
+        height: '60%',
+        width: '100%',
+        paddingLeft: '2px',
+        paddingBottom: '2px'
+    }
+})
+
+export const TitleContainer = styled('div', {
+    "@bp734": {
+        display: 'none'
+    }
 })

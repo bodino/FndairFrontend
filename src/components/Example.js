@@ -34,6 +34,7 @@ import {
   airDropListObject,
   clickedObject,
   signedMessageObject,
+  totalRefferedObject
 } from '../hooks/recoil'
 import { useDisconnect } from 'wagmi'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
@@ -56,6 +57,7 @@ export function Example() {
   const [totalClaimed, settotalClaimed] = useRecoilState(totalClaimedObject)
 
   const [subscriptionInfo, setsubscriptionInfo] = useRecoilState(subscriptionInfoObject)
+  const [totalReffered, settotalReffered] = useRecoilState(totalRefferedObject)
 
 
 
@@ -110,10 +112,11 @@ export function Example() {
               x++;
             }
           }
+          settotalReffered(res.data.subscriptionInfo.referralValue.toFixed(2))
+          settotalClaimed(totalClaimed)
           setclaimedAirDropList(claimedAirdrops)
           setairDropList(eligableAirdrops)
           setprotocolList(res.data.protocols)
-          settotalClaimed(totalClaimed)
           settrackedWalletListt(res.data.followedAddresses)
           setsubscriptionInfo(res.data.subscriptionInfo)
   }

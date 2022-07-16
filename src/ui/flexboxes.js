@@ -153,11 +153,52 @@ export const ParagraphBox = styled('div', {
     // maxWidth: "1000px",
     // textShadow: "#467898 5px 5px",
     flexDirection: "column",
-    minWidth:"450px",
+    // minWidth:"450px",
     paddingBottom:"40px",
-    '@bp0': {
-        minWidth:"300px",
+    // '@bp0': {
+    //     minWidth:"300px",
+    //     textAlign:"center"
+    //   },
+   
+})
+
+export const PortfolioItemBox = styled('div', {
+
+    display: "flex",
+    // alignItems:"center",
+    fontSize:"$header1",
+    color:"$antibackground",
+    fontFamily: "Inter, Arial",
+    width: "365.09px",
+    textAlign:"left",
+    paddingInline: "20px",
+    // maxWidth: "1000px",
+    // textShadow: "#467898 5px 5px",
+    flexDirection: "column",
+    // minWidth:"450px",
+    paddingBottom:"40px",
+    '@bp450': {
+        width:"310px",
       },
+   
+})
+
+export const ReferralHeader = styled('div', {
+
+    display: "flex",
+    // alignItems:"center",
+    fontSize:"$header1",
+    color:"$antibackground",
+    fontFamily: "Inter, Arial",
+    textAlign:"center",
+    paddingInline: "20px",
+    marginBottom:"10px",
+    // maxWidth: "1000px",
+    // textShadow: "#467898 5px 5px",
+    flexDirection: "column",
+
+    
+  
    
 })
 
@@ -311,6 +352,26 @@ export const HorizontalFlexBox = styled('div', {
     
 })
 
+export const WalletFlexBox = styled('div', {
+
+    display: "flex",
+    alignItems:"center",
+    padding:"",
+   
+    justifyContent:"flex-start",
+    // maxWidth: "1000px",
+    flexDirection: "row",
+ 
+
+      '&::-webkit-scrollbar': { 
+        display: "none", 
+    }
+    
+   
+   
+    
+})
+
 export const HorizontalFlexBoxWithColor = styled('div', {
 
     display: "flex",
@@ -335,6 +396,39 @@ export const HorizontalFlexBoxWithColor = styled('div', {
 
       '@bp0': {
         flexDirection:"column",
+      },
+   
+    
+})
+
+export const PortfolioFlexBoxWithColor = styled('div', {
+
+    display: "flex",
+    alignItems:"center",
+    
+   
+    paddingTop:"20px",
+    paddingBottom:"20px",
+    marginBottom: "15px",
+    width: "1380",
+    // maxWidth: "1000px",
+    flexDirection: "row",
+    minHeight:"350px",
+    // background: "$secondaryHighLight",
+    borderRadius: "10px",
+    // paddingInline:"75px",
+    fontWeight: "400",
+    justifyContent:"space-between",
+    '@bp3': {
+        width:"1000px",
+      },
+
+      '@bp0': {
+        flexDirection:"column",
+      },
+
+      '@bp734': {
+        width:"375px",
       },
    
     
@@ -444,12 +538,32 @@ export const AirdropFlexBox = styled('div', {
     
 })
 
+export const ReferralBox = styled('div', {
+    display: "flex",
+    alignItems:"center",
+    width: "400px",
+    boxShadow: "0px 4px 10px 1px rgba(0, 0, 0, 0.3)",
+    // maxWidth: "1000px",
+    flexDirection: "column",
+    minHeight:"200px",
+    background: "rgb(41, 46, 65)",
+    borderRadius: "30px",
+    fontWeight: "300",
+    margin:"10px",
+    marginRight:"18px",
+    
+    '@bp918': {
+        width:"300px",
+      },
+    
+})
+
 export const AirdropHorizontalFlexBox = styled('div', {
-    justifyContent:"center",
+    justifyContent:"flex-start",
 
     display: "flex",
     alignItems:"center",
-    padding:"",
+
     paddingTop:"10px",
     width: "1380",
     // maxWidth: "1000px",
@@ -458,6 +572,43 @@ export const AirdropHorizontalFlexBox = styled('div', {
   
     '@bp3': {
         width:"1000px",
+      },
+
+    //   '@bp0': {
+    //     justifyContent:"center",
+    //     paddingLeft:"0px !important",
+    //   },
+   
+    
+})
+
+
+export const SecondHalfFlexBox = styled('div', {
+   
+    display:"flex",
+    flexDirection:"column",
+    maxWidth:"1000px",
+    '@bp734': {
+        maxWidth: "375px",
+      },
+   
+    
+})
+export const TopPorfolioFlexBox = styled('div', {
+    justifyContent:"space-between",
+
+    display: "flex",
+    alignItems:"center",
+    padding:"",
+    paddingTop:"10px",
+    width:"100vw",
+    // maxWidth: "1000px",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  
+    '@bp734': {
+ 
+        width:"375px",
       },
    
     
@@ -499,7 +650,7 @@ export const PriceBox = styled('div', {
     marginInline:"15px",
    
     borderRadius:"10px",
-    width: "1380",
+    width: "305px",
     // maxWidth: "1000px",
     flexDirection: "column",
     background:"rgb(255,255,255,0.4)",
@@ -507,10 +658,12 @@ export const PriceBox = styled('div', {
     filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
   
     
-    '@bp3': {
-        minWidth:"305px",
+    '@bp0': {
+        marginBottom:"20px",
       },
-   
+
+     
+    
     
 })
 
@@ -626,7 +779,7 @@ export const ProtocolFlexBox = styled('div', {
     borderRadius: "30px",
     fontWeight: "300",
     margin:"10px",
-    width: "228px",
+    width: "225px",
     
     '@bp3': {
         width:"200x",
@@ -644,10 +797,21 @@ export const PorfolioContainer = styled('div', {
     alignItems: 'center',
     flexDirection: 'column',
     flex: '1 1',
+    // filter:"blur(3px)",
     
     '@bp0': {
         alignItems: 'flex-start',
       },
+
+      '@bp734': {
+        alignItems: 'center',
+      },
    
     
+})
+
+export const AboutImageContainer = styled('div', {
+    '@bp4': {
+        display: "none"
+    }
 })

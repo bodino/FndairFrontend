@@ -9,7 +9,7 @@ import Airdropbox from './Airdropbox';
 import { FaceIcon, ImageIcon, PlusCircledIcon } from '@radix-ui/react-icons'
 import axios from 'axios';
 import Verticalnavbarcomp from './Verticlenavbarcomp';
-import {IconBoxes,HorizontalFlexBox} from '../ui/flexboxes'
+import {IconBoxes,HorizontalFlexBox,WalletFlexBox} from '../ui/flexboxes'
 import {
   CookieIcon,
   CrossCircledIcon,
@@ -20,6 +20,7 @@ import {
   TwitterLogoIcon,
   LinkBreak2Icon,
   Cross2Icon,
+
 } from '@radix-ui/react-icons'
 import {
   DropdownMenu,
@@ -99,13 +100,13 @@ export function MapWallets() {
           .put('http://localhost:3001/user/'+data.address+"/"+passedAddress, {
           })
           .then(function (response) {
-            console.log("Hi")
+            console.log(response)
             checklogin()
           })
           .catch(function (error) {
           })
         } else {
-          console.log("hi")
+          console.log("error")
           toast("Address is not valid");
         }
       }
@@ -113,7 +114,7 @@ export function MapWallets() {
     return (    
      
         <> 
-              <HorizontalFlexBox css={{maxWidth:"450px", overflowX: "scroll", justifyContent:"flex-start", marginLeft:"20px"
+          <WalletFlexBox css={{maxWidth:"300px", overflowX: "scroll", justifyContent:"flex-start", marginLeft:"20px",width: "",
 }}>
         {trackedWalletList.map((item) =>(
             <>
@@ -122,7 +123,7 @@ export function MapWallets() {
             </>
         ))}
         
-        </HorizontalFlexBox>
+        </WalletFlexBox>
 
      
  

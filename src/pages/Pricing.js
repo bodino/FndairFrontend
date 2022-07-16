@@ -17,6 +17,8 @@ import { Example } from '../components/Example'
 import Connected from '../components/Connected'
 import Navabar from '../components/Navabar'
 import Steps from 'rc-steps'
+import { Link } from 'react-router-dom'
+
 import {
   Name,
   Ptext,
@@ -59,7 +61,10 @@ import axios from 'axios';
 import {
   useRecoilState,
 } from 'recoil'
-import {subscriptionInfoObject} from '../hooks/recoil'
+import useLocalStorage from '../hooks/use-local-storage';
+import {subscriptionInfoObject,referralAddressObject} from '../hooks/recoil'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // axios.defaults.withCredentials = true
 
 
@@ -67,6 +72,7 @@ import {subscriptionInfoObject} from '../hooks/recoil'
 
 function Pricing() {
   const [subscriptionInfo, setsubscriptionInfo] = useRecoilState(subscriptionInfoObject)
+  const [referralAddress, setreferralAddress] = useLocalStorage('referralAddressObject','')
 
   const { activeChain, chains, data:chaindata, switchNetworkAsync } = useNetwork()
   const [priceData, setpriceData] = useState();
@@ -87,7 +93,7 @@ function Pricing() {
 
   const { data:signerData, error, isLoading, refetch } = useSigner()
   const contract = useContract({
-    addressOrName: '0x46D14FA8fE262aDaB112F34852AaB430C53565e5',
+    addressOrName: '0xA14d175d92011C63478b9107Bd1C552e4a47c9F2',
     contractInterface: abi.abi,
     signerOrProvider: signerData,
   });
@@ -98,7 +104,7 @@ function Pricing() {
     status: status,
   } = useContractWrite(
     {
-      addressOrName: '0x46D14FA8fE262aDaB112F34852AaB430C53565e5',
+      addressOrName: '0xA14d175d92011C63478b9107Bd1C552e4a47c9F2',
       contractInterface: abi.abi,
       signerOrProvider: signerData,
     },
@@ -107,17 +113,28 @@ function Pricing() {
       args: 1,
       overrides: { value: ethers.utils.parseEther('0.5') },
       onError: (error) => {
-        console.log(error.message)
+        console.log(error.data.code)
+        if (error.data.code == "-32000"){
+          toast("Not Enough Funds")
+        }
+      },
+      async onSuccess(data) {
+        await notify()
+       
       },
     }
   );
 
+  async function notify(){
+    await toast("Payment Pending")
+  }
   async function Join(months){
 
     console.log(activeChain)
     var priceObject;
     var payAmount = 0;
-    if (activeChain.id === 1 ||activeChain.id === 10 || activeChain.id === 42161 || activeChain.id === 3) {
+    console.log(priceData)
+    if (activeChain.id === 1 ||activeChain.id === 10 || activeChain.id === 42161 || activeChain.id === 5 ) {
       priceObject = priceData[0]
     } else if (activeChain.id == 137) { 
       priceObject = priceData[1]
@@ -129,10 +146,14 @@ function Pricing() {
     } else if (months === 12) {
       payAmount = priceObject.amount12Month
     }
-      
+    var passedAddress =  '0x89B09F9aEf618cC154c0CaD9eE349bb2aE61B73D';
+      if (referralAddress != ""){
+        passedAddress = referralAddress
+      }
+      console.log(passedAddress);
     write({ 
       args: [
-      "0x0bBD3a3d952fddf9A8811bC650445B7515a4B9e6", 
+        passedAddress
     ], overrides: {
       value: ethers.utils.parseEther(payAmount.toString())
     }});
@@ -140,15 +161,15 @@ function Pricing() {
 
   return (
    <>
-      
+        <ToastContainer />
 
-        <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px' }}>
+        <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px', textAlign:"center" }}>
           <b>Premium Product, Fair Price </b>
         </ParagraphBox>
-        <MiniParagraphBox css={{ paddingBottom: '60px',fontSize:"18px"  }}>
+        <MiniParagraphBox css={{ paddingBottom: '60px',fontSize:"18px", textAlign:"center"  }}>
           Pay on Ethereum, Optimism, Arbitrum, or Polygon
         </MiniParagraphBox>
-        <HorizontalFlexBoxWithColor css={{ justifyContent: 'center' }}>
+        <HorizontalFlexBoxWithColor css={{ justifyContent: 'center', maxWidth:"1100px", flexWrap:"wrap", flexDirection:"row", width:"unset" }}>
           <PriceBox>
             
             <PaymentTextBoxNormal>
@@ -263,15 +284,17 @@ function Pricing() {
           
         </HorizontalFlexBoxWithColor>
    
-        <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px' }}>
+        <ParagraphBox css={{ paddingBottom: '10px', paddingTop: '50px', textAlign:"center" }}>
           <b>Not sure which one to choose?  </b>
         </ParagraphBox>
 
-        <MiniParagraphBox css={{ paddingBottom: '60px', fontSize:"18px" }}>
+        <MiniParagraphBox css={{ paddingBottom: '60px', fontSize:"18px", textAlign:"center" }}>
         Find your airdrop for free        
         </MiniParagraphBox>
         
-        <PriceBox css={{height:"314px", width:"775px", background: "rgba(0, 0, 0, 0.45)", flexDirection:"row", alignItems:"center", justifyContent:"space-around"}}>
+        <PriceBox css={{height:"314px", width:"775px", background: "rgba(0, 0, 0, 0.45)", flexDirection:"row", alignItems:"center", justifyContent:"space-around",  '@bp800': {
+        flexDirection:"column", width:"375px", height:"470px", paddingBottom:"10px"
+      },}}>
 
            
               <div>
@@ -289,6 +312,7 @@ function Pricing() {
                 <ListNamers>View value eligible to claim </ListNamers>{' '}
                 <ListNamers>Get email alerts on new airdrops</ListNamers>
             </PaymentTextBoxNormal>
+            <Link style={{textDecoration:"none"}} to="/portfolio">
             <WalletConnect
               css={{
                 alignSelf: 'center',
@@ -298,6 +322,7 @@ function Pricing() {
             >
               Try For Free
             </WalletConnect>
+            </Link>
             </div>
           </PriceBox>
 
@@ -307,8 +332,9 @@ function Pricing() {
         </ParagraphBox>
         <Footer />
     
-     
+      
         </>
+        
   
     
    

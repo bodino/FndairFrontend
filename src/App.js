@@ -89,7 +89,10 @@ function App() {
 
       <Routes>
         
-          <Route path="/"  element={<Landingpage/>}/>
+          <Route path="/">
+            <Route path=":id" element={<Landingpage/>}/>
+            <Route path="" element={<Landingpage/>}/>
+          </Route>
 
           <Route path="/portfolio" element={<Portfolio/>}/>
           <Route path="/pricing" element={<Pricing/>}/>

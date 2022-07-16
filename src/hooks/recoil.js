@@ -48,10 +48,7 @@ export const setClickedObject = atom({
     default: false
 })
 
-
-
-export const subscriptionInfoObject
-= atom({
+export const subscriptionInfoObject = atom({
     key: "subscriptionInfoObject",
     default: false
 })
@@ -66,6 +63,18 @@ export const claimedAirDropListObject
 export const totalClaimedObject
 = atom({
     key: "totalClaimedObject",
+    default: false
+})
+
+export const referralAddressObject
+= atom({
+    key: "referralAddressObject",
+    default: false
+})
+
+export const totalRefferedObject
+= atom({
+    key: "totalRefferedObject",
     default: false
 })
 

@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import {
     PopupBackground,
     PopupContainer,
@@ -8,22 +8,38 @@ import {
     LeftContainer,
     IconContainer,
     Description,
-    GraphContainer
+    GraphContainer,
+    TitleContainer
   } from '../ui/popup'
-
+import axios from 'axios';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJs } from 'chart.js/auto';
 
 export default function GraphPopup(props) {
+    const [dates, setDates] = useState();
+    const [prices, setPrices] = useState();
 
-    
-    // const price1 = props.prices.slice(props.prices.length - 30, props.prices.length - 1)
-    // const date1 = props.dates.slice(props.prices.length - 30, props.prices.length - 1)
+    // async function updateData(){
+    //     await axios
+    //     .get('http://localhost:3001/projects/' + props.address, {})
+    //     .then(function (response) {
+    //         setDates(response.data.dates);
+    //         setPrices(response.data.usdPrices);
+          
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error)
+    //     })
+    // }
+    // useEffect(() => {
+    //     updateData()
+    //   }, []);
+
     const data = {
-        labels: ["Sun", 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'],
+        labels: props.item.graphData.dates,
         datasets:[{
             label: 'test data',
-            data: [1.2, 1.15, 1.03, 0.98, 0.87, 0.85, 0.84],
+            data: props.item.graphData.prices,
             fill: {
                 target: 'origin',
                 above: 'rgb(0, 80, 124, 0.20)'
@@ -56,7 +72,6 @@ export default function GraphPopup(props) {
             }
         }
     }
-    console.log(props.trigger)
     return (props.trigger) ? (
         <PopupBackground>
             <PopupContainer>
@@ -65,13 +80,17 @@ export default function GraphPopup(props) {
                 </ButtonContainer>
                 <ContentContainer>
                     <LeftContainer>
+                        <TitleContainer>
+                            <h3 style={{color: 'black', textAlign: 'center'}}>{props.name}</h3>
+                        </TitleContainer>
+                        
                         <IconContainer>
-                            <img style={{width:"150px", borderRadius:"50%"}} src={props.icon}/>
+                            <img style={{width:"120px", borderRadius:"50%"}} src={props.icon}/>
                         </IconContainer>
-                        <Description>This protocol is really dope and this paragraph should tell you more about what they protocol does. It also needs to be styled correctly</Description>
+                        <Description>{props.description}</Description>
                     </LeftContainer>
                     <GraphContainer>
-                        <Line data={data} options={options}/>
+                        <Line data={data} options={options} style={{maxHeight: "100%", maxWidth: "95%"}}/>
                     </GraphContainer>
                 </ContentContainer>
             </PopupContainer>
