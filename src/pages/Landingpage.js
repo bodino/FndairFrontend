@@ -6,6 +6,7 @@ import { css } from '../ui/stitches.config'
 import { styled, darkTheme, createGlobalStyle } from '../ui/stitches.config'
 import { Text, Button } from '../ui/text.js'
 import { ThemeToggle } from '../ThemeToggle'
+
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import {
   signedMessageObject,

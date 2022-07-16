@@ -63,7 +63,7 @@ export function Airdropbox({ checklogin, item }) {
   }
   async function removeWallet(passedAddress) {
     await axios
-      .delete('http://localhost:3001/user/'+data.address+"/"+passedAddress, {
+      .delete(process.env.REACT_APP_BACKEND_API_LINK+'user/'+data.address+"/"+passedAddress, {
       })
       .then(function (response) {
         console.log('LETS GO!')

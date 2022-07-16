@@ -126,7 +126,7 @@ export function Example() {
   useEffect(() => {
     async function checklogin() {
       await axios
-        .get('http://localhost:3001/login', {})
+        .get(process.env.REACT_APP_BACKEND_API_LINK +'login', {})
         .then(function (res) {
           if ((res.data.loggedin = true && data)) {
             if ((res.data._id == data.address)) {
@@ -198,7 +198,7 @@ export function Example() {
         address: data.address,
       }
       await axios
-        .post('http://localhost:3001/login', {
+        .post(process.env.REACT_APP_BACKEND_API_LINK+'login', {
           UserInfo,
         })
         .then(function (response) {
@@ -219,7 +219,7 @@ export function Example() {
 
   async function serverDisconnect() {
     await axios
-      .get('http://localhost:3001/disconnect', {})
+      .get(process.env.REACT_APP_BACKEND_API_LINK+'disconnect', {})
       .then(function (response) {
         if ((response.data.loggedin = false)) {
           setSignedMessage(false)
