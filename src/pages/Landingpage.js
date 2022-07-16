@@ -69,36 +69,31 @@ import {
   useRecoilValue,
 } from 'recoil'
 import useLocalStorage from '../hooks/use-local-storage';
+import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
 
 const axios = require('axios')
 
 function Landingpage() {
   const [referralAddress, setreferralAddress] = useLocalStorage('referralAddressObject','')
-
   const food = useParams()
-
-useEffect(() => {
-  if (ethers.utils.isAddress(food.id)){
-    console.log(food.id)
-    setreferralAddress(food.id);
-  }
-}, []);
-
-
-  
   const [signedMessage, setSignedMessage] = useRecoilState(signedMessageObject)
-
   const [clicked, setClicked] = useRecoilState(setClickedObject)
   const [LogOut, setLogOut] = useRecoilState(setLogOutObject)
+
+  useEffect(() => {
+    if (ethers.utils.isAddress(food.id)){
+      console.log(food.id)
+      setreferralAddress(food.id);
+    }
+  }, []);
 
   var NewAirDrop = {
     Password: 'CryptoAirdropFinderCool',
     Data: {},
   }
 
-  // var food = axios.post('http://localhost:3001/NewAirdrop', {
-  //   NewAirDrop
-  //   })
+  //GA tracker
+  const gaEventTracker = useAnalyticsEventTracker('Landing Page');
 
   return (
     <>
@@ -115,7 +110,7 @@ useEffect(() => {
             Once you connect your wallet, we do the rest.
           </MiniParagraphBox>
           <MiniParagraphBox>
-            <ConnectButton.Custom>
+            <ConnectButton.Custom onClick={() => gaEventTracker('connect from title')}>
               {({
                 account,
                 chain,
@@ -142,6 +137,7 @@ useEffect(() => {
                             onClick={() => {
                               setClicked(true)
                               openConnectModal()
+                              gaEventTracker('connect from navbar')
                             }}
                           >
                             Connect Wallet

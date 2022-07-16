@@ -35,7 +35,6 @@ import Footer from '../components/Footer'
 function Portfolio() {
   return (
     <>
-
         <HorizontalFlexBoxWithColor>
           <ParagraphBox>
             <div style={{ display: 'flex', flexDirection: 'column' }}>

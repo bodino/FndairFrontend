@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import { ChevronDownIcon } from '@radix-ui/react-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import './App.css';
 import { TwitterLogoIcon, ImageIcon, SunIcon } from '@radix-ui/react-icons'
@@ -27,7 +27,6 @@ import {
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { Example } from './components/Example';
-import { useEffect } from 'react';
 
 import { Buffer } from "buffer";
 import axios from 'axios';
@@ -45,10 +44,14 @@ import {
   MiniParagraphBox
 } from './ui/flexboxes'
 
-
-
+import ReactGA from 'react-ga';
+const TRACKING_ID = "UA-234000123-1";
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
 
   const Bg = styled('div', {
     backgroundColor: '$background',
@@ -64,16 +67,10 @@ function App() {
     },
   })
 
-
-  
-
-
- 
-
   return (
 
  
-<ThemeProvider
+    <ThemeProvider
       attribute="class"
       defaultTheme="system"
       value={{
@@ -82,29 +79,27 @@ function App() {
       }}
     >
       <Bg>
-      <Router>
-      <Content>
-        <TopBox>
-      <Navabar/>
+        <Router>
+          <Content>
+          <TopBox>
+          <Navabar/>
 
-      <Routes>
+          <Routes>
         
-          <Route path="/">
-            <Route path=":id" element={<Landingpage/>}/>
-            <Route path="" element={<Landingpage/>}/>
-          </Route>
+            <Route path="/">
+              <Route path=":id" element={<Landingpage/>}/>
+              <Route path="" element={<Landingpage/>}/>
+            </Route>
 
-          <Route path="/portfolio" element={<Portfolio/>}/>
-          <Route path="/pricing" element={<Pricing/>}/>
-          <Route path="/about" element={<About/>}/>
+            <Route path="/portfolio" element={<Portfolio/>}/>
+            <Route path="/pricing" element={<Pricing/>}/>
+            <Route path="/about" element={<About/>}/>
 
-        </Routes>
-      </TopBox>
-      </Content>
-     </Router>
- 
-
-     </Bg>
+          </Routes>
+          </TopBox>
+          </Content>
+        </Router>
+      </Bg>
     </ThemeProvider>
   
   );
