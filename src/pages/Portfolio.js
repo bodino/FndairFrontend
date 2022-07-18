@@ -99,9 +99,6 @@ import {
 
 import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
 
-//GA tracker
-const gaEventTracker = useAnalyticsEventTracker('Portfolio');
-
 
 function Portfolio() {
   const { data: account } = useAccount()
@@ -115,8 +112,9 @@ function Portfolio() {
   const [LogOut, setLogOut] = useRecoilState(setLogOutObject)
   const [totalReffered, settotalReffered] = useRecoilState(totalRefferedObject)
 
-
-
+  //GA tracker
+  const gaEventTracker = useAnalyticsEventTracker('Portfolio');
+  
   if (airDropList && account && protocolList) {
     return (
       <>

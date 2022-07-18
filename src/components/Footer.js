@@ -15,8 +15,7 @@ import logoDark from "../images/LogoDark.png";
 import { useTheme } from "next-themes";
 import {BigLogo, SmallLogo} from '../ui/text.js'
 import { Link } from 'react-router-dom'
-
-
+import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
 
 import {
     TwitterLogoIcon,
@@ -33,16 +32,15 @@ import Verticalnavbarcomp from './Verticlenavbarcomp';
     '&[data-orientation=vertical]': { height: '50%', width: 1 },
     alignSelf: 'center',
   });
-  import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
-
-  //GA tracker
-  const gaEventTracker = useAnalyticsEventTracker('Footer');
   
   console.log(ThemeProvider);
   // Exports
   export const Separator = StyledSeparator;
 
 function Footer() {
+  //GA tracker
+  const gaEventTracker = useAnalyticsEventTracker('Footer');
+
   var logo;
   
   //generate state variable for homeclick status
@@ -86,7 +84,7 @@ function Footer() {
         </IconBoxes>
       
         <IconBoxes>
-          <TwitterLogoIcon style={{height: '30', width: '30'}}/>
+          <a href='https://twitter.com/fndair?s=21&t=U4BbFBwBfJlkdWBrtQG_Xw' target='_blank' style={{color: 'white'}}><TwitterLogoIcon style={{height: '30', width: '30'}} /></a>
         </IconBoxes>
       </LeftLargeItemsBox>
    

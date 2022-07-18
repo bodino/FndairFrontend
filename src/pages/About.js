@@ -33,10 +33,10 @@ import {
 import Footer from '../components/Footer'
 import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
 
-//GA tracker
-const gaEventTracker = useAnalyticsEventTracker('About');
 
 function Portfolio() {
+  //GA tracker
+  const gaEventTracker = useAnalyticsEventTracker('About');
   return (
     <>
         <HorizontalFlexBoxWithColor style={{marginBottom: '0', paddingBottom: '0'}}>

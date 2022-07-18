@@ -18,6 +18,7 @@ import Connected from '../components/Connected'
 import Navabar from '../components/Navabar'
 import Steps from 'rc-steps'
 import { Link } from 'react-router-dom'
+import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
 
 import {
   Name,
@@ -70,10 +71,6 @@ import 'react-toastify/dist/ReactToastify.css';
 axios.defaults.withCredentials = true;
 
 
-import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
-
-//GA tracker
-const gaEventTracker = useAnalyticsEventTracker('Pricing');
 
 function Pricing() {
   const [subscriptionInfo, setsubscriptionInfo] = useRecoilState(subscriptionInfoObject)
@@ -81,6 +78,10 @@ function Pricing() {
 
   const { activeChain, chains, data:chaindata, switchNetworkAsync } = useNetwork()
   const [priceData, setpriceData] = useState();
+
+  //GA tracker
+  const gaEventTracker = useAnalyticsEventTracker('Pricing');
+
   async function updatePricing(){
     await axios
     .get(process.env.REACT_APP_BACKEND_API_LINK+'pricing', {})
