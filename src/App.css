@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+/* @import url('https://fonts.googleapis.com/css?family=Poppins'); */
 
-/*  */
 html, body { 
   height: 100%;
-  font-family: 'Poppins';
+  /* font-family: 'Poppins'; */
 }
 
 button { 

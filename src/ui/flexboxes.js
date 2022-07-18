@@ -870,5 +870,9 @@ export const FooterPagesContainer = styled('div', {
 
 export const FooterPages = styled('div', {
     padding: '0.5rem',
-    background: 'transparent'
+    background: 'transparent',
+    '&:hover': {
+        textDecoration: 'underline',
+        transform: 'scaleX(1)'
+    }
 })

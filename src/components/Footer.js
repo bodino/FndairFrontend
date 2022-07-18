@@ -14,7 +14,7 @@ import logoLight from "../images/LogioLight.png";
 import logoDark from "../images/LogoDark.png";
 import { useTheme } from "next-themes";
 import {BigLogo, SmallLogo} from '../ui/text.js'
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -64,16 +64,16 @@ function Footer() {
         <SmallLogo src={'/Logo.svg'} style={{height: '55px', width: '260px'}}></SmallLogo> 
       </div>
       <FooterPagesContainer>
-          <FooterPages>HOME</FooterPages>
-          <FooterPages>Portfolio</FooterPages>
-          <FooterPages>Pricing</FooterPages>
-          <FooterPages>About</FooterPages>
+        <Link to="/" style={{textDecoration:"none", color: 'white'}}><FooterPages>HOME</FooterPages></Link>
+        <Link to="/portfolio" style={{textDecoration:"none", color: 'white'}}><FooterPages>Portfolio</FooterPages></Link>
+        <Link to="/pricing" style={{textDecoration:"none", color: 'white'}}><FooterPages>Pricing</FooterPages></Link>
+        <Link to="/about" style={{textDecoration:"none", color: 'white'}}><FooterPages>About</FooterPages></Link>
       </FooterPagesContainer>
       <FooterPagesContainer>
-          <FooterPages>Contact</FooterPages>
-          <FooterPages>Privacy</FooterPages>
-          <FooterPages>Blog</FooterPages>
-          <FooterPages>Terms of use</FooterPages>
+        <FooterPages>Contact</FooterPages>
+        <FooterPages>Privacy</FooterPages>
+        <FooterPages>Blog</FooterPages>
+        <FooterPages>Terms of use</FooterPages>
       </FooterPagesContainer>
       <LeftLargeItemsBox style={{marginTop: '30px'}}>
         <IconBoxes style={{paddingRight: '10px'}}>
