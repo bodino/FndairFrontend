@@ -5,7 +5,7 @@ import {styled, darkTheme, createGlobalStyle} from '../ui/stitches.config';
 import {Text, Button} from '../ui/text.js';
 import { Example } from '../components/Example'
 import { ThemeProvider } from 'next-themes';
-import { RightItemsBox, LeftSmallItemsBox,LeftLargeItemsBox, IconBoxes, NavabarContainer } from '../ui/flexboxes'
+import { RightItemsBox, LeftSmallItemsBox,LeftLargeItemsBox, IconBoxes, FooterContainer, FooterPagesContainer, FooterPages } from '../ui/flexboxes'
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 import { ThemeToggle } from '../ThemeToggle'
 import { useMediaQuery } from 'react-responsive'
@@ -13,6 +13,7 @@ import MediaQuery from 'react-responsive'
 import logoLight from "../images/LogioLight.png";
 import logoDark from "../images/LogoDark.png";
 import { useTheme } from "next-themes";
+import {BigLogo, SmallLogo} from '../ui/text.js'
 
 
 
@@ -57,25 +58,36 @@ function Footer() {
 
 
   return (
-    <NavabarContainer css={{justifyContent:"flex-end"}}>
-    <LeftLargeItemsBox>
-  
-
-      <IconBoxes>
-        <GitHubLogoIcon />
-      </IconBoxes>
-    
-      <IconBoxes>
-        <TwitterLogoIcon />
-      </IconBoxes>
+    <FooterContainer>
+      <div style={{marginTop: '30px'}}>
+        <BigLogo src={'/VectorSmalLogo.svg'} style={{height: '1.5', width: '1.5'}}></BigLogo> 
+        <SmallLogo src={'/Logo.svg'} style={{height: '55px', width: '260px'}}></SmallLogo> 
+      </div>
+      <FooterPagesContainer>
+          <FooterPages>HOME</FooterPages>
+          <FooterPages>Portfolio</FooterPages>
+          <FooterPages>Pricing</FooterPages>
+          <FooterPages>About</FooterPages>
+      </FooterPagesContainer>
+      <FooterPagesContainer>
+          <FooterPages>Contact</FooterPages>
+          <FooterPages>Privacy</FooterPages>
+          <FooterPages>Blog</FooterPages>
+          <FooterPages>Terms of use</FooterPages>
+      </FooterPagesContainer>
+      <LeftLargeItemsBox style={{marginTop: '30px'}}>
+        <IconBoxes style={{paddingRight: '10px'}}>
+          <GitHubLogoIcon style={{height: '30', width: '30'}}/>
+        </IconBoxes>
+      
+        <IconBoxes>
+          <TwitterLogoIcon style={{height: '30', width: '30'}}/>
+        </IconBoxes>
+      </LeftLargeItemsBox>
    
 
-     
-    </LeftLargeItemsBox>
-   
 
-
-   </NavabarContainer>
+    </FooterContainer>
   );
 }
 export default Footer;

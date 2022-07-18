@@ -17,11 +17,6 @@ import { Link } from 'react-router-dom'
 import { ethers } from "ethers";
 import { BellIcon } from '@radix-ui/react-icons';
 
-
-
-
-
-
 import {
     TwitterLogoIcon,
     Pencil1Icon,

@@ -121,7 +121,7 @@ export const IconBoxes = styled('div', {
     alignItems:"center",
     minWidth:"50px",
     height:"39.5px",
-    fontFamily:"Inter, Arial",
+    fontFamily:"Poppins, Inter, Arial",
     fontSize:"$title",
     color:"$antibackground",
     // border: "1px solid $background",
@@ -146,7 +146,7 @@ export const ParagraphBox = styled('div', {
     // alignItems:"center",
     fontSize:"$header1",
     color:"$antibackground",
-    fontFamily: "Inter, Arial",
+    fontFamily: "Poppins, Inter, Arial",
     width: "1380",
     textAlign:"left",
     paddingInline: "20px",
@@ -168,7 +168,7 @@ export const PortfolioItemBox = styled('div', {
     // alignItems:"center",
     fontSize:"$header1",
     color:"$antibackground",
-    fontFamily: "Inter, Arial",
+    fontFamily: "Poppins, Inter, Arial",
     width: "365.09px",
     textAlign:"left",
     paddingInline: "20px",
@@ -189,7 +189,7 @@ export const ReferralHeader = styled('div', {
     // alignItems:"center",
     fontSize:"$header1",
     color:"$antibackground",
-    fontFamily: "Inter, Arial",
+    fontFamily: "Poppins, Inter, Arial",
     textAlign:"center",
     paddingInline: "20px",
     marginBottom:"10px",
@@ -207,7 +207,7 @@ export const MiniParagraphBox = styled('div', {
     display: "flex",
     // alignItems:"center",
     fontSize:"15px",
-    fontFamily: "Inter, Arial",
+    fontFamily: "Poppins, Inter, Arial",
     width: "1380",
     textAlign:"left",
     paddingInline: "20px",
@@ -621,7 +621,7 @@ export const TopBox = styled('div', {
     flexDirection: "column",
   
     alignItems: "center",
-    background: "linear-gradient(45deg, rgb(116, 27, 107), rgb(0, 80, 124))"
+    background: "linear-gradient(45deg, rgb(116, 27, 107), 68%, rgb(0, 80, 124))"
 
 })
 
@@ -674,7 +674,7 @@ export const PaymentTextBox = styled('div', {
     // alignItems:"center",
     fontSize:"$header1",
     color:"$antibackground",
-    fontFamily: "Inter, Arial",
+    fontFamily: "Poppins, Inter, Arial",
     textAlign:"center",
     alignItems:"flex-end",
   
@@ -690,7 +690,7 @@ export const PaymentTextBoxNormal = styled('div', {
     // alignItems:"center",
     fontSize:"$header1",
     color:"$antibackground",
-    fontFamily: "Inter, Arial",
+    fontFamily: "Poppins, Inter, Arial",
     fontSize:"19px",
     textAlign:"left",
     // paddingInline: "50px",
@@ -706,7 +706,7 @@ export const AirdropInfo = styled('div', {
     // alignItems:"center",
     fontSize:"$header1",
     color:"$antibackground",
-    fontFamily: "Inter, Arial",
+    fontFamily: "Poppins, Inter, Arial",
     fontSize:"19px",
     height:"200px",
     flex:"1 1",
@@ -749,7 +749,7 @@ export const ProtocolBox = styled('div', {
     // alignItems:"center",
     fontSize:"$header1",
     color:"$antibackground",
-    fontFamily: "Inter, Arial",
+    fontFamily: "Poppins, Inter, Arial",
     fontSize:"19px",
     boxShadow: "0px 4px 10px 1px rgba(0, 0, 0, 0.3)",
     borderRadius: "60px",
@@ -814,4 +814,61 @@ export const AboutImageContainer = styled('div', {
     '@bp4': {
         display: "none"
     }
+})
+
+export const AboutLandingPage = styled('div', {
+    display: 'flex',
+    width: '980px',
+    flexDirection: 'column',
+    borderRadius: '20px',
+    alignItems: 'center',
+    textAlign: 'center',
+    background: "linear-gradient(180deg, rgb(116, 27, 107), 40%, rgb(0, 80, 124))",
+    marginTop: '5%',
+    marginBottom: '2.5%',
+    '@bp4': {
+        width:"375px"
+    }
+})
+
+export const ClickToClaimContainer = styled('div', {
+    display: 'flex',
+    width: '980px',
+    background: 'transparent',
+    alignItems: 'top',
+    textAlign: 'center',
+
+    '@bp4': {
+        width: '375px',
+        flexDirection: 'column'
+    }
+})
+
+export const RadialBackgroundContainer = styled('div', {
+    background: 'radial-gradient(at 50% 20%, rgb(116, 27, 107) , transparent 65%), radial-gradient(at 50% 80%, rgb(0, 80, 124), transparent 65%)',
+    borderRadius: '60%'
+})
+
+export const FooterContainer = styled('div', {
+    marginTop: "14%",
+    background: "linear-gradient(315deg, rgb(116, 27, 107), 50%, rgb(0, 80, 124))",
+    display: 'flex',
+    width: '100%',
+    height: '100%',
+    padding: '10px',
+    justifyContent: 'space-evenly'
+})
+
+export const FooterPagesContainer = styled('div', {
+    display: 'flex',
+    flexDirection: 'column',
+    fontSize: '15px',
+    background: 'transparent',
+    textAlign: 'left',
+    marginTop: '30px'
+})
+
+export const FooterPages = styled('div', {
+    padding: '0.5rem',
+    background: 'transparent'
 })

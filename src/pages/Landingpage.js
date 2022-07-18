@@ -25,7 +25,12 @@ import {
   InteranalParagraphBox,
   NavabarContainer,
   TopBox,
-  MiniParagraphBox,HortTime, VertTime, InteranalParagraphBoxDisapearLater
+  MiniParagraphBox,HortTime,
+  VertTime,
+  InteranalParagraphBoxDisapearLater,
+  AboutLandingPage,
+  ClickToClaimContainer,
+  RadialBackgroundContainer
 } from '../ui/flexboxes'
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
@@ -47,6 +52,8 @@ import {
   Bottom,
   TestamonyBox,
   InteranalParagraphBoxDisapear,
+  ReferralBox,
+  ReferralHeader
 } from '../ui/flexboxes'
 import { BbSeperator, HorizontalSeperator } from '../ui/background'
 import { Navigation, Pagination, Autoplay } from 'swiper'
@@ -71,6 +78,10 @@ import {
 } from 'recoil'
 import useLocalStorage from '../hooks/use-local-storage';
 import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
+import { Link } from 'react-router-dom'
+import LandingPageGraphic from '../images/ClickToClaim2.png'
+import LandingPageGraphic2 from '../images/LandingPageGraphic.png'
+import Referral from '../images/Referral.png'
 
 const axios = require('axios')
 
@@ -212,7 +223,7 @@ function Landingpage() {
             </InteranalParagraphBox>
           </HorizontalFlexBox>
         </BraggingBox>
-        <ParagraphBox css={{ flex: '1 1', textAlign: 'center' }}>
+        <ParagraphBox css={{ flex: '1 1', textAlign: 'center', alignItems: 'center' }}>
           <div style={{ paddingBottom: '10px' }}>
             <b>Simple 3 Steps</b>
           </div>
@@ -227,7 +238,76 @@ function Landingpage() {
           <VertTime>
           <VertTimeline />
           </VertTime>
-         
+
+          <AboutLandingPage>
+            <p style={{fontSize: '25px', paddingTop: '20px', fontWeight: '200'}}>Why use FNDAIR</p>
+            <h3 style={{maxWidth: '85%', maxHeight: '100%', marginTop: '0', marginBottom: '15px', fontSize: '1em'}}>FNDAIR keeps track of your airdrops so you don't have to</h3>
+            <p style={{fontSize: '30px', marginTop: '0', marginBottom: '15px', fontWeight: '250', maxWidth: '85%', maxHeight: '100%'}}>Never forget to claim your tokens again</p>
+            <Link to="/portfolio" style={{  textDecoration:"none", paddingInline:"10px", width: '150px'}}>
+              <WalletConnect style={{marginBottom: '20px'}}>
+                Claim Now
+              </WalletConnect>
+            </Link >
+          </AboutLandingPage>
+
+          <ClickToClaimContainer>
+            {/* <div>
+              <img src={LandingPageGraphic} style={{width: '430px'}}/>
+            </div> */}
+            <RadialBackgroundContainer>
+              <img src={LandingPageGraphic2} style={{width: '430px'}}/>
+            </RadialBackgroundContainer>
+            <div style={{textAlign: 'left'}}>
+              <p style={{fontSize: '30px', marginTop: '0', marginBottom: '0', fontWeight: 'bold', paddingTop: '20px'}}>
+                Show me the money
+              </p>
+              <p style={{fontSize: '22px', marginTop: '0', marginBottom: '20px', color: 'rgb(165, 168, 182)'}}>
+                A simple way to claim your tokens
+              </p>
+              <p style={{fontSize: '15px', marginTop: '0', marginBottom: '5px'}}>
+                After connnecting you wallet, we search our database and match your wallet address to any unclaimed airdrops that you are eligible for.
+                We collect all this information and display it to you in a personalised dashboard where you can simply just click to claim.
+              </p>
+            </div>
+          </ClickToClaimContainer>
+
+          <ClickToClaimContainer style={{marginTop: '20px'}}>
+            <div style={{textAlign: 'left', Width: '50%'}}>
+              <p style={{fontSize: '30px', marginTop: '0', marginBottom: '0', fontWeight: 'bold', paddingTop: '30px'}}>
+                Earn from referrals
+              </p>
+              <p style={{fontSize: '22px', marginTop: '0', marginBottom: '20px', color: 'rgb(165, 168, 182)'}}>
+                A reward for helping grow our community
+              </p>
+              <p style={{fontSize: '15px', marginTop: '0', marginBottom: '5px'}}>
+                Missing out on an airdrop is like missing out on the chance to collect free cash, why not share the love with your friends and family.
+                Help share FNDAIR using your unique code so that they too will never miss and airdrop again. By the way, you will also be rewarded with cold hard crypto currency :) 
+              </p>
+            </div>
+            <div>
+              <img src={Referral} style={{width: '480px'}}/>
+            </div>
+            {/* <ReferralBox style={{background: "linear-gradient(180deg, rgb(116, 27, 107), 55%, rgb(0, 80, 124))"}}>
+                <ReferralHeader css={{fontSize: '35px', marginTop:"30px"}}>
+                  $999
+                </ReferralHeader>
+                <ReferralHeader css={{fontSize: '20px', color:"rgb(154, 154, 154)"}}>
+                  Earned from referrals 
+                </ReferralHeader>
+                <ReferralBox css={{minHeight:"30px", maxWidth:"300px", borderRadius:"10px",flexDirection:"row", marginTop:"20px",marginBottom:"20px",  '@bp918': {width:"200px"} }}>
+                      <div style={{fontSize: '22px', backgroundImage: "linear-gradient(45deg, #FFFFFF, rgb(27, 32, 48))", WebkitBackgroundClip: "text", WebkitTextFillColor:"transparent", backgroundSize: "100%", overflow: "hidden", width:"200px", marginLeft:"20px"}}>
+                        https://fndair.com/your_account_address
+                      </div>
+                      <div style={{minHeight: '40px', fontSize: '20px', width:"80px", background:"rgb(13, 78, 123)", height:"30px",borderTopRightRadius:"10px",borderBottomRightRadius:"10px", alignItems:"center",display:"flex", justifyContent:"center", cursor: "pointer"}}>
+                        Copy
+                      </div>
+                    </ReferralBox>
+                    <ReferralHeader css={{fontSize: '14px', paddingBottom:"30px"}}>
+                      Earn up to $40 instantly per referral 
+                    </ReferralHeader>
+
+              </ReferralBox> */}
+          </ClickToClaimContainer>
         </ParagraphBox>
         
         <Footer />

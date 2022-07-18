@@ -165,15 +165,14 @@ function Portfolio() {
               }}
             >
               
-              <ReferralBox><ReferralHeader css={{fontSize: '35px', marginTop:"30px"}}>
-                      ${totalReffered.toLocaleString()}
-                    </ReferralHeader>
-                    <ReferralHeader css={{fontSize: '20px', color:"rgb(154, 154, 154)"}}>
-                      Earned from referrals 
-                    </ReferralHeader>
-                    <ReferralBox css={{minHeight:"45px", maxWidth:"300px", borderRadius:"10px",flexDirection:"row", marginTop:"20px",marginBottom:"20px",  '@bp918': {
-        width:"200px",
-      }, }}>
+              <ReferralBox>
+                <ReferralHeader css={{fontSize: '35px', marginTop:"30px"}}>
+                  ${totalReffered.toLocaleString()}
+                </ReferralHeader>
+                <ReferralHeader css={{fontSize: '20px', color:"rgb(154, 154, 154)"}}>
+                  Earned from referrals 
+                </ReferralHeader>
+                <ReferralBox css={{minHeight:"45px", maxWidth:"300px", borderRadius:"10px",flexDirection:"row", marginTop:"20px",marginBottom:"20px",  '@bp918': {width:"200px"} }}>
                       <div style={{backgroundImage: "linear-gradient(45deg, #FFFFFF, rgb(27, 32, 48))", WebkitBackgroundClip: "text", WebkitTextFillColor:"transparent", backgroundSize: "100%", overflow: "hidden", width:"200px", marginLeft:"20px"}}>
                         https://fndair.com/{account.address}
                       </div>
@@ -185,7 +184,7 @@ function Portfolio() {
                       Earn up to $40 instantly per referral 
                     </ReferralHeader>
 
-                   </ReferralBox>
+              </ReferralBox>
               </div>
           </TopPorfolioFlexBox>
         </PortfolioFlexBoxWithColor>
