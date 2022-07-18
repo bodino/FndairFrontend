@@ -84,6 +84,7 @@ import LandingPageGraphic2 from '../images/LandingPageGraphic.png'
 import Referral from '../images/Referral.png'
 
 const axios = require('axios')
+axios.defaults.withCredentials = true;
 
 function Landingpage() {
   const [referralAddress, setreferralAddress] = useLocalStorage('referralAddressObject','')

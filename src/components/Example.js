@@ -20,7 +20,7 @@ import { styled, darkTheme } from '../ui/stitches.config'
 import { Text, WalletConnect } from '../ui/text'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import axios from 'axios'
+import axios from "axios";
 import { ethers } from 'ethers'
 import { useProvider, useSigner } from 'wagmi'
 import {
@@ -40,6 +40,7 @@ import { useDisconnect } from 'wagmi'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { ENSListObject, WalletListArray, trackedWalletListObject, setLogOutObject, setClickedObject, protocolListObject, subscriptionInfoObject, claimedAirDropListObject, totalClaimedObject} from '../hooks/recoil';
 import { useNavigate } from "react-router-dom";
+axios.defaults.withCredentials = true;
 
 
 
@@ -48,7 +49,8 @@ var walletarray = [3]
 
 export function Example() {
   const { disconnect } = useDisconnect()
-  axios.defaults.withCredentials = true
+  axios.defaults.withCredentials = true;
+
   const [airDropList, setairDropList] = useRecoilState(airDropListObject)
   const [claimedAirDropList, setclaimedAirDropList] = useRecoilState(claimedAirDropListObject)
 
@@ -127,13 +129,14 @@ export function Example() {
   useEffect(() => {
     async function checklogin() {
       await axios
-        .get(process.env.REACT_APP_BACKEND_API_LINK +'login', {})
+        .get(process.env.REACT_APP_BACKEND_API_LINK +'login', {},{withCredentials: true, headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'} })
         .then(function (res) {
-          if ((res.data.loggedin = true && data)) {
-            if ((res.data._id == data.address)) {
-              ensgetter();
-              convertObjectToArray(res);
+            console.log(res.data.loggedin)
+          if ((res.data.loggedin = true)) {
+            if ((res.data._id)) {
+              // ensgetter();
               console.log(res)
+              convertObjectToArray(res);
               setSignedMessage(true)
               
             } else {
@@ -147,11 +150,16 @@ export function Example() {
            
             }
           } else {
+            console.log("wowoow")
+
+            console.log(res)
+
             disconnect()
             serverDisconnect()
           }
         })
         .catch(function (error) {
+          console.log(error)
           disconnect()
           serverDisconnect()
         })
@@ -200,8 +208,8 @@ export function Example() {
       }
       await axios
         .post(process.env.REACT_APP_BACKEND_API_LINK+'login', {
-          UserInfo,
-        })
+          UserInfo
+        },{withCredentials: true, headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'} })
         .then(function (response) {
           setSignedMessage(true)
           convertObjectToArray(response)
@@ -219,17 +227,17 @@ export function Example() {
   }
 
   async function serverDisconnect() {
-    await axios
-      .get(process.env.REACT_APP_BACKEND_API_LINK+'disconnect', {})
-      .then(function (response) {
-        if ((response.data.loggedin = false)) {
-          setSignedMessage(false)
-        }
-      })
-      .catch(function (error) {
-        console.log(error)
+    // await axios
+    //   .get(process.env.REACT_APP_BACKEND_API_LINK+'disconnect', {})
+    //   .then(function (response) {
+    //     if ((response.data.loggedin = false)) {
+    //       setSignedMessage(false)
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error)
         
-      })
+    //   })
   }
 
   var food = []

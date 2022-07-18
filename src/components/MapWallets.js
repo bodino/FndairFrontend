@@ -32,6 +32,7 @@ import {Dialog,DialogTrigger, Button,DialogContent, DialogTitle,DialogDescriptio
 import FollowedWallet from './FollowedWallet'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+axios.defaults.withCredentials = true;
 
 
 

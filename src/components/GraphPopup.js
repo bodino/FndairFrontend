@@ -11,7 +11,6 @@ import {
     GraphContainer,
     TitleContainer
   } from '../ui/popup'
-import axios from 'axios';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJs } from 'chart.js/auto';
 
@@ -19,21 +18,7 @@ export default function GraphPopup(props) {
     const [dates, setDates] = useState();
     const [prices, setPrices] = useState();
 
-    // async function updateData(){
-    //     await axios
-    //     .get('http://localhost:3001/projects/' + props.address, {})
-    //     .then(function (response) {
-    //         setDates(response.data.dates);
-    //         setPrices(response.data.usdPrices);
-          
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error)
-    //     })
-    // }
-    // useEffect(() => {
-    //     updateData()
-    //   }, []);
+  
 
     const data = {
         labels: props.item.graphData.dates,
