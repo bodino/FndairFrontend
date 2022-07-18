@@ -850,13 +850,13 @@ export const RadialBackgroundContainer = styled('div', {
 })
 
 export const FooterContainer = styled('div', {
-    marginTop: "14%",
     background: "linear-gradient(315deg, rgb(116, 27, 107), 50%, rgb(0, 80, 124))",
     display: 'flex',
     width: '100%',
     height: '100%',
-    padding: '10px',
-    justifyContent: 'space-evenly'
+    paddingTop: '10px',
+    paddingBottom: '30px',
+    justifyContent: 'center'
 })
 
 export const FooterPagesContainer = styled('div', {
@@ -865,7 +865,10 @@ export const FooterPagesContainer = styled('div', {
     fontSize: '15px',
     background: 'transparent',
     textAlign: 'left',
-    marginTop: '30px'
+    marginTop: '30px',
+    '@bp630': {
+        display:"none"
+      },
 })
 
 export const FooterPages = styled('div', {

@@ -50,19 +50,7 @@ function Portfolio() {
           </ParagraphBox>
         </HorizontalFlexBoxWithColor>
 
-        <HorizontalFlexBoxWithColor style={{marginBottom: '0', height: '30px', justifyContent: 'flex-start', paddingTop: '0', paddingBottom: '0'}}>
-          <ParagraphBox>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <div>
-                <b>Contact Us</b>
-              </div>
-              <BbSeperator />
-            </div>
-          </ParagraphBox>
-          <ParagraphBox css={{ fontSize: '20px', lineHeight: '35px' }}>
-            info@fndair.com
-          </ParagraphBox>
-        </HorizontalFlexBoxWithColor>
+        
        
 
         <BottomAboutFlexBox>
@@ -103,6 +91,21 @@ function Portfolio() {
         </ParagraphBox>    
         
         </BottomAboutFlexBox>
+
+        {/* <HorizontalFlexBoxWithColor style={{marginBottom: '0', height: '30px', justifyContent: 'flex-start', paddingTop: '0', paddingBottom: '0'}}>
+          <ParagraphBox>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div>
+                <b>Contact Us</b>
+              </div>
+              <BbSeperator />
+            </div>
+          </ParagraphBox>
+          <ParagraphBox css={{ fontSize: '20px', lineHeight: '35px' }}>
+            info@fndair.com
+          </ParagraphBox>
+        </HorizontalFlexBoxWithColor> */}
+
         <ParagraphBox css={{ flex: "1 1", textAlign:"center"}}></ParagraphBox>
         <Footer />
         </>

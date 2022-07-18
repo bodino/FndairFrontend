@@ -240,8 +240,8 @@ function Landingpage() {
           </VertTime>
 
           <AboutLandingPage>
-            <p style={{fontSize: '25px', paddingTop: '20px', fontWeight: '200'}}>Why use FNDAIR</p>
-            <h3 style={{maxWidth: '85%', maxHeight: '100%', marginTop: '0', marginBottom: '15px', fontSize: '1em'}}>FNDAIR keeps track of your airdrops so you don't have to</h3>
+            {/* <p style={{fontSize: '25px', paddingTop: '20px', fontWeight: '200'}}>Why use FNDAIR</p> */}
+            <h3 style={{maxWidth: '85%', maxHeight: '100%', marginTop: '40px', marginBottom: '15px', fontSize: '45px'}}>FNDAIR keeps track of your airdrops so you don't have to</h3>
             <p style={{fontSize: '30px', marginTop: '0', marginBottom: '15px', fontWeight: '250', maxWidth: '85%', maxHeight: '100%'}}>Never forget to claim your tokens again</p>
             <Link to="/portfolio" style={{  textDecoration:"none", paddingInline:"10px", width: '150px'}}>
               <WalletConnect style={{marginBottom: '20px'}}>
@@ -264,7 +264,7 @@ function Landingpage() {
               <p style={{fontSize: '22px', marginTop: '0', marginBottom: '20px', color: 'rgb(165, 168, 182)'}}>
                 A simple way to claim your tokens
               </p>
-              <p style={{fontSize: '15px', marginTop: '0', marginBottom: '5px'}}>
+              <p style={{fontSize: '18px', marginTop: '0', marginBottom: '5px'}}>
                 After connnecting you wallet, we search our database and match your wallet address to any unclaimed airdrops that you are eligible for.
                 We collect all this information and display it to you in a personalised dashboard where you can simply just click to claim.
               </p>
@@ -279,7 +279,7 @@ function Landingpage() {
               <p style={{fontSize: '22px', marginTop: '0', marginBottom: '20px', color: 'rgb(165, 168, 182)'}}>
                 A reward for helping grow our community
               </p>
-              <p style={{fontSize: '15px', marginTop: '0', marginBottom: '5px'}}>
+              <p style={{fontSize: '18px', marginTop: '0', marginBottom: '5px'}}>
                 Missing out on an airdrop is like missing out on the chance to collect free cash, why not share the love with your friends and family.
                 Help share FNDAIR using your unique code so that they too will never miss and airdrop again. By the way, you will also be rewarded with cold hard crypto currency :) 
               </p>

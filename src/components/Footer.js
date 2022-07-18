@@ -59,9 +59,10 @@ function Footer() {
 
   return (
     <FooterContainer>
-      <div style={{marginTop: '30px'}}>
+       <div style={{display: 'flex', width:"960px", justifyContent: 'space-between', paddingInline:"20px"}}>
+      <div style={{marginTop: '30px', maxWidth:"1000px"}}>
         <BigLogo src={'/VectorSmalLogo.svg'} style={{height: '1.5', width: '1.5'}}></BigLogo> 
-        <SmallLogo src={'/Logo.svg'} style={{height: '55px', width: '260px'}}></SmallLogo> 
+        <SmallLogo src={'/Logo.svg'} style={{height: '55px', width: '260px', paddingTop:"0px", paddingRight:"35px"}}></SmallLogo> 
       </div>
       <FooterPagesContainer>
         <Link to="/" style={{textDecoration:"none", color: 'white'}}><FooterPages>HOME</FooterPages></Link>
@@ -86,7 +87,7 @@ function Footer() {
       </LeftLargeItemsBox>
    
 
-
+      </div>
     </FooterContainer>
   );
 }
