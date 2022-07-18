@@ -70,8 +70,8 @@ function Footer() {
         <Link to="/about" style={{textDecoration:"none", color: 'white'}}><FooterPages>About</FooterPages></Link>
       </FooterPagesContainer>
       <FooterPagesContainer>
-        <FooterPages>Contact</FooterPages>
-        <FooterPages>Privacy</FooterPages>
+        <Link to="/about" style={{textDecoration:"none", color: 'white'}}><FooterPages>Contact</FooterPages></Link>
+        <Link to="/about" style={{textDecoration:"none", color: 'white'}}><FooterPages>Privacy</FooterPages></Link>
         <FooterPages>Blog</FooterPages>
         <FooterPages>Terms of use</FooterPages>
       </FooterPagesContainer>
