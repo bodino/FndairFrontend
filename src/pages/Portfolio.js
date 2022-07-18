@@ -97,6 +97,11 @@ import {
   GraphContainer
 } from '../ui/popup'
 
+import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
+
+//GA tracker
+const gaEventTracker = useAnalyticsEventTracker('Portfolio');
+
 
 function Portfolio() {
   const { data: account } = useAccount()

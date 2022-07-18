@@ -31,6 +31,10 @@ import {
 } from '../ui/flexboxes'
 
 import Footer from '../components/Footer'
+import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
+
+//GA tracker
+const gaEventTracker = useAnalyticsEventTracker('About');
 
 function Portfolio() {
   return (

@@ -67,8 +67,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // axios.defaults.withCredentials = true
 
+import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
 
-
+//GA tracker
+const gaEventTracker = useAnalyticsEventTracker('Pricing');
 
 function Pricing() {
   const [subscriptionInfo, setsubscriptionInfo] = useRecoilState(subscriptionInfoObject)
