@@ -112,7 +112,8 @@ export function Example() {
               x++;
             }
           }
-          settotalReffered(res.data.subscriptionInfo.referralValue.toFixed(2))
+          //.toFixed(2)
+          settotalReffered(res.data.subscriptionInfo.referralValue)
           settotalClaimed(totalClaimed)
           setclaimedAirDropList(claimedAirdrops)
           setairDropList(eligableAirdrops)
