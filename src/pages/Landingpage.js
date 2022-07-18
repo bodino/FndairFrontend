@@ -251,11 +251,8 @@ function Landingpage() {
           </AboutLandingPage>
 
           <ClickToClaimContainer>
-            {/* <div>
-              <img src={LandingPageGraphic} style={{width: '430px'}}/>
-            </div> */}
             <RadialBackgroundContainer>
-              <img src={LandingPageGraphic2} style={{width: '430px'}}/>
+              <img src={LandingPageGraphic2} style={{width: '100%'}}/>
             </RadialBackgroundContainer>
             <div style={{textAlign: 'left'}}>
               <p style={{fontSize: '30px', marginTop: '0', marginBottom: '0', fontWeight: 'bold', paddingTop: '20px'}}>
@@ -285,28 +282,8 @@ function Landingpage() {
               </p>
             </div>
             <div>
-              <img src={Referral} style={{width: '480px'}}/>
+              <img src={Referral} style={{width: '100%'}}/>
             </div>
-            {/* <ReferralBox style={{background: "linear-gradient(180deg, rgb(116, 27, 107), 55%, rgb(0, 80, 124))"}}>
-                <ReferralHeader css={{fontSize: '35px', marginTop:"30px"}}>
-                  $999
-                </ReferralHeader>
-                <ReferralHeader css={{fontSize: '20px', color:"rgb(154, 154, 154)"}}>
-                  Earned from referrals 
-                </ReferralHeader>
-                <ReferralBox css={{minHeight:"30px", maxWidth:"300px", borderRadius:"10px",flexDirection:"row", marginTop:"20px",marginBottom:"20px",  '@bp918': {width:"200px"} }}>
-                      <div style={{fontSize: '22px', backgroundImage: "linear-gradient(45deg, #FFFFFF, rgb(27, 32, 48))", WebkitBackgroundClip: "text", WebkitTextFillColor:"transparent", backgroundSize: "100%", overflow: "hidden", width:"200px", marginLeft:"20px"}}>
-                        https://fndair.com/your_account_address
-                      </div>
-                      <div style={{minHeight: '40px', fontSize: '20px', width:"80px", background:"rgb(13, 78, 123)", height:"30px",borderTopRightRadius:"10px",borderBottomRightRadius:"10px", alignItems:"center",display:"flex", justifyContent:"center", cursor: "pointer"}}>
-                        Copy
-                      </div>
-                    </ReferralBox>
-                    <ReferralHeader css={{fontSize: '14px', paddingBottom:"30px"}}>
-                      Earn up to $40 instantly per referral 
-                    </ReferralHeader>
-
-              </ReferralBox> */}
           </ClickToClaimContainer>
         </ParagraphBox>
         

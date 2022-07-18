@@ -33,6 +33,10 @@ import Verticalnavbarcomp from './Verticlenavbarcomp';
     '&[data-orientation=vertical]': { height: '50%', width: 1 },
     alignSelf: 'center',
   });
+  import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
+
+  //GA tracker
+  const gaEventTracker = useAnalyticsEventTracker('Footer');
   
   console.log(ThemeProvider);
   // Exports
@@ -70,8 +74,8 @@ function Footer() {
         <Link to="/about" style={{textDecoration:"none", color: 'white'}}><FooterPages>About</FooterPages></Link>
       </FooterPagesContainer>
       <FooterPagesContainer>
-        <Link to="/about" style={{textDecoration:"none", color: 'white'}}><FooterPages>Contact</FooterPages></Link>
-        <Link to="/about" style={{textDecoration:"none", color: 'white'}}><FooterPages>Privacy</FooterPages></Link>
+        <Link to="/about" style={{textDecoration:"none", color: 'white'}}><FooterPages onClick={() => gaEventTracker('contact from footer')}>Contact</FooterPages></Link>
+        <Link to="/about" style={{textDecoration:"none", color: 'white'}}><FooterPages onClick={() => gaEventTracker('privacy page')}>Privacy</FooterPages></Link>
         <FooterPages>Blog</FooterPages>
         <FooterPages>Terms of use</FooterPages>
       </FooterPagesContainer>

@@ -826,7 +826,7 @@ export const AboutLandingPage = styled('div', {
     background: "linear-gradient(180deg, rgb(116, 27, 107), 40%, rgb(0, 80, 124))",
     marginTop: '5%',
     marginBottom: '2.5%',
-    '@bp4': {
+    '@bp0': {
         width:"375px"
     }
 })
@@ -838,7 +838,7 @@ export const ClickToClaimContainer = styled('div', {
     alignItems: 'top',
     textAlign: 'center',
 
-    '@bp4': {
+    '@bp0': {
         width: '375px',
         flexDirection: 'column'
     }
@@ -872,7 +872,6 @@ export const FooterPages = styled('div', {
     padding: '0.5rem',
     background: 'transparent',
     '&:hover': {
-        textDecoration: 'underline',
-        transform: 'scaleX(1)'
+        textDecoration: 'underline'
     }
 })
