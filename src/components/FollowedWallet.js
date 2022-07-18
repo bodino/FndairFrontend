@@ -13,12 +13,14 @@ import {
 } from '../ui/flexboxes'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import axios from 'axios'
+
 import { useAccount } from 'wagmi'
 import {CrossCircledIcon} from '@radix-ui/react-icons'
 import { WalletConnect, StaticWalletConnect } from '../ui/text'
 
 import { ClaimButton } from '../ui/text'
 import { toast } from 'react-toastify'
+axios.defaults.withCredentials = true;
 
 export function Airdropbox({ checklogin, item }) {
   const { data, isLoading, error } = useAccount()

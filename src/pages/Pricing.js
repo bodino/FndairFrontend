@@ -58,6 +58,7 @@ import Timelines from '../components/Timelines'
 import abi from '../abi/USDC.json'
 import { ethers } from 'ethers'
 import axios from 'axios';
+
 import {
   useRecoilState,
 } from 'recoil'
@@ -66,6 +67,8 @@ import {subscriptionInfoObject,referralAddressObject} from '../hooks/recoil'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
+
 
 import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
 

@@ -14,7 +14,7 @@ export const {
   // The default theme to use.
   theme: {
     fonts:{
-      main: 'Poppins',
+      // main: 'Poppins',
     },
     colors: {
       one: "#467898",
