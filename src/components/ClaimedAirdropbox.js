@@ -37,7 +37,7 @@ export function Airdropbox({item}) {
           <ClaimButton><b>Claimed 😃</b></ClaimButton>
           <div style={{display:"flex", flexDirection:"column",gap:"15px", width:"150px"}}>
                  <div style={{fontSize:"15px"}}>{item.info.name}</div>
-                 <div style={{fontSize:"35px"}}>${(item.valueUsd.toFixed(2)).toLocaleString()}</div>
+                 <div style={{fontSize:"35px"}}>${Number(parseFloat(item.valueUsd).toFixed(2)).toLocaleString('en', {minimumFractionDigits: 2})}</div>
                 <div style={{fontSize:"15px"}}> {item.address.substring(0, 5)}...{item.address.substring(38, 42)}</div>
           </div>
       </AirdropInfo>

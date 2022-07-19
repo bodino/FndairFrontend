@@ -175,3 +175,15 @@ export const BigLogo = styled('img', {
   },
 
 })
+
+export const EarnPhoto = styled('img', {
+  width: '480px',
+
+  '@bp0': {
+    width: '400',
+},
+'@bp734': {
+    width:"350px"
+}
+
+})

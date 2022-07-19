@@ -227,17 +227,17 @@ export function Example() {
   }
 
   async function serverDisconnect() {
-    // await axios
-    //   .get(process.env.REACT_APP_BACKEND_API_LINK+'disconnect', {})
-    //   .then(function (response) {
-    //     if ((response.data.loggedin = false)) {
-    //       setSignedMessage(false)
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error)
+    await axios
+      .get(process.env.REACT_APP_BACKEND_API_LINK+'disconnect', {})
+      .then(function (response) {
+        if ((response.data.loggedin = false)) {
+          setSignedMessage(false)
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
         
-    //   })
+      })
   }
 
   var food = []
