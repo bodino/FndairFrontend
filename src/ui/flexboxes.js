@@ -37,7 +37,7 @@ export const Breaker = styled('div', {
     alignItems: "center",
     padding:"",
     height:"50px",
-    paddingInline:"20px",
+    paddingLeft:"20px",
     '@bp2': {
         display: "flex",
       },
@@ -461,6 +461,8 @@ export const BottomAboutFlexBox = styled('div', {
 
 export const VertTime = styled('div', {
     display:"none",
+    paddingBottom:"35px",
+
 
       '@bp0': {
         display:"flex"
@@ -470,6 +472,7 @@ export const VertTime = styled('div', {
 })
 
 export const HortTime = styled('div', {
+    paddingBottom:"35px",
     display:"flex",
     '@bp0': {
       display:"none"
@@ -825,8 +828,11 @@ export const AboutLandingPage = styled('div', {
     textAlign: 'center',
     background: "linear-gradient(180deg, rgb(116, 27, 107), 40%, rgb(0, 80, 124))",
     marginTop: '5%',
-    marginBottom: '2.5%',
+    marginBottom: '45px',
     '@bp0': {
+        width:"720px"
+    },
+    '@bp734': {
         width:"375px"
     }
 })
@@ -837,10 +843,15 @@ export const ClickToClaimContainer = styled('div', {
     background: 'transparent',
     alignItems: 'top',
     textAlign: 'center',
+    paddingBottom:"40px",
 
     '@bp0': {
-        width: '375px',
-        flexDirection: 'column'
+        width: '720px',
+        flexDirection: 'column',
+        alignItems:"center",
+    },
+    '@bp734': {
+        width:"375px"
     }
 })
 
@@ -850,10 +861,10 @@ export const RadialBackgroundContainer = styled('div', {
 })
 
 export const FooterContainer = styled('div', {
-    background: "linear-gradient(315deg, rgb(116, 27, 107), 50%, rgb(0, 80, 124))",
+    background: "#292e40",
     display: 'flex',
     width: '100%',
-    height: '100%',
+    // height: '100%',
     paddingTop: '10px',
     paddingBottom: '30px',
     justifyContent: 'center'

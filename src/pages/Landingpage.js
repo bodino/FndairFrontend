@@ -4,7 +4,7 @@ import { useAccount } from 'wagmi'
 import '../App.css'
 import { css } from '../ui/stitches.config'
 import { styled, darkTheme, createGlobalStyle } from '../ui/stitches.config'
-import { Text, Button } from '../ui/text.js'
+import { Text, Button, EarnPhoto } from '../ui/text.js'
 import { ThemeToggle } from '../ThemeToggle'
 
 import { ConnectButton } from '@rainbow-me/rainbowkit'
@@ -224,7 +224,7 @@ function Landingpage() {
             </InteranalParagraphBox>
           </HorizontalFlexBox>
         </BraggingBox>
-        <ParagraphBox css={{ flex: '1 1', textAlign: 'center', alignItems: 'center' }}>
+        <ParagraphBox css={{ flex: '1 1', textAlign: 'center', alignItems: 'center', paddingInline: "0px", }}>
           <div style={{ paddingBottom: '10px' }}>
             <b>3 Simple Steps</b>
           </div>
@@ -252,9 +252,12 @@ function Landingpage() {
           </AboutLandingPage>
 
           <ClickToClaimContainer>
-            <RadialBackgroundContainer>
-              <img src={LandingPageGraphic2} style={{width: '100%'}}/>
-            </RadialBackgroundContainer>
+            {/* <div>
+              <img src={LandingPageGraphic} style={{width: '430px'}}/>
+            </div> */}
+            {/* <RadialBackgroundContainer> */}
+              <EarnPhoto src={LandingPageGraphic2} />
+            {/* </RadialBackgroundContainer> */}
             <div style={{textAlign: 'left'}}>
               <p style={{fontSize: '30px', marginTop: '0', marginBottom: '0', fontWeight: 'bold', paddingTop: '20px'}}>
                 Show me the money
@@ -262,14 +265,20 @@ function Landingpage() {
               <p style={{fontSize: '22px', marginTop: '0', marginBottom: '20px', color: 'rgb(165, 168, 182)'}}>
                 A simple way to claim your tokens
               </p>
-              <p style={{fontSize: '18px', marginTop: '0', marginBottom: '5px'}}>
+              <p style={{fontSize: '18px', marginTop: '0', marginBottom: '5px', lineHeight:"28px"}}>
                 After connnecting you wallet, we search our database and match your wallet address to any unclaimed airdrops that you are eligible for.
                 We collect all this information and display it to you in a personalised dashboard where you can simply just click to claim.
               </p>
             </div>
           </ClickToClaimContainer>
 
-          <ClickToClaimContainer style={{marginTop: '20px'}}>
+          <ClickToClaimContainer css={{marginTop: '20px', '@bp0': {
+        width: '720px',
+        flexDirection: 'column-reverse',
+        alignItems:"center",
+    },  '@bp734': {
+      width:"375px"
+  }}}>
             <div style={{textAlign: 'left', Width: '50%'}}>
               <p style={{fontSize: '30px', marginTop: '0', marginBottom: '0', fontWeight: 'bold', paddingTop: '30px'}}>
                 Earn from referrals
@@ -277,13 +286,13 @@ function Landingpage() {
               <p style={{fontSize: '22px', marginTop: '0', marginBottom: '20px', color: 'rgb(165, 168, 182)'}}>
                 A reward for helping grow our community
               </p>
-              <p style={{fontSize: '18px', marginTop: '0', marginBottom: '5px'}}>
+              <p style={{fontSize: '18px', marginTop: '0', marginBottom: '5px', lineHeight:"28px"}}>
                 Missing out on an airdrop is like missing out on the chance to collect free cash, why not share the love with your friends and family.
-                Help share FNDAIR using your unique code so that they too will never miss and airdrop again. By the way, you will also be rewarded with cold hard crypto currency :) 
+                Help share FNDAIR using your unique code so that they too will never miss and airdrop again. By the way, you will also be rewarded with cold hard crypto currency 😃
               </p>
             </div>
             <div>
-              <img src={Referral} style={{width: '100%'}}/>
+              <EarnPhoto src={Referral} />
             </div>
           </ClickToClaimContainer>
         </ParagraphBox>

@@ -151,7 +151,7 @@ function Portfolio() {
               </ConnectButton.Custom>
 
               <PortfolioItemBox css={{ fontSize: '25px', color:"#9a9a9a" }}>
-                Total Claimed ${(totalClaimed.toFixed(2)).toLocaleString()}
+                Total Claimed ${Number(parseFloat(totalClaimed).toFixed(2)).toLocaleString('en', {minimumFractionDigits: 2})}
               </PortfolioItemBox>
               <PortfolioItemBox css={{ fontSize: '20px', paddingBottom: '10px' }}>
                 Wallets You Follow
@@ -170,7 +170,7 @@ function Portfolio() {
               
               <ReferralBox>
                 <ReferralHeader css={{fontSize: '35px', marginTop:"30px"}}>
-                  ${totalReffered.toLocaleString()}
+                  ${Number(parseFloat(totalReffered).toFixed(2)).toLocaleString('en', {minimumFractionDigits: 2})}
                 </ReferralHeader>
                 <ReferralHeader css={{fontSize: '20px', color:"rgb(154, 154, 154)"}}>
                   Earned from referrals 
@@ -246,7 +246,7 @@ function Portfolio() {
       >
         
         <PortfolioFlexBoxWithColor
-          css={{ alignItems: 'flex-start', minHeight: '0px' }}
+          css={{  }}
         >
           <TopPorfolioFlexBox>
             <div

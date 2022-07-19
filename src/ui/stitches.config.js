@@ -63,9 +63,9 @@ export const {
   media: {
     bp0:  '(max-width: 999px)',
     bp1: '(min-width: 750px)',
-    bp2: '(max-width: 749px)',
+    bp2: '(max-width: 759px)',
     bp3: '(min-width: 1000px)',
-    bp4: '(max-width: 500px)',
+    bp4: '(max-width: 524px)',
     vbp1:'(min-height: 1250px)',
     bp918: '(max-width: 918px)',
     bp734: '(max-width: 733px)',
