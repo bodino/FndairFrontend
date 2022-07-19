@@ -72,7 +72,7 @@ function App() {
  
     <ThemeProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme="dark"
       value={{
         dark: darkTheme.className,
         light:  darkTheme.className,

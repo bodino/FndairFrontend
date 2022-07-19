@@ -87,7 +87,7 @@ function Portfolio() {
                     
                     <h3 style={{marginBottom: "0"}}>How private is Fndair?</h3>
                     <p style={{marginBottom: "0"}}>
-                      We believe your wallet is an extension of your identity. Thats why we take user privacy very seriously, FNDAIR onnly uses secure networks and takes particular care to ensure that your private information stays that way.
+                      We believe your wallet is an extension of your identity. Thats why we take user privacy very seriously, FNDAIR only uses secure networks and takes particular care to ensure that your private information stays that way.
                     </p>
                   </ParagraphBox>
                 </div>

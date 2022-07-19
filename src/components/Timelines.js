@@ -204,7 +204,7 @@ export default function CustomizedSteppers() {
         <Step>
           <StepLabel StepIconComponent={ColorlibStepIcon}>
           <Discriptor image={Hidden} title="Find Unclaimed Airdrops"
-           info="View the over 20 protocols we search through to find you missed airdrops." ></Discriptor>
+           info="View the protocols we search through to find you missed airdrops." ></Discriptor>
           </StepLabel>
         </Step>
         <Step>
