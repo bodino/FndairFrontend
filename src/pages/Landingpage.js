@@ -208,7 +208,7 @@ function Landingpage() {
         <BraggingBox>
           <HorizontalFlexBox>
             <InteranalParagraphBoxDisapearLater>
-              <Top>20+</Top>
+              <Top>10+</Top>
 
               <Bottom> Protocol Integrations </Bottom>
             </InteranalParagraphBoxDisapearLater>
