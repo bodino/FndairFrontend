@@ -18,6 +18,7 @@ import Connected from '../components/Connected'
 import Navabar from '../components/Navabar'
 import Steps from 'rc-steps'
 import { Link } from 'react-router-dom'
+import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
 
 import {
   Name,
@@ -71,14 +72,16 @@ axios.defaults.withCredentials = true;
 
 
 
-
-
 function Pricing() {
   const [subscriptionInfo, setsubscriptionInfo] = useRecoilState(subscriptionInfoObject)
   const [referralAddress, setreferralAddress] = useLocalStorage('referralAddressObject','')
 
   const { activeChain, chains, data:chaindata, switchNetworkAsync } = useNetwork()
   const [priceData, setpriceData] = useState();
+
+  //GA tracker
+  const gaEventTracker = useAnalyticsEventTracker('Pricing');
+
   async function updatePricing(){
     await axios
     .get(process.env.REACT_APP_BACKEND_API_LINK+'pricing', {})

@@ -31,8 +31,12 @@ import {
 } from '../ui/flexboxes'
 
 import Footer from '../components/Footer'
+import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
+
 
 function Portfolio() {
+  //GA tracker
+  const gaEventTracker = useAnalyticsEventTracker('About');
   return (
     <>
         <HorizontalFlexBoxWithColor style={{marginBottom: '0', paddingBottom: '0'}}>
