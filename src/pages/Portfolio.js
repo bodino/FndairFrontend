@@ -197,7 +197,7 @@ function Portfolio() {
           <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Unclaimed</ParagraphBox>
         </AirdropHorizontalFlexBox>
 
-        <AirdropHorizontalFlexBox css={{   paddingBottom:"20px", paddingLeft:"20px", '@bp734': {
+        <AirdropHorizontalFlexBox css={{   paddingBottom:"20px", paddingLeft:"20px", minHeight:"200px", '@bp734': {
        paddingLeft:"0px",
       }, }}>
         {airDropList[0]?.info ? <Mapairdrops />: <Mapfreeairdrops/>}          
@@ -208,7 +208,7 @@ function Portfolio() {
           <ParagraphBox css={{ fontSize: '25px', paddingBottom:'0px' }}>Claimed</ParagraphBox>
         </AirdropHorizontalFlexBox>
 
-        <AirdropHorizontalFlexBox css={{  paddingBottom:"20px",paddingLeft:"20px",  '@bp734': {
+        <AirdropHorizontalFlexBox css={{  paddingBottom:"20px",paddingLeft:"20px", minHeight:"200px",  '@bp734': {
        paddingLeft:"0px",
       }, }}>
         

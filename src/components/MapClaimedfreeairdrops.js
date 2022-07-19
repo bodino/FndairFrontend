@@ -5,7 +5,7 @@ import { useAccount } from 'wagmi'
 import { airDropListObject, protocolListObject,claimedAirDropListObject } from '../hooks/recoil';
 import Airdropbox from './Airdropbox';
 import AirdropboxFree from './AirdropboxFree';
-import ClaimedAirdropbox from './ClaimedAirdropbox';
+import ClaimedAirdropboxFree from './ClaimedAirdropboxFree';
 
 
 
@@ -22,7 +22,7 @@ export function MapClaimedfreeairdrops() {
    
         {claimedAirDropList.map((item) =>(
             <>
-         {item ? <AirdropboxFree item = {item}/> : <></>}
+         {item ? <ClaimedAirdropboxFree item = {item}/> : <></>}
             </>
         ))}
        </>
