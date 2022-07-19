@@ -75,6 +75,7 @@ function App() {
       defaultTheme="system"
       value={{
         dark: darkTheme.className,
+        light:  darkTheme.className,
       }}
     >
       <Bg>
