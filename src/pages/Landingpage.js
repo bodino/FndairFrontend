@@ -226,7 +226,7 @@ function Landingpage() {
         </BraggingBox>
         <ParagraphBox css={{ flex: '1 1', textAlign: 'center', alignItems: 'center' }}>
           <div style={{ paddingBottom: '10px' }}>
-            <b>Simple 3 Steps</b>
+            <b>3 Simple Steps</b>
           </div>
 
           <MiniParagraphBox css={{ justifyContent: 'center' }}>
