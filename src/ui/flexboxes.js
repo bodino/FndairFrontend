@@ -828,16 +828,11 @@ export const AboutLandingPage = styled('div', {
     textAlign: 'center',
     background: "linear-gradient(180deg, rgb(116, 27, 107), 40%, rgb(0, 80, 124))",
     marginTop: '5%',
-<<<<<<< HEAD
     marginBottom: '45px',
     '@bp0': {
         width:"720px"
     },
     '@bp734': {
-=======
-    marginBottom: '2.5%',
-    '@bp0': {
->>>>>>> b1aa50944bf67f6bf59604b2a3e8123705e8b56b
         width:"375px"
     }
 })
@@ -851,17 +846,12 @@ export const ClickToClaimContainer = styled('div', {
     paddingBottom:"40px",
 
     '@bp0': {
-<<<<<<< HEAD
         width: '720px',
         flexDirection: 'column',
         alignItems:"center",
     },
     '@bp734': {
         width:"375px"
-=======
-        width: '375px',
-        flexDirection: 'column'
->>>>>>> b1aa50944bf67f6bf59604b2a3e8123705e8b56b
     }
 })
 
