@@ -20,11 +20,6 @@ import {ClaimButton} from '../ui/text'
 
 export function ProtocolBox({item}) {
   const [trigger, setTrigger] = useState(false);
-  console.log("TESTTEST")
-  console.log(item)
-
-
-
   return (
     //needs image
     <ProtocolFlexBox >

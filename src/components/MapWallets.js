@@ -6,7 +6,7 @@ import {ethers} from 'ethers'
 import { airDropListObject, protocolListObject,trackedWalletListObject,totalClaimedObject,claimedAirDropListObject } from '../hooks/recoil';
 import { WalletConnect,StaticWalletConnect } from '../ui/text';
 import Airdropbox from './Airdropbox';
-import { FaceIcon, ImageIcon, PlusCircledIcon } from '@radix-ui/react-icons'
+import { FaceIcon, ImageIcon, PlusCircledIcon, ChevronDownIcon, Cross1Icon } from '@radix-ui/react-icons'
 import axios from 'axios';
 import Verticalnavbarcomp from './Verticlenavbarcomp';
 import {IconBoxes,HorizontalFlexBox,WalletFlexBox} from '../ui/flexboxes'
@@ -27,9 +27,19 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '../ui/navbardropdown'
+} from '../ui/navbardropdown';
+import {
+  WalletDropdown,
+  WalletDropdownTrigger,
+  WalletDropdownContent,
+  WalletDropdownItem,
+  WalletDropdownArrow,
+  WalletDropdownGroup
+} from '../ui/walletDropdown';
+import { RotateButton, RotateArrow, EnlargeButton } from '../ui/animations'
 import {Dialog,DialogTrigger, Button,DialogContent, DialogTitle,DialogDescription, Fieldset, Label, Input,Flex,DialogClose, IconButton   } from '../ui/Dialog'
 import FollowedWallet from './FollowedWallet'
+import WalletDropdownBox from './DropdownWallets'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 axios.defaults.withCredentials = true;
@@ -37,16 +47,18 @@ axios.defaults.withCredentials = true;
 
 
 
-export function MapWallets() {
+export function MapWallets(props) {
     const [airDropList, setairDropList] = useRecoilState(airDropListObject)
     const [protocolList, setprotocolList] = useRecoilState(protocolListObject)
     const [trackedWalletList, settrackedWalletListt] = useRecoilState(trackedWalletListObject)
     const [claimedAirDropList, setclaimedAirDropList] = useRecoilState(claimedAirDropListObject)
     const [totalClaimed, settotalClaimed] = useRecoilState(totalClaimedObject)
 
-    const [address, setAddress] = useState('')
+    const [address, setAddress] = useState(props.displayAddress)
     const { data, isLoading, error } = useAccount()
+    const [rotate, setRotate] = useState('false');
 
+    console.log(address)
 
     function convertObjectToArray(res) {
       var eligableAirdrops = [];
@@ -94,6 +106,7 @@ export function MapWallets() {
  
 
     async function updateWallet(passedAddress) {
+      console.log(passedAddress)
         
         if (ethers.utils.isAddress(passedAddress)){
           console.log(passedAddress)
@@ -114,23 +127,34 @@ export function MapWallets() {
       if (trackedWalletList){
     return (    
      
-        <> 
-          <WalletFlexBox css={{maxWidth:"300px", overflowX: "scroll", justifyContent:"flex-start", marginLeft:"20px",width: "",
-}}>
+      <> 
+          {/* <WalletFlexBox css={{maxWidth:"300px", overflowX: "scroll", justifyContent:"flex-start", marginLeft:"20px",width: "",}}>
         {trackedWalletList.map((item) =>(
             <>
-            <FollowedWallet checklogin={checklogin}item={item}></FollowedWallet>
+            <FollowedWallet checklogin={checklogin} item={item}></FollowedWallet>
       
             </>
         ))}
         
-        </WalletFlexBox>
-
+        </WalletFlexBox> */}
+        <WalletDropdown>
+          <WalletDropdownTrigger style={{borderStyle: "solid", fontSize: "20px"}} >
+            {address.substring(0, 9)}...{address.substring(34, 42)}
+            <ChevronDownIcon style={{width:"32px", height:"32px", marginRight:"4px"}} />
+          </WalletDropdownTrigger>
+          <WalletDropdownContent>
+              {trackedWalletList.map(item => (
+                <>
+                  <WalletDropdownBox checklogin={checklogin} item={item} setAddress={setAddress}></WalletDropdownBox>
+                </>
+              ))}
+          </WalletDropdownContent>
+        </WalletDropdown>
      
  
       <Dialog>
     <DialogTrigger asChild>
-    <PlusCircledIcon style={{width:"25px", height:"25px", marginLeft:"20px", cursor: "pointer"}}/>
+    <EnlargeButton><PlusCircledIcon style={{width:"35px", height:"35px", marginLeft:"20px", marginTop: "15px", cursor: "pointer"}}/></EnlargeButton>
 
     </DialogTrigger>
     <DialogContent >
@@ -146,6 +170,7 @@ export function MapWallets() {
       <Flex css={{ marginTop: 25, justifyContent: 'flex-end' }}>
         <DialogClose onClick={() => {
                       updateWallet(address)
+                      .then(toast("New Wallet address has been added"))
                     }} asChild>
           <Button variant="green">Save</Button>
         </DialogClose>

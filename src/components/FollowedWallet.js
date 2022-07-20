@@ -11,6 +11,7 @@ import {
   AirdropIcon,
   AirdropInfo,
 } from '../ui/flexboxes'
+import { WalletDropdownItem } from '../ui/walletDropdown'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import axios from 'axios'
 
@@ -78,9 +79,8 @@ export function Airdropbox({ checklogin, item }) {
 
   if (show) {
     return (
-      <StaticWalletConnect
-        css={{ marginRight: '20px' }}
-      >
+     <StaticWalletConnect css={{ marginRight: '20px'}} >
+      
         <div style={{paddingRight:"10px",}}>
         {item.substring(0, 5)}...{item.substring(38, 42)}
         </div>
@@ -90,7 +90,8 @@ export function Airdropbox({ checklogin, item }) {
              color:"red"
         
             },}}/>
-      </StaticWalletConnect>
+     </StaticWalletConnect>
+    
     )
   }
 }

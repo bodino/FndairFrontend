@@ -114,8 +114,9 @@ function Portfolio() {
 
   //GA tracker
   const gaEventTracker = useAnalyticsEventTracker('Portfolio');
-  
+
   if (airDropList && account && protocolList) {
+    console.log(account)
     return (
       <>
       <PorfolioContainer
@@ -154,10 +155,10 @@ function Portfolio() {
                 Total Claimed ${Number(parseFloat(totalClaimed).toFixed(2)).toLocaleString('en', {minimumFractionDigits: 2})}
               </PortfolioItemBox>
               <PortfolioItemBox css={{ fontSize: '20px', paddingBottom: '10px' }}>
-                Wallets You Follow
+                Your Wallets
               </PortfolioItemBox>
                 <div style={{display:"flex", justifyContent:"flex-start", flexDirection:"row", alignItems:"center"}}>
-                <MapWallets/>
+                  <MapWallets displayAddress={account.address} />
                 </div>
             </div>
             <div
