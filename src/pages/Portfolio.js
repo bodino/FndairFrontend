@@ -115,6 +115,7 @@ function Portfolio() {
   //GA tracker
   const gaEventTracker = useAnalyticsEventTracker('Portfolio');
 
+  console.log(account)
   if (airDropList && account && protocolList) {
     console.log(account)
     return (
@@ -199,8 +200,8 @@ function Portfolio() {
         </AirdropHorizontalFlexBox>
 
         <AirdropHorizontalFlexBox css={{   paddingBottom:"20px", paddingLeft:"20px", minHeight:"200px", '@bp734': {
-       paddingLeft:"0px",
-      }, }}>
+       paddingLeft:"0px"}, }}>
+         
         {airDropList[0]?.info ? <Mapairdrops />: <Mapfreeairdrops/>}          
         </AirdropHorizontalFlexBox>
 

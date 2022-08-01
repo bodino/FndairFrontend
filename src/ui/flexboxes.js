@@ -128,14 +128,21 @@ export const IconBoxes = styled('div', {
     
     // border: " solid",
     borderRadius: "5px",
-    transition: 'background-color 200ms',
-  
+    flexDirection: "column",
     
-    '&:hover': {
-        // backgroundColor: "$buttoncolor",
-        // border: "1px solid $antibackground",
-
-      },
+    '&::after': {
+        content: "",
+        display: 'block',
+        width: '100%',
+        height: '2px',
+        background: 'white',
+        transition: 'transform 0.3s ease-in-out',
+        transform: 'scale(0)'
+    },
+    
+    '&:hover::after': {
+        transform: 'scale(1)'
+    }
 })
 
 

@@ -101,9 +101,9 @@ function Navabar() {
 
     <RightItemsBox>
    
-    <IconBoxes>
+    {/* <IconBoxes>
         <BellIcon/>
-      </IconBoxes>
+      </IconBoxes> */}
     
       {/* <IconBoxes> */}
         <Example />

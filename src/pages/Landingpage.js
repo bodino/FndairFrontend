@@ -25,7 +25,8 @@ import {
   InteranalParagraphBox,
   NavabarContainer,
   TopBox,
-  MiniParagraphBox,HortTime,
+  MiniParagraphBox,
+  HortTime,
   VertTime,
   InteranalParagraphBoxDisapearLater,
   AboutLandingPage,
@@ -81,7 +82,7 @@ import useAnalyticsEventTracker from '../components/AnalyticsEventTracker'
 import { Link } from 'react-router-dom'
 import LandingPageGraphic from '../images/ClickToClaim2.png'
 import LandingPageGraphic2 from '../images/LandingPageGraphic.png'
-import Referral from '../images/Referral.png'
+import Referral from '../images/referral2.png'
 
 const axios = require('axios')
 axios.defaults.withCredentials = true;
@@ -242,10 +243,10 @@ function Landingpage() {
 
           <AboutLandingPage>
             {/* <p style={{fontSize: '25px', paddingTop: '20px', fontWeight: '200'}}>Why use FNDAIR</p> */}
-            <h3 style={{maxWidth: '85%', maxHeight: '100%', marginTop: '40px', marginBottom: '15px', fontSize: '45px'}}>FNDAIR keeps track of your airdrops so you don't have to</h3>
-            <p style={{fontSize: '30px', marginTop: '0', marginBottom: '15px', fontWeight: '250', maxWidth: '85%', maxHeight: '100%'}}>Never forget to claim your tokens again</p>
+            <h3 style={{maxWidth: '85%', maxHeight: '100%', marginTop: '30px', marginBottom: '15px', fontSize: '30px'}}>FNDAIR keeps track of your airdrops so you don't have to</h3>
+            <p style={{fontSize: '22px', marginTop: '0', marginBottom: '30px', fontWeight: '250', maxWidth: '85%', maxHeight: '100%'}}>Never forget to claim your tokens again</p>
             <Link to="/portfolio" style={{  textDecoration:"none", paddingInline:"10px", width: '150px'}}>
-              <WalletConnect style={{marginBottom: '20px'}}>
+              <WalletConnect style={{marginBottom: '30px'}}>
                 Claim Now
               </WalletConnect>
             </Link >
@@ -279,7 +280,7 @@ function Landingpage() {
     },  '@bp734': {
       width:"375px"
   }}}>
-            <div style={{textAlign: 'left', Width: '50%'}}>
+            <div style={{textAlign: 'left', Width: '50%', paddingRight: "5px"}}>
               <p style={{fontSize: '30px', marginTop: '0', marginBottom: '0', fontWeight: 'bold', paddingTop: '30px'}}>
                 Earn from referrals
               </p>
@@ -292,7 +293,7 @@ function Landingpage() {
               </p>
             </div>
             <div>
-              <EarnPhoto src={Referral} />
+              <EarnPhoto src={Referral} style={{width: '380px'}}/>
             </div>
           </ClickToClaimContainer>
         </ParagraphBox>
