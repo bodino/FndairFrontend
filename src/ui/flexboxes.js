@@ -128,6 +128,26 @@ export const IconBoxes = styled('div', {
     
     // border: " solid",
     borderRadius: "5px",
+
+})
+
+export const NavBoxes = styled('div', {
+
+    display: "flex",
+    // alignContent: "center",
+    marginRight:"5px",
+    marginLeft:"5px",
+    justifyContent:"center",
+    alignItems:"center",
+    minWidth:"50px",
+    height:"39.5px",
+    fontFamily:" Inter, Arial",
+    fontSize:"$title",
+    color:"$antibackground",
+    // border: "1px solid $background",
+    
+    // border: " solid",
+    borderRadius: "5px",
     flexDirection: "column",
     
     '&::after': {

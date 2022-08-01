@@ -5,7 +5,7 @@ import {styled, darkTheme, createGlobalStyle} from '../ui/stitches.config';
 import {Text, Button, SmallLogo, BigLogo} from '../ui/text.js';
 import { Example } from '../components/Example'
 import { ThemeProvider } from 'next-themes';
-import { RightItemsBox, LeftSmallItemsBox,LeftLargeItemsBox, IconBoxes, NavabarContainer,CenterLargeItemsBox,Breaker  } from '../ui/flexboxes'
+import { RightItemsBox, LeftSmallItemsBox,LeftLargeItemsBox, IconBoxes, NavabarContainer,CenterLargeItemsBox,Breaker, NavBoxes  } from '../ui/flexboxes'
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 import { ThemeToggle } from '../ThemeToggle'
 import { useMediaQuery } from 'react-responsive'
@@ -81,20 +81,20 @@ function Navabar() {
      
 
     <Link to="/portfolio" style={{  textDecoration:"none", paddingInline:"10px"}}>
-      <IconBoxes>
+      <NavBoxes>
       Portfolio
-      </IconBoxes>
+      </NavBoxes>
       </Link >
       <Link to="/pricing"style={{  textDecoration:"none", paddingInline:"10px"}} >
-      <IconBoxes>
+      <NavBoxes>
       Pricing
-      </IconBoxes>
+      </NavBoxes>
       </Link>
       <Link to="/about" style={{  textDecoration:"none", paddingInline:"10px"}}>
     
-      <IconBoxes>
+      <NavBoxes>
       About
-      </IconBoxes>
+      </NavBoxes>
       </Link>
     </CenterLargeItemsBox>
   
